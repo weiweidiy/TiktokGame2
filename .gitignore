@@ -17,6 +17,8 @@ Logs/
 Temp/
 UserSettings/
 obj/
+Assets/StreamingAssets/
+Assets/StreamingAssets.meta
 
 Assembly-CSharp-firstpass.csproj
 
