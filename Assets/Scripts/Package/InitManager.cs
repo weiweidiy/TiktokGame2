@@ -8,6 +8,7 @@ public class InitManager : BaseRunable
         base.OnRun(extraData);
 
         Debug.Log("init");
+        //设置ExtraData
         NotifyComplete(this);
     }
 }

@@ -1,14 +1,18 @@
-﻿using Cysharp.Threading.Tasks;
-using dnlib.PE;
+﻿using Codice.Client.BaseCommands.Download;
+using Cysharp.Threading.Tasks;
 using JFrame;
+using JFrame.Game.Package;
+using System;
+using System.Collections;
 using System.IO;
+using TiktokGame;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
 
 public class PatchManager : BaseRunable
 {
-    protected override void OnRun(RunableExtraData extraData)
+    protected override async void OnRun(RunableExtraData extraData)
     {
         base.OnRun(extraData);
 
@@ -20,24 +24,89 @@ public class PatchManager : BaseRunable
         // 初始化资源系统
         YooAssets.Initialize();
 
-        // 创建默认的资源包
-        //var package = YooAssets.CreatePackage("DefaultPackage");
-
-        // 获取指定的资源包，如果没有找到会报错
-        var package = YooAssets.GetPackage("DefaultPackage");
+        var result = await InitPackage();
 
         // 获取指定的资源包，如果没有找到不会报错
-        //var package = YooAssets.TryGetPackage("DefaultPackage");
+        var package = YooAssets.GetPackage(GetPackageName());
 
         // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
         YooAssets.SetDefaultPackage(package);
+
+        //开始热更
+        await RunPatch();
+
+
+
+        Debug.Log("完成更新");
+
+#if !UNITY_EDITOR
+        //加载dllmanager
+        var dllManager = new DllManager();
+        await dllManager.LoadDLL();
+#endif
+
+        Debug.Log("加载DLL完成");
+        NotifyComplete(this);
     }
 
-    private IEnumerator InitPackage()
+    private async UniTask RunPatch()
     {
-        var playMode = (EPlayMode)_machine.GetBlackboardValue("PlayMode");
-        var packageName = (string)_machine.GetBlackboardValue("PackageName");
-        var buildPipeline = (string)_machine.GetBlackboardValue("BuildPipeline");
+        Debug.Log("开始补丁更新...");
+
+        var version = await RequestPackageVersion(GetPackageName());
+        if (version == null)
+        {
+            throw new Exception("更新版本号失败 跳出逻辑");
+        }
+        await UpdatePackageManifest(version);
+        var downloader = CreateDownloader(GetPackageName());
+
+        //需要下载的文件总数和总大小
+        int totalDownloadCount = downloader.TotalDownloadCount;
+        long totalDownloadBytes = downloader.TotalDownloadBytes;
+
+        //注册回调方法
+        downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
+        downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
+        downloader.OnDownloadOverCallback = OnDownloadOverFunction;
+        downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
+
+        await Download(downloader);
+    }
+
+    private void OnStartDownloadFileFunction(string fileName, long sizeBytes)
+    {
+        //throw new NotImplementedException();
+    }
+
+    private void OnDownloadOverFunction(bool isSucceed)
+    {
+        // throw new NotImplementedException();
+    }
+
+    private void OnDownloadProgressUpdateFunction(int totalDownloadCount, int currentDownloadCount, long totalDownloadBytes, long currentDownloadBytes)
+    {
+        // throw new NotImplementedException();
+    }
+
+    private void OnDownloadErrorFunction(string fileName, string error)
+    {
+        Debug.LogError(error);
+    }
+
+
+
+
+
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    /// <returns></returns>
+    private async UniTask<bool> InitPackage()
+    {
+        var playMode = GetPlayMode();// (EPlayMode)_machine.GetBlackboardValue("PlayMode");
+        var packageName = GetPackageName(); //(string)_machine.GetBlackboardValue("PackageName");
+        var buildPipeline = GetBuildPipline(); //(string)_machine.GetBlackboardValue("BuildPipeline");
 
         // 创建资源包裹类
         var package = YooAssets.TryGetPackage(packageName);
@@ -82,18 +151,121 @@ public class PatchManager : BaseRunable
             initializationOperation = package.InitializeAsync(createParameters);
         }
 
-        yield return initializationOperation;
+        await initializationOperation;
 
         // 如果初始化失败弹出提示界面
         if (initializationOperation.Status != EOperationStatus.Succeed)
         {
             Debug.LogWarning($"{initializationOperation.Error}");
-            PatchEventDefine.InitializeFailed.SendEventMessage();
+            //PatchEventDefine.InitializeFailed.SendEventMessage();
+            return true;
         }
         else
         {
-            _machine.ChangeState<FsmUpdatePackageVersion>();
+            //_machine.ChangeState<FsmUpdatePackageVersion>();
+            return false;
         }
+    }
+
+
+    /// <summary>
+    /// 请求资源版本号并更新
+    /// </summary>
+    /// <returns></returns>
+    private async UniTask<string> RequestPackageVersion(string packageName)
+    {
+        var package = YooAssets.GetPackage(packageName);
+        var operation = package.RequestPackageVersionAsync();
+        await operation;
+
+        if (operation.Status == EOperationStatus.Succeed)
+        {
+            //更新成功
+            string packageVersion = operation.PackageVersion;
+            Debug.Log($"Request package Version : {packageVersion}");
+            return packageVersion;
+        }
+        else
+        {
+            //更新失败
+            Debug.LogError(operation.Error);
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// 更新清单文件
+    /// </summary>
+    /// <param name="packageVersion"></param>
+    /// <returns></returns>
+    private async UniTask UpdatePackageManifest(string packageVersion)
+    {
+        var package = YooAssets.GetPackage("DefaultPackage");
+        var operation = package.UpdatePackageManifestAsync(packageVersion);
+        await operation;
+
+        if (operation.Status == EOperationStatus.Succeed)
+        {
+            //更新成功
+        }
+        else
+        {
+            //更新失败
+            Debug.LogError(operation.Error);
+        }
+    }
+
+    /// <summary>
+    /// 创建包下载器
+    /// </summary>
+    /// <returns></returns>
+    private ResourceDownloaderOperation CreateDownloader(string packageName)
+    {
+        Debug.Log("创建补丁下载器.");
+        int downloadingMaxNum = 10;
+        int failedTryAgain = 3;
+        var package = YooAssets.GetPackage(packageName);
+        var downloader = package.CreateResourceDownloader(downloadingMaxNum, failedTryAgain);
+        //await downloader;
+        return downloader;
+    }
+
+    /// <summary>
+    /// 开始下载
+    /// </summary>
+    /// <param name="op"></param>
+    /// <returns></returns>
+    private async UniTask<bool> Download(ResourceDownloaderOperation op)
+    {
+        op.BeginDownload();
+        await op;
+        //检测下载结果
+        if (op.Status == EOperationStatus.Succeed)
+        {
+            return true;
+        }
+
+        Debug.LogError($"{op.Error}");
+        return false;
+    }
+
+
+
+    private string GetBuildPipline()
+    {
+        return EDefaultBuildPipeline.BuiltinBuildPipeline.ToString();
+    }
+
+    private string GetPackageName()
+    {
+        var args = ExtraData.Data as PatchArgs;
+        return args.packageName;
+    }
+
+    private EPlayMode GetPlayMode()
+    {
+        var args = ExtraData.Data as PatchArgs;
+        return args.playMode;
     }
 
     /// <summary>
@@ -101,29 +273,33 @@ public class PatchManager : BaseRunable
     /// </summary>
     private string GetHostServerURL()
     {
-        //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
-        string hostServerIP = "http://127.0.0.1";
-        string appVersion = "v1.0";
+        var args = ExtraData.Data as PatchArgs;
+        return args.url;
 
-#if UNITY_EDITOR
-        if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-            return $"{hostServerIP}/CDN/Android/{appVersion}";
-        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-            return $"{hostServerIP}/CDN/IPhone/{appVersion}";
-        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-            return $"{hostServerIP}/CDN/WebGL/{appVersion}";
-        else
-            return $"{hostServerIP}/CDN/PC/{appVersion}";
-#else
-        if (Application.platform == RuntimePlatform.Android)
-            return $"{hostServerIP}/CDN/Android/{appVersion}";
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-            return $"{hostServerIP}/CDN/IPhone/{appVersion}";
-        else if (Application.platform == RuntimePlatform.WebGLPlayer)
-            return $"{hostServerIP}/CDN/WebGL/{appVersion}";
-        else
-            return $"{hostServerIP}/CDN/PC/{appVersion}";
-#endif
+
+        //        //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
+        //        string hostServerIP = "http://127.0.0.1";
+        //        string appVersion = "v1.0";
+
+        //#if UNITY_EDITOR
+        //        if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+        //            return $"{hostServerIP}/CDN/Android/{appVersion}";
+        //        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+        //            return $"{hostServerIP}/CDN/IPhone/{appVersion}";
+        //        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+        //            return $"{hostServerIP}/CDN/WebGL/{appVersion}";
+        //        else
+        //            return $"{hostServerIP}/CDN/PC/{appVersion}";
+        //#else
+        //        if (Application.platform == RuntimePlatform.Android)
+        //            return $"{hostServerIP}/CDN/Android/{appVersion}";
+        //        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        //            return $"{hostServerIP}/CDN/IPhone/{appVersion}";
+        //        else if (Application.platform == RuntimePlatform.WebGLPlayer)
+        //            return $"{hostServerIP}/CDN/WebGL/{appVersion}";
+        //        else
+        //            return $"{hostServerIP}/CDN/PC/{appVersion}";
+        //#endif
     }
 
     /// <summary>
@@ -281,28 +457,32 @@ public class PatchManager : BaseRunable
     //    }
 }
 
-
-/// <summary>
-/// 资源文件解密流
-/// </summary>
-public class BundleStream : FileStream
+namespace TiktokGame
 {
-    public const byte KEY = 64;
 
-    public BundleStream(string path, FileMode mode, FileAccess access, FileShare share) : base(path, mode, access, share)
-    {
-    }
-    public BundleStream(string path, FileMode mode) : base(path, mode)
-    {
-    }
 
-    public override int Read(byte[] array, int offset, int count)
+    /// <summary>
+    /// 资源文件解密流
+    /// </summary>
+    public class BundleStream : FileStream
     {
-        var index = base.Read(array, offset, count);
-        for (int i = 0; i < array.Length; i++)
+        public const byte KEY = 64;
+
+        public BundleStream(string path, FileMode mode, FileAccess access, FileShare share) : base(path, mode, access, share)
         {
-            array[i] ^= KEY;
         }
-        return index;
+        public BundleStream(string path, FileMode mode) : base(path, mode)
+        {
+        }
+
+        public override int Read(byte[] array, int offset, int count)
+        {
+            var index = base.Read(array, offset, count);
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] ^= KEY;
+            }
+            return index;
+        }
     }
 }
