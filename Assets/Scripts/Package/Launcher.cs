@@ -22,7 +22,7 @@ public class Launcher : MonoBehaviour
     /// <summary>
     /// 热更地址
     /// </summary>
-    public string Url;
+    public string HotfixUrl;
 
     /// <summary>
     /// 热更资源包名
@@ -31,14 +31,17 @@ public class Launcher : MonoBehaviour
 
     void Start()
     {
-        var extraData = new RunableExtraData() { Data = new PatchArgs() { playMode = PlayMode, url = Url, packageName = PackageName} };
+        var extraData = new RunableExtraData() { Data = new PatchArgs() { playMode = PlayMode, url = HotfixUrl, packageName = PackageName} };
 
         var initManager = new InitManager();
         //var routeManager = new RouteManager();
         var patchManager = new PatchManager();
+        var gameManager = new GameManager();
+
         Queue<IRunable> runables = new Queue<IRunable>();
         runables.Enqueue(initManager);
         runables.Enqueue(patchManager);
+        runables.Enqueue(gameManager);
 
         var launcher = new CommonLauncher(runables);
         launcher.Run(extraData);

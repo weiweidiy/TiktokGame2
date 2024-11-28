@@ -1,5 +1,4 @@
-﻿using Codice.Client.BaseCommands.Download;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using JFrame;
 using JFrame.Game.Package;
 using System;
@@ -24,13 +23,19 @@ public class PatchManager : BaseRunable
         // 初始化资源系统
         YooAssets.Initialize();
 
+        //var package = YooAssets.TryGetPackage(GetPackageName());
+        //if (package == null)
+        //    package = YooAssets.CreatePackage(GetPackageName());
+
+        //// 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
+        //YooAssets.SetDefaultPackage(package);
+
         var result = await InitPackage();
 
         // 获取指定的资源包，如果没有找到不会报错
-        var package = YooAssets.GetPackage(GetPackageName());
+        //var package = YooAssets.GetPackage(GetPackageName());
 
-        // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
-        YooAssets.SetDefaultPackage(package);
+
 
         //开始热更
         await RunPatch();
@@ -113,8 +118,12 @@ public class PatchManager : BaseRunable
         if (package == null)
             package = YooAssets.CreatePackage(packageName);
 
+        YooAssets.SetDefaultPackage(package);
+
         // 编辑器下的模拟模式
         InitializationOperation initializationOperation = null;
+        Debug.Log(playMode);
+
         if (playMode == EPlayMode.EditorSimulateMode)
         {
             var simulateBuildResult = EditorSimulateModeHelper.SimulateBuild(buildPipeline, packageName);
@@ -126,6 +135,7 @@ public class PatchManager : BaseRunable
         // 单机运行模式
         if (playMode == EPlayMode.OfflinePlayMode)
         {
+
             var createParameters = new OfflinePlayModeParameters();
             createParameters.BuildinFileSystemParameters = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
             initializationOperation = package.InitializeAsync(createParameters);
@@ -136,6 +146,7 @@ public class PatchManager : BaseRunable
         {
             string defaultHostServer = GetHostServerURL();
             string fallbackHostServer = GetHostServerURL();
+            Debug.Log("HostServer " + GetHostServerURL());
             IRemoteServices remoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
             var createParameters = new HostPlayModeParameters();
             createParameters.BuildinFileSystemParameters = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
