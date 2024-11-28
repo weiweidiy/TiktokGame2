@@ -9,9 +9,12 @@ using YooAsset;
 
 namespace JFrame.Game
 {
-    public class Main : ContextRoot
+    /// <summary>
+    /// 负责注册容器
+    /// </summary>
+    public class ContainerMain : ContextRoot
     {
-        public static Main Ins;
+        public static ContainerMain Ins;
 
         IInjectionContainer container;
 
