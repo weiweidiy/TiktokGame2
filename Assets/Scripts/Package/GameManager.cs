@@ -16,6 +16,6 @@ public class GameManager : BaseRunable
 
     void LoadGameEntrance()
     {
-        YooAssets.LoadSceneAsync("Game");
+        YooAssets.LoadSceneAsync("Persistent");
     }
 }
