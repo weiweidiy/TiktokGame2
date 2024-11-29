@@ -1,6 +1,4 @@
-﻿using Adic;
-using Cysharp.Threading.Tasks;
-using JFrame.Common;
+﻿using Cysharp.Threading.Tasks;
 using MackySoft.XPool.Unity;
 using System;
 using System.Collections.Generic;
@@ -8,10 +6,11 @@ using UnityEngine;
 
 namespace JFrame
 {
-    public abstract class GameObjectManager
+    /// <summary>
+    /// GameObject对象池
+    /// </summary>
+    public abstract class BaseGameObjectPool : IGameObjectPool
     {
-
-
         /// <summary>
         /// 缓存对象池
         /// </summary>
@@ -40,7 +39,7 @@ namespace JFrame
         /// <param name="onRent"></param>
         /// <param name="onReturn"></param>
         /// <exception cref="System.Exception"></exception>
-        public async UniTask Regist(string location , Transform root = null, int capacity = 10 
+        protected async UniTask Regist(string location , Transform root = null, int capacity = 10 
                                 , Action<GameObject> onCreate = null
                                 , Action<GameObject> onRelease = null
                                 , Action<GameObject> onRent = null

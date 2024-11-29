@@ -6,33 +6,16 @@ using Adic.Container;
 using System;
 using JFrame.Common;
 using YooAsset;
+using MackySoft.XPool.Unity;
 
 namespace JFrame.Game
 {
     /// <summary>
     /// 负责注册容器
     /// </summary>
-    public class ContainerMain : ContextRoot
+    public class TiktokContainerMain : ContextRoot
     {
-        public static ContainerMain Ins;
-
         IInjectionContainer container;
-
-        protected new void Awake()
-        {
-            //if (Ins != null)
-            //{
-            //    Debug.LogError(":" + Ins.gameObject.name);
-            //    Destroy(gameObject);
-            //    return;
-            //}
-            //Ins = this;
-            //DontDestroyOnLoad(gameObject);
-
-            Debug.Log("Main Awake");
-
-            base.Awake();
-        }
 
         public override void SetupContainers()
         {
@@ -47,9 +30,10 @@ namespace JFrame.Game
             //container.Bind<WarriorAnimation>().ToSingleton<WarriorAnimation>();
             container.Bind<Utility>().ToSingleton<Utility>();
             container.Bind<EventManager>().ToSingleton<EventManager>();
-            //container.Bind<IAssetsLoader>().ToSingleton<YooAssetsLoader>();
-            //container.Bind<ClassPool>().ToSingleton<MyClassPool>();
-            //container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
+            container.Bind<IAssetsLoader>().ToSingleton<YooAssetsLoader>();
+            container.Bind<IGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
+            container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
+            container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
 
             ////绑定通用逻辑（有依赖)
             //container.Bind<GameObjectManager>().ToSingleton<MyGameObjectPool>();
@@ -83,7 +67,7 @@ namespace JFrame.Game
             //container.RegisterCommand<CommandSwitchToBattleScene>();
             //container.RegisterCommand<CommandNextBattleState>();
 
-            
+
         }
 
         public override void Init()

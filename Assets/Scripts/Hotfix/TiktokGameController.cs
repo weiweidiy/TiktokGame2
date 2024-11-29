@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class TiktokGameController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] TextMeshProUGUI txtTest;

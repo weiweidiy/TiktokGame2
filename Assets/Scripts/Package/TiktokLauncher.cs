@@ -11,7 +11,7 @@ public class PatchArgs
     public string packageName;
 }
 
-public class Launcher : MonoBehaviour
+public class TiktokLauncher : MonoBehaviour
 {
     // Start is called before the first frame update
     /// <summary>
@@ -35,8 +35,8 @@ public class Launcher : MonoBehaviour
 
         var initManager = new InitManager();
         //var routeManager = new RouteManager();
-        var patchManager = new PatchManager();
-        var gameManager = new GameManager();
+        var patchManager = new TiktokPatchManager();
+        var gameManager = new TiktokGameManager();
 
         Queue<IRunable> runables = new Queue<IRunable>();
         runables.Enqueue(initManager);

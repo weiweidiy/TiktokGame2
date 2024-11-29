@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
 
-public class PatchManager : BaseRunable
+public class TiktokPatchManager : BaseRunable
 {
     protected override async void OnRun(RunableExtraData extraData)
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
 
-public class GameManager : BaseRunable
+public class TiktokGameManager : BaseRunable
 {
     protected override void OnRun(RunableExtraData extraData)
     {
