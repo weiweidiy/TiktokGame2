@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MyGuideMask : MonoBehaviour, ICanvasRaycastFilter
+/// <summary>
+/// м╪пнузужё╛©ирт╢╘м╦
+/// </summary>
+public class ShapeMask : MonoBehaviour, ICanvasRaycastFilter
 {
     public Image _Mask; //узужм╪ф╛
     private Material _materia;

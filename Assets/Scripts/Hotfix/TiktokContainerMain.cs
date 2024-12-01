@@ -36,6 +36,7 @@ namespace JFrame.Game
             container.Bind<IGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
             container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
+            container.Bind<CommonEventManager>().ToSingleton<CommonEventManager>();
 
             ////绑定通用逻辑（有依赖)
             //container.Bind<GameObjectManager>().ToSingleton<MyGameObjectPool>();

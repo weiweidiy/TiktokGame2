@@ -35,7 +35,11 @@ namespace JFrame
 
         private FactoryPool<T> GetPool<T>() where T : class
         {
-            return factories[typeof(T).ToString()] as FactoryPool<T>;
+            var key = typeof(T).ToString();
+            if (factories.ContainsKey(key))
+                return factories[key] as FactoryPool<T>;
+            else
+                throw new Exception("对象池中没有找到" + key + " 请在classpool的Initialize方法中调用Regist方法！");
         }
     }
 
