@@ -1,3 +1,4 @@
+using JFrame.Package;
 using System.Collections.Generic;
 using UnityEngine;
 using YooAsset;
@@ -31,7 +32,7 @@ public class TiktokLauncher : MonoBehaviour
     {
         var extraData = new RunableExtraData() { Data = new PatchArgs() { playMode = PlayMode, url = HotfixUrl, packageName = PackageName} };
 
-        var initManager = new InitManager();
+        var initManager = new TiktokInitManager();
         //var routeManager = new RouteManager();
         var patchManager = new TiktokPatchManager();
         var gameManager = new TiktokGameManager();

@@ -8,6 +8,7 @@ using JFrame.Common;
 using YooAsset;
 using MackySoft.XPool.Unity;
 using Cysharp.Threading.Tasks;
+using GameCommands;
 
 namespace JFrame.Game
 {
@@ -64,27 +65,20 @@ namespace JFrame.Game
             //container.Bind<BattleSystem>().ToSingleton<BattleSystem>();
 
             ////绑定命令
-            //container.RegisterCommand<CommandRunGame>();
+            container.RegisterCommands("GameCommands");
+            //container.RegisterCommand<CommandStartupGame>();
             //container.RegisterCommand<CommandSwitchToBattleScene>();
             //container.RegisterCommand<CommandNextBattleState>();
 
 
         }
 
-        public override async void Init()
+        public override void Init()
         {
             Debug.Log("Init");
-            //var dispatcher = container.GetCommandDispatcher();
-            //dispatcher.Dispatch<CommandRunGame>();
+            var dispatcher = container.GetCommandDispatcher();
+            dispatcher.Dispatch<CommandStartupGame>();
 
-            //初始化数据模型
-
-            //切换场景
-            var loader = container.Resolve<IAssetsLoader>();
-            var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
-
-            //var handle = YooAssets.LoadSceneAsync("Game", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-            
         }
 
     }

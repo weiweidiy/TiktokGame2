@@ -1,6 +1,7 @@
 ﻿using System;
 
-
+namespace JFrame.Package
+{
     /// <summary>
     /// 抽象可运行对象
     /// </summary>
@@ -15,7 +16,7 @@
         /// 通知完成
         /// </summary>
         /// <param name="runable"></param>
-        protected void NotifyComplete(IRunable runable)=> onComplete?.Invoke(runable);
+        protected void NotifyComplete(IRunable runable) => onComplete?.Invoke(runable);
 
         /// <summary>
         /// 透传数据
@@ -75,3 +76,4 @@
     }
 
 
+}

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using JFrame.Package;
+using UnityEngine;
 
-public class InitManager : BaseRunable
+public class TiktokInitManager : BaseRunable
 {
     protected override void OnRun(RunableExtraData extraData)
     {

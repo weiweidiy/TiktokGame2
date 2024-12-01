@@ -1,4 +1,5 @@
-﻿
+﻿namespace JFrame.Package
+{
     /// <summary>
     /// 获取更新地址接口
     /// </summary>
@@ -32,4 +33,4 @@
         public string resAddress;
     }
 
-
+}

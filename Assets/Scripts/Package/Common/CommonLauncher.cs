@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
+namespace JFrame.Package
+{
     /// <summary>
     /// 通用启动器，负责启动应用
     /// </summary>
@@ -39,7 +40,7 @@ using System.Collections.Generic;
             if (internalRunables == null)
                 throw new NullReferenceException("runables is null");
 
-            if(internalRunables.Count == 0)
+            if (internalRunables.Count == 0)
             {
                 NotifyComplete(this);
                 return;
@@ -63,3 +64,4 @@ using System.Collections.Generic;
     }
 
 
+}

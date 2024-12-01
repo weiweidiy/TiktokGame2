@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using YooAsset;
 
-namespace JFrame.Game.Package
+namespace JFrame.Package
 {
     public class DllManager
     {
