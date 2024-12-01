@@ -1,7 +1,6 @@
 ﻿using System;
 
-namespace JFrame
-{
+
     /// <summary>
     /// 透传参数数据
     /// </summary>
@@ -31,5 +30,4 @@ namespace JFrame
     }
 
     
-}
 

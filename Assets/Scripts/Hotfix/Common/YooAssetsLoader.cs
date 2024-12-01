@@ -30,15 +30,14 @@ namespace JFrame
             return handle.AssetObject as T;
         }
 
-        public async UniTask<Scene> LoadSceneAsync(string sceneName)
+        public async UniTask<Scene> LoadSceneAsync(string sceneName, SceneMode mode)
         {
-            var handle = YooAssets.LoadSceneAsync(sceneName);
+            var sMode = mode == SceneMode.Single ? LoadSceneMode.Single : LoadSceneMode.Additive;
+            var handle = YooAssets.LoadSceneAsync(sceneName, sMode);
             await handle.ToUniTask();
             return handle.SceneObject;
 
         }
-
-
     }
 
 }

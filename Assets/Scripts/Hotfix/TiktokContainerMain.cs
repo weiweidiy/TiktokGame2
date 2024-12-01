@@ -7,6 +7,7 @@ using System;
 using JFrame.Common;
 using YooAsset;
 using MackySoft.XPool.Unity;
+using Cysharp.Threading.Tasks;
 
 namespace JFrame.Game
 {
@@ -70,13 +71,20 @@ namespace JFrame.Game
 
         }
 
-        public override void Init()
+        public override async void Init()
         {
             Debug.Log("Init");
-            var dispatcher = container.GetCommandDispatcher();
+            //var dispatcher = container.GetCommandDispatcher();
             //dispatcher.Dispatch<CommandRunGame>();
 
-            YooAssets.LoadSceneAsync("Game", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            //初始化数据模型
+
+            //切换场景
+            var loader = container.Resolve<IAssetsLoader>();
+            var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
+
+            //var handle = YooAssets.LoadSceneAsync("Game", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            
         }
 
     }

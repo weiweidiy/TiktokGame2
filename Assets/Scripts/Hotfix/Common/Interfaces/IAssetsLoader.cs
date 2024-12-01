@@ -4,9 +4,14 @@ using UnityEngine.SceneManagement;
 
 namespace JFrame
 {
+    public enum SceneMode
+    {
+        Single,
+        Additive
+    }
     public interface IAssetsLoader
     {
-        UniTask<Scene> LoadSceneAsync(string sceneName);
+        UniTask<Scene> LoadSceneAsync(string sceneName, SceneMode mode);
 
         UniTask<GameObject> InstantiateAsync(string location);
 

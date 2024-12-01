@@ -1,5 +1,4 @@
-﻿namespace JFrame
-{
+﻿
     public class CommonBattleManager : BaseRunable
     {
         protected override void OnRun(RunableExtraData extraData)
@@ -17,5 +16,5 @@
 
     }
 
-}
+
 

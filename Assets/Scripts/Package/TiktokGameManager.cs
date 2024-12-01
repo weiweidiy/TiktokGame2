@@ -1,6 +1,4 @@
-﻿using JFrame;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using YooAsset;
 
 public class TiktokGameManager : BaseRunable

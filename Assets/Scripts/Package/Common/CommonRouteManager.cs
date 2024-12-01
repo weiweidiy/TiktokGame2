@@ -1,7 +1,5 @@
 ﻿using System;
 
-namespace JFrame
-{
 
     public class CommonRouteManager :  BaseRunable , IRouter
     {
@@ -21,5 +19,5 @@ namespace JFrame
         }
     }
 
-}
+
 

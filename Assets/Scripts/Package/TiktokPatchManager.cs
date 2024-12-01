@@ -1,10 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
-using JFrame;
-using JFrame.Game.Package;
 using System;
-using System.Collections;
 using System.IO;
-using TiktokGame;
+//using TiktokGame;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
@@ -468,32 +465,29 @@ public class TiktokPatchManager : BaseRunable
     //    }
 }
 
-namespace TiktokGame
+
+
+/// <summary>
+/// 资源文件解密流
+/// </summary>
+public class BundleStream : FileStream
 {
+    public const byte KEY = 64;
 
-
-    /// <summary>
-    /// 资源文件解密流
-    /// </summary>
-    public class BundleStream : FileStream
+    public BundleStream(string path, FileMode mode, FileAccess access, FileShare share) : base(path, mode, access, share)
     {
-        public const byte KEY = 64;
+    }
+    public BundleStream(string path, FileMode mode) : base(path, mode)
+    {
+    }
 
-        public BundleStream(string path, FileMode mode, FileAccess access, FileShare share) : base(path, mode, access, share)
+    public override int Read(byte[] array, int offset, int count)
+    {
+        var index = base.Read(array, offset, count);
+        for (int i = 0; i < array.Length; i++)
         {
+            array[i] ^= KEY;
         }
-        public BundleStream(string path, FileMode mode) : base(path, mode)
-        {
-        }
-
-        public override int Read(byte[] array, int offset, int count)
-        {
-            var index = base.Read(array, offset, count);
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] ^= KEY;
-            }
-            return index;
-        }
+        return index;
     }
 }

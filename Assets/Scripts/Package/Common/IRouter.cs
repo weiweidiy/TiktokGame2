@@ -1,5 +1,4 @@
-﻿namespace JFrame
-{
+﻿
     /// <summary>
     /// 获取更新地址接口
     /// </summary>
@@ -32,5 +31,5 @@
         /// </summary>
         public string resAddress;
     }
-}
+
 

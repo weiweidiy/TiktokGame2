@@ -1,7 +1,5 @@
 ﻿using System;
 
-namespace JFrame
-{
 
     /// <summary>
     /// 抽象可运行对象
@@ -75,5 +73,5 @@ namespace JFrame
         /// <exception cref="NotImplementedException"></exception>
         public virtual void Update(RunableExtraData extraData) { }
     }
-}
+
 

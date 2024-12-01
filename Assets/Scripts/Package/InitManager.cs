@@ -1,5 +1,4 @@
-﻿using JFrame;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InitManager : BaseRunable
 {

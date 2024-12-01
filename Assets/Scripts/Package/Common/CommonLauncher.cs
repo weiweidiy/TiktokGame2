@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JFrame
-{
+
     /// <summary>
     /// 通用启动器，负责启动应用
     /// </summary>
@@ -62,5 +61,5 @@ namespace JFrame
 
 
     }
-}
+
 
