@@ -9,6 +9,7 @@ using YooAsset;
 using MackySoft.XPool.Unity;
 using Cysharp.Threading.Tasks;
 using GameCommands;
+using TiktokModels;
 
 namespace JFrame.Game
 {
@@ -44,6 +45,7 @@ namespace JFrame.Game
             //container.Bind<UIManager>().ToSingleton<UIManager>();
 
             ////绑定模型
+            container.Bind<PlayerModel>().ToSingleton<PlayerModel>();
             //container.Bind<UserModel>().ToSingleton<UserModel>();
             //container.Bind<TeamModel>().ToSingleton<TeamModel>();
             //container.Bind<PowerModel>().ToSingleton<PowerModel>();

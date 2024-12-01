@@ -37,6 +37,7 @@ namespace GameCommands
 
             //初始化视图
             //GameViews.Init()
+            //UI管理器初始化
 
             this.Release();
         }
