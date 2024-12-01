@@ -3,7 +3,7 @@
 using DG.Tweening;
 using System;
 
-namespace JFrame.Common
+namespace JFrame
 {
     public class DotweenUtils : ITimerUtils
 
@@ -44,6 +44,11 @@ namespace JFrame.Common
                 .SetLoops(loopTimes);
 
             return new DotweenTimer(t);
+        }
+
+        public void Update()
+        {
+            //throw new NotImplementedException();
         }
     }
 }
