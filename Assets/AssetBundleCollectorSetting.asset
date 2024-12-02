@@ -50,3 +50,24 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+    - GroupName: GameRes
+      GroupDesc: GameRes
+      AssetTags: GameRes
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Downloads/GameRes/Dynamic/Others
+        CollectorGUID: a6512ab540bdc954085cf9705fc09f8e
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Downloads/GameRes/Dynamic/Prefabs
+        CollectorGUID: be7e54e114442ab49acaa3e60c2b7cb5
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

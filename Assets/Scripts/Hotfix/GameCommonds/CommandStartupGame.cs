@@ -88,11 +88,15 @@ namespace GameCommands
             var loader = container.Resolve<IAssetsLoader>();
             var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
 
+            Debug.Log("InitializeViews");
+
             //初始化视图(场景，角色，UI等）
             //负责背景，角色，场景特效等
             await gameObjectManager.Initialize();
             //ui
             await uiManager.Initialize();
+
+            
         }
 
         /// <summary>

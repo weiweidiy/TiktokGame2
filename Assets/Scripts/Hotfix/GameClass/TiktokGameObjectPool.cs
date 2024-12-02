@@ -15,7 +15,7 @@ namespace Tiktok
                 throw new System.Exception(this.GetType().ToString() + " Inject IAssetsLoader failed");
 
             //to do:注册所有游戏对象
-            throw new System.NotImplementedException();
+            return UniTask.CompletedTask;
         }
 
         protected override IAssetsLoader GetAssetLoader()
