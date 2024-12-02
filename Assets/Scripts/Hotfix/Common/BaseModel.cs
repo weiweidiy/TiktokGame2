@@ -1,4 +1,5 @@
 
+using Adic;
 using System;
 
 namespace JFrame
@@ -20,6 +21,7 @@ namespace JFrame
         /// <summary>
         /// 消息系统，负责发送消息变化
         /// </summary>
+        [Inject]
         protected CommonEventManager eventManager;
 
         /// <summary>
@@ -30,8 +32,19 @@ namespace JFrame
         {
             this.data = vo;
             uid = Guid.NewGuid().ToString();
+
+            if (eventManager == null)
+                throw new Exception(this.GetType().ToString() + "inject eventManager failed, it is null !");
         }
 
-
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arg"></param>
+        protected void SendEvent<T>(object arg) where T : Event
+        {
+            eventManager.SendEvent<T>(arg);
+        }
     }
 }

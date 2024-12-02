@@ -34,17 +34,20 @@ namespace JFrame.Game
             container.Bind<Utility>().ToSingleton<Utility>();
             container.Bind<EventManager>().ToSingleton<EventManager>();
             container.Bind<IAssetsLoader>().ToSingleton<YooAssetsLoader>();
-            container.Bind<IGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
             container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
+
+            ///依赖EventManager，BaseClassPool
             container.Bind<CommonEventManager>().ToSingleton<CommonEventManager>();
 
-            ////绑定通用逻辑（有依赖)
+            ////绑定通用逻辑
             //container.Bind<GameObjectManager>().ToSingleton<MyGameObjectPool>();
             //container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
-            //container.Bind<UIManager>().ToSingleton<UIManager>();
+
+
 
             ////绑定模型
+            ///依赖CommonEventManager
             container.Bind<PlayerModel>().ToSingleton<PlayerModel>();
             //container.Bind<UserModel>().ToSingleton<UserModel>();
             //container.Bind<TeamModel>().ToSingleton<TeamModel>();
@@ -54,6 +57,11 @@ namespace JFrame.Game
 
 
             ////绑定视图controller
+            ///依赖IAssetsLoader
+            container.Bind<IGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
+            ///依赖IAssetsLoader
+            container.Bind<UIManager>().ToSingleton<UIManager>();
+
             //container.Bind<SceneSM>().ToSingleton<SceneSM>();
             //container.Bind<SceneController>().ToSingleton<SceneController>();
             //container.Bind<SceneTransitionController>().ToSingleton<SceneTransitionController>();

@@ -10,25 +10,27 @@ namespace JFrame
         /// <summary>
         /// 普通类的对象池
         /// </summary>
-        [Inject]
         BaseClassPool classPool;
 
-        /// <summary>
-        /// 消息系统，负责发送消息变化
-        /// </summary>
         [Inject]
-        EventManager eventManager;
+        public CommonEventManager(BaseClassPool classPool) : base()
+        {
+            if (classPool == null)
+                throw new System.Exception(this.GetType().ToString() + " Inject BaseClassPool failed !");
+
+            this.classPool = classPool;
+        }
 
         /// <summary>
         /// 发送消息
         /// </summary>
         /// <typeparam name="TEvent"></typeparam>
         /// <param name="arg"></param>
-        protected void SendEvent<TEvent>(object arg) where TEvent : JFrame.Event
+        public void SendEvent<TEvent>(object arg) where TEvent : JFrame.Event
         {
             var obj = classPool.Rent<TEvent>();
             obj.Body = arg;
-            this.eventManager.Raise(obj);
+            Raise(obj);
             classPool.Return(obj);
         }
     }
