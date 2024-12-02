@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Adic;
 using Adic.Container;
-using System;
-using JFrame.Common;
-using YooAsset;
-using MackySoft.XPool.Unity;
-using Cysharp.Threading.Tasks;
 using GameCommands;
+using JFrame;
+using JFrame.Common;
 using TiktokModels;
+using UnityEngine;
 
-namespace JFrame.Game
+namespace Tiktok
 {
     /// <summary>
     /// 负责注册容器
@@ -22,7 +17,7 @@ namespace JFrame.Game
 
         public override void SetupContainers()
         {
-            container = AddContainer<InjectionContainer>()
+            container = AddContainer<InjectionContainer>(/*ResolutionMode.RETURN_NULL*/)
                            .RegisterExtension<UnityBindingContainerExtension>()
                            .RegisterExtension<EventCallerContainerExtension>()
                            .RegisterExtension<CommanderContainerExtension>();

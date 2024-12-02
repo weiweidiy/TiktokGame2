@@ -2,19 +2,25 @@
 using Cysharp.Threading.Tasks;
 using JFrame;
 
-public class TiktokGameObjectPool : BaseGameObjectPool
+namespace Tiktok
 {
-    [Inject]
-    protected IAssetsLoader _assetsLoader;
-
-    public override UniTask Initialize()
+    public class TiktokGameObjectPool : BaseGameObjectPool
     {
-        //to do:注册所有游戏对象
-        throw new System.NotImplementedException();
-    }
+        [Inject]
+        protected IAssetsLoader _assetsLoader;
 
-    protected override IAssetsLoader GetAssetLoader()
-    {
-        return _assetsLoader;
+        public override UniTask Initialize()
+        {
+            if (_assetsLoader == null)
+                throw new System.Exception(this.GetType().ToString() + " Inject IAssetsLoader failed");
+
+            //to do:注册所有游戏对象
+            throw new System.NotImplementedException();
+        }
+
+        protected override IAssetsLoader GetAssetLoader()
+        {
+            return _assetsLoader;
+        }
     }
 }

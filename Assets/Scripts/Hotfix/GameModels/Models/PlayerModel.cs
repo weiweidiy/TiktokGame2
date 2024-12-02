@@ -1,3 +1,4 @@
+using Adic;
 using JFrame;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace TiktokModels
 
     public class PlayerModel : BaseModel<List<PlayerVO>>
     {
+        [Inject]
+        public PlayerModel(CommonEventManager eventManager) : base(eventManager) { }
+
 
     }
 

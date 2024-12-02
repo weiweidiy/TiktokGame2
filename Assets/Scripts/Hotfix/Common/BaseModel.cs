@@ -20,9 +20,17 @@ namespace JFrame
 
         /// <summary>
         /// 消息系统，负责发送消息变化
-        /// </summary>
-        [Inject]
+        /// </summary> 
         protected CommonEventManager eventManager;
+
+        public BaseModel(CommonEventManager eventManager)
+        {
+            if (eventManager == null)
+                throw new Exception(this.GetType().ToString() + "inject eventManager failed, it is null !");
+
+            this.eventManager = eventManager;
+            uid = Guid.NewGuid().ToString();
+        }
 
         /// <summary>
         /// 初始化模型
@@ -31,10 +39,6 @@ namespace JFrame
         public void Initialize(TData vo)
         {
             this.data = vo;
-            uid = Guid.NewGuid().ToString();
-
-            if (eventManager == null)
-                throw new Exception(this.GetType().ToString() + "inject eventManager failed, it is null !");
         }
 
         /// <summary>

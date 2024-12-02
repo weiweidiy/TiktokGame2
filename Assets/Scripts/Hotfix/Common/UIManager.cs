@@ -17,7 +17,7 @@ namespace JFrame
     /// </summary>
     public class UIManager
     {
-        [Inject]
+        
         IAssetsLoader assetsLoader;
 
         /// <summary>
@@ -29,6 +29,16 @@ namespace JFrame
         /// 注册的ui预制体
         /// </summary>
         UISettings uiSettings;
+
+
+        [Inject]
+        public UIManager(IAssetsLoader assetsLoader)
+        {
+            if (assetsLoader == null)
+                throw new Exception(this.GetType().ToString() + " Inject IAssetsLoader failed!");
+
+            this.assetsLoader = assetsLoader;
+        }
 
         /// <summary>
         /// 初始化

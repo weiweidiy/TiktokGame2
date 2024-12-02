@@ -1,6 +1,7 @@
-﻿using System;
+﻿using JFrame;
+using System;
 
-namespace JFrame
+namespace Tiktok
 {
     public class TiktokClassPool : BaseClassPool
     {

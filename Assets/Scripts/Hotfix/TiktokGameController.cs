@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TiktokGameController : MonoBehaviour
+namespace Tiktok
 {
-    // Start is called before the first frame update
-    [SerializeField] TextMeshProUGUI txtTest;
-    void Start()
+    public class TiktokGameController : MonoBehaviour
     {
-        txtTest.text = "hello world!!";
+        // Start is called before the first frame update
+        [SerializeField] TextMeshProUGUI txtTest;
+        void Start()
+        {
+            txtTest.text = "hello world!!";
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
