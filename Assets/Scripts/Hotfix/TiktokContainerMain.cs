@@ -66,7 +66,11 @@ namespace Tiktok
             //container.Bind<PlayerControllerManager>().ToSingleton<PlayerControllerManager>();
 
 
-            ////绑定系统
+            //绑定系统
+            container.Bind<TiktokSceneInitState>().ToSingleton<TiktokSceneInitState>();
+            container.Bind<TiktokSceneMenuState>().ToSingleton<TiktokSceneMenuState>();
+            container.Bind<TiktokSceneSM>().ToSingleton<TiktokSceneSM>();
+
             //container.Bind<BattleCalculator>().ToSingleton<BattleCalculator>();
             //container.Bind<BattleSystem>().ToSingleton<BattleSystem>();
 

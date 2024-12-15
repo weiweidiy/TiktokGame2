@@ -88,6 +88,11 @@ namespace GameCommands
             var loader = container.Resolve<IAssetsLoader>();
             var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
 
+            var sm = container.Resolve<TiktokSceneSM>();
+            sm.Initialize(null);
+            await sm.SwitchToMenu();
+            await sm.SwitchToGame();
+
             Debug.Log("InitializeViews");
 
             //初始化视图(场景，角色，UI等）
