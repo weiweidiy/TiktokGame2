@@ -1,21 +1,20 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Adic;
+using Cysharp.Threading.Tasks;
 using JFrame;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Tiktok
 {
     public abstract class TiktokSceneState : BaseState<TiktokSceneSMContext>
     {
-        public override UniTask OnEnter(TiktokSceneSMContext context)
+        protected abstract IAssetsLoader AssetsLoader { get; }
+
+        protected UniTask<Scene> SwitchScene(string sceneName, SceneMode sceneMode)
         {
-            Debug.Log(GetType().Name + "OnEnter");
-            return base.OnEnter(context);
+             return AssetsLoader.LoadSceneAsync(sceneName, sceneMode);
         }
 
-        public override UniTask OnExit()
-        {
-            Debug.Log(GetType().Name + "OnExit");
-            return base.OnExit();
-        }
+  
     }
 }

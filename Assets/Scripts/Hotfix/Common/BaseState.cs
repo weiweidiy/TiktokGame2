@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Diagnostics;
 
 namespace JFrame
@@ -27,9 +28,15 @@ namespace JFrame
         public virtual UniTask OnEnter(TContext context)
         {
             this.context = context;
-            AddListeners();
-            return UniTask.CompletedTask;
+            AddListeners();      
+            return OnEnter(); 
         }
+
+        /// <summary>
+        /// 子类实现
+        /// </summary>
+        /// <returns></returns>
+        protected virtual UniTask OnEnter() => UniTask.CompletedTask;
 
         /// <summary>
         /// 状态退出时调用

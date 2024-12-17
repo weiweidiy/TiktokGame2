@@ -85,8 +85,8 @@ namespace GameCommands
         async UniTask InitializeViews()
         {
             //ÇÐ»»³¡¾°
-            var loader = container.Resolve<IAssetsLoader>();
-            var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
+            //var loader = container.Resolve<IAssetsLoader>();
+            //var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
 
             var sm = container.Resolve<TiktokSceneSM>();
             sm.Initialize(null);
