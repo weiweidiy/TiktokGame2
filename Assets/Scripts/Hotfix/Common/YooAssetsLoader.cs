@@ -33,7 +33,7 @@ namespace JFrame
         public async UniTask<Scene> LoadSceneAsync(string sceneName, SceneMode mode)
         {
             var sMode = mode == SceneMode.Single ? LoadSceneMode.Single : LoadSceneMode.Additive;
-            var handle = YooAssets.LoadSceneAsync(sceneName, sMode);
+            var handle = YooAssets.LoadSceneAsync(sceneName, sMode); 
             await handle.ToUniTask();
             return handle.SceneObject;
 

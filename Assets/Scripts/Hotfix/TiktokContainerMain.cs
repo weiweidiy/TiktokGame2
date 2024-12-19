@@ -70,6 +70,7 @@ namespace Tiktok
             container.Bind<TiktokSceneInitState>().ToSingleton<TiktokSceneInitState>();
             container.Bind<TiktokSceneMenuState>().ToSingleton<TiktokSceneMenuState>();
             container.Bind<TiktokSceneGameState>().ToSingleton<TiktokSceneGameState>();
+            container.Bind<TiktokSceneSMContext>().ToSingleton<TiktokSceneSMContext>();
             container.Bind<TiktokSceneSM>().ToSingleton<TiktokSceneSM>();
 
             //container.Bind<BattleCalculator>().ToSingleton<BattleCalculator>();

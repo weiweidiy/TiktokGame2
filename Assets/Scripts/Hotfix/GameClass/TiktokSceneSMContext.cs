@@ -2,6 +2,6 @@
 {
     public class TiktokSceneSMContext
     {
-
+        public TiktokSceneSM sm;
     }
 }

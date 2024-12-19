@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: UISettings
   m_EditorClassIdentifier: 
   templateUIPrefab: {fileID: 8046916797606714531, guid: 3542c6e134a1e8e459e74445497a183e, type: 3}
-  screensToRegister: []
+  screensToRegister:
+  - {fileID: 1956724634106136527, guid: f380de7539b8488469cdc4097f1b9a49, type: 3}
   deactivateScreenGOs: 1

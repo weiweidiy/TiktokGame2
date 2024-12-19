@@ -27,17 +27,7 @@ namespace GameCommands
         [Inject]
         BaseClassPool classPool;
 
-        /// <summary>
-        /// 游戏场景对象管理器
-        /// </summary>
-        [Inject]
-        TiktokGameObjectManager gameObjectManager;
 
-        /// <summary>
-        /// 游戏UI管理器
-        /// </summary>
-        [Inject]
-        UIManager uiManager;
 
         /// <summary>
         /// 设置这个命令只有1个实例（无状态的）
@@ -53,11 +43,11 @@ namespace GameCommands
 
             this.Retain();
 
-            InitializeTools();
+            InitializeTools(); //1次启动游戏 只会初始化1次
 
-            InitializeModels();
+            InitializeModels(); //1次启动游戏 只会初始化1次
 
-            await InitializeViews();
+            await InitializeViewSM(); //1次启动游戏 只会初始化1次
 
             this.Release();
         }
@@ -79,29 +69,19 @@ namespace GameCommands
         }
 
         /// <summary>
-        /// 初始化视图
+        /// 初始化
         /// </summary>
         /// <returns></returns>
-        async UniTask InitializeViews()
+        async UniTask InitializeViewSM()
         {
             //切换场景
-            //var loader = container.Resolve<IAssetsLoader>();
-            //var scene = await loader.LoadSceneAsync("Game", SceneMode.Additive);
-
             var sm = container.Resolve<TiktokSceneSM>();
-            sm.Initialize(null);
+            var context = container.Resolve<TiktokSceneSMContext>();
+            context.sm = sm;
+            sm.Initialize(context);
             await sm.SwitchToMenu();
-            await sm.SwitchToGame();
 
-            Debug.Log("InitializeViews");
-
-            //初始化视图(场景，角色，UI等）
-            //负责背景，角色，场景特效等
-            await gameObjectManager.Initialize();
-            //ui
-            await uiManager.Initialize();
-
-            
+            Debug.Log("InitializeViews");        
         }
 
         /// <summary>
@@ -116,11 +96,6 @@ namespace GameCommands
             if (classPool == null)
                 throw new System.Exception(this.GetType().ToString() + " Inject BaseClassPool failed!");
 
-            if (gameObjectManager == null)
-                throw new System.Exception(this.GetType().ToString() + " Inject TiktokGameObjectManager failed!");
-
-            if (uiManager == null)
-                throw new System.Exception(this.GetType().ToString() + " Inject UIManager failed!");
         }
     }
 

@@ -12,7 +12,7 @@ namespace Tiktok
 
         protected override async UniTask OnEnter()
         {
-            await SwitchScene("Game",SceneMode.Additive);
+            await SwitchScene("SceneGame",SceneMode.Additive);
         }
     }
 }
