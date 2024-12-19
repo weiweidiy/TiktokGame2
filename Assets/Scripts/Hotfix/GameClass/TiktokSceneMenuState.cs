@@ -1,6 +1,7 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
 using JFrame;
+using JFrame.Common;
 using JFrame.Game.View;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,9 @@ namespace Tiktok
         /// </summary>
         [Inject]
         UIManager uiManager;
+
+        [Inject]
+        ITransitionProvider transitionProvider;
 
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
@@ -52,9 +56,12 @@ namespace Tiktok
             uiManager.ShowPanel<UIMenuPanelProperties>("UIMenu", uiArg);
         }
 
-        private void UiArg_onBtnEnterclick()
+        private async void UiArg_onBtnEnterclick()
         {
-            context.sm.SwitchToGame();
+            var transition = await transitionProvider.InstantiateAsync("SMBlindsTransition");
+            await transition.TransitionOut();
+            await context.sm.SwitchToGame();
+            await transition.TransitionIn();
         }
 
         public override async UniTask OnExit()
