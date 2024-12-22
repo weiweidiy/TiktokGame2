@@ -9,7 +9,7 @@ namespace Tiktok
         [SerializeField] TextMeshProUGUI txtTest;
         void Start()
         {
-            txtTest.text = "hello world!!";
+            txtTest.text = "hello world!!!!!!!!!";
         }
 
         // Update is called once per frame
@@ -17,6 +17,7 @@ namespace Tiktok
         {
 
         }
+
     }
 
 }

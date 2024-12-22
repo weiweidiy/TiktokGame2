@@ -1,6 +1,8 @@
-﻿using Stateless.Reflection;
+﻿using Stateless.Graph;
+using Stateless.Reflection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Stateless
@@ -48,6 +50,7 @@ namespace Stateless
         /// <param name="stateMutator">An action that will be called to write new state values.</param>
         public StateMachine(Func<TState> stateAccessor, Action<TState> stateMutator) :this(stateAccessor, stateMutator, FiringMode.Queued)
         {
+            
         }
 
         /// <summary>
@@ -56,6 +59,7 @@ namespace Stateless
         /// <param name="initialState">The initial state.</param>
         public StateMachine(TState initialState) : this(initialState, FiringMode.Queued)
         {
+            new StateConfiguration(this, GetRepresentation(initialState), GetRepresentation);
         }
 
         /// <summary>

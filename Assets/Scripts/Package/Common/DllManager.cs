@@ -16,7 +16,7 @@ namespace JFrame.Package
             //"System.Core.dll",
             //"DOTween.dll",
             //"DOTweenPro.dll",
-            //"UniTask.dll",
+            "UniTask.dll",
             //"UniTask.DOTween.dll",
             //"UniTask.TextMeshPro.dll",
             //"UniTask.YooAsset.dll",

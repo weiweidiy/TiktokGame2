@@ -32,7 +32,7 @@ public class SMPixelateTransition : SMPostRenderTransition {
 	/// </summary>
 	public float fadeDuration = .5f;
 
-	private Material material;
+	[SerializeField] Material material;
 	private float duration;
 	private float pixelateProgress;
 	private float fadeProgress;

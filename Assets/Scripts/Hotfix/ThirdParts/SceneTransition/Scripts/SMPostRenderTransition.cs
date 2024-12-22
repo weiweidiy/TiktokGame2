@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// base class for transitions running in the post render phase
@@ -21,20 +22,41 @@ public abstract class SMPostRenderTransition : SMTransition {
 		if (holdMaterial == null) {
 			Debug.LogError("'Hold' material is missing");
 		}
-		
+
+		//tempCamera = GetComponent<Camera>();
 		tempCamera = gameObject.AddComponent<Camera>();
 		tempCamera.cullingMask = 0;
 		tempCamera.renderingPath = RenderingPath.Forward;
 		tempCamera.depth = Mathf.Floor(float.MaxValue);
 		tempCamera.clearFlags = CameraClearFlags.Depth;
 	}
-	
-	void OnPostRender() {
-		// just to be sure the coroutine is started only once each frame
-		if (reentrantLock) {
+
+    private void OnEnable()
+    {
+        RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
+    }
+	protected virtual void OnDisable()
+	{
+        RenderPipelineManager.endCameraRendering -= RenderPipelineManager_endCameraRendering;
+    }
+
+    private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext arg1, Camera arg2)
+    {
+		if (arg2 == Camera.main)
+		{
+            
+        }
+
+        OnPostRender();
+
+    }
+
+    void OnPostRender() {
+        // just to be sure the coroutine is started only once each frame
+        if (reentrantLock) {
 			return;
 		}
-		
+		//Debug.Log("2222");
 		reentrantLock = true;
 		StartCoroutine(ProcessFrame());
 	}

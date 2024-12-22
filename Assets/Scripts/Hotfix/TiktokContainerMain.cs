@@ -3,6 +3,7 @@ using Adic.Container;
 using GameCommands;
 using JFrame;
 using JFrame.Common;
+using Stateless;
 using TiktokModels;
 using UnityEngine;
 
@@ -82,8 +83,6 @@ namespace Tiktok
             //container.RegisterCommand<CommandStartupGame>();
             //container.RegisterCommand<CommandSwitchToBattleScene>();
             //container.RegisterCommand<CommandNextBattleState>();
-
-
         }
 
         public override void Init()

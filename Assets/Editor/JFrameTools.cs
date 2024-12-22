@@ -22,10 +22,12 @@ public class JFrameTools
     {
         var target = EditorUserBuildSettings.activeBuildTarget;
         string aotAssembliesSrcDir = SettingsUtil.GetAssembliesPostIl2CppStripDir(target);
+        Debug.Log("aotAssembliesSrcDir " + aotAssembliesSrcDir);
         string aotAssembliesDstDir = Application.dataPath + "/" + "Downloads/HotUpdateDll";
 
         foreach (var dll in SettingsUtil.HybridCLRSettings.patchAOTAssemblies)
         {
+            Debug.Log("aotAssembliesSrcDir " + aotAssembliesSrcDir);
             string srcDllPath = $"{aotAssembliesSrcDir}/{dll}";
             if (!File.Exists(srcDllPath))
             {

@@ -39,21 +39,22 @@ namespace Tiktok
 
             var scene = await SwitchScene(sceneName, JFrame.SceneMode.Additive);
 
-
-            //初始化ui管理器
-            await uiManager.Initialize();
-
             //设置为活动场景
             SceneManager.SetActiveScene(scene);
+
 
             //初始化视图(场景，角色，UI等）
             //负责背景，角色，场景特效等 to do: 提前到startupcommand里？
             await gameObjectManager.Initialize();
 
+
+            //初始化ui管理器
+            await uiManager.Initialize("UISceneMenuSettings");
+
             //显示menuUI
-            var uiArg = new UIMenuPanelProperties();
+            var uiArg = new UIPanelMenuProperties();
             uiArg.onBtnEnterclick += UiArg_onBtnEnterclick; 
-            uiManager.ShowPanel<UIMenuPanelProperties>("UIMenu", uiArg);
+            uiManager.ShowPanel<UIPanelMenuProperties>("UIMenu", uiArg);
         }
 
         private async void UiArg_onBtnEnterclick()

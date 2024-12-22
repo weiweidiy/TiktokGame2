@@ -4,6 +4,7 @@ using Stateless;
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace JFrame
 {
@@ -52,7 +53,11 @@ namespace JFrame
             if (states == null || states.Count == 0)
                 throw new Exception("状态机状态列表为空 " + GetType().ToString());
 
+            Debug.Log("before StateMachine create " );
+
             machine = new StateMachine<TState, TTrigger>(states[0]);
+
+            Debug.Log("StateMachine success " + machine.ToString()); 
 
             //获取所有状态配置
             var configs = GetConfigs();
@@ -60,15 +65,17 @@ namespace JFrame
             foreach (var key in keys) {
                 var config = configs[key];
                 var state = config.state;
+
+
                 var cfg = machine.Configure(state);
-                cfg.OnEntryAsync(async () => { await OnEnter(state); });
-                cfg.OnExitAsync(async () => { await OnExit(state); });
+                cfg = cfg.OnEntryAsync(async () => { await OnEnter(state); });
+                cfg = cfg.OnExitAsync(async () => { await OnExit(state); });
 
                 var triggerKeys = config.dicPermit.Keys;
                 foreach (var triggerKey in triggerKeys)
                 {
                     var targetState = config.dicPermit[triggerKey];
-                    cfg.Permit(triggerKey, targetState);
+                    cfg = cfg.Permit(triggerKey, targetState);
                 }
             }
         }

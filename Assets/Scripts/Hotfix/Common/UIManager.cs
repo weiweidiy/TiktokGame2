@@ -4,7 +4,6 @@ using deVoid.UIFramework;
 using JFrame.Common;
 using System;
 using System.Linq;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.Rendering.Universal;
@@ -41,11 +40,11 @@ namespace JFrame
         }
 
         /// <summary>
-        /// 初始化
+        /// 初始化,根据场景初始化
         /// </summary>
-        public async UniTask Initialize()
+        public async UniTask Initialize(string uiSettingName)
         {
-            uiSettings = await assetsLoader.LoadAssetAsync<UISettings>("UISettings");
+            uiSettings = await assetsLoader.LoadAssetAsync<UISettings>(uiSettingName);
             uiFrame = uiSettings.CreateUIInstance();
             Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(uiFrame.UICamera);
         }

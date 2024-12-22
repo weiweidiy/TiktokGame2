@@ -3,6 +3,7 @@ using JFrame;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Tiktok
 {
@@ -59,6 +60,7 @@ namespace Tiktok
             gameConfig.state = gameState;
             gameConfig.dicPermit = new Dictionary<TiktokSceneSMTrigger, TiktokSceneState>();
             configs.Add(gameName, gameConfig);
+
 
             return configs;
         }

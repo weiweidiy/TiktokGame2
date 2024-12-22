@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// 找到指定tag相机
+/// </summary>
 [RequireComponent(typeof(Camera))]
 public class StackUICamera : MonoBehaviour
 {

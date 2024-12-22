@@ -1,6 +1,8 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
 using JFrame;
+using JFrame.Game.View;
+using UnityEngine.SceneManagement;
 
 namespace Tiktok
 {
@@ -10,9 +12,21 @@ namespace Tiktok
         IAssetsLoader _assetsLoader;
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
+        [Inject]
+        UIManager uiManager;
+
+        string sceneName = "SceneGame";
+
         protected override async UniTask OnEnter()
         {
-            await SwitchScene("SceneGame",SceneMode.Additive);
+            var scene = await SwitchScene(sceneName, SceneMode.Additive);
+
+            //设置为活动场景
+            SceneManager.SetActiveScene(scene);
+
+            await uiManager.Initialize("UISceneGameSettings");
+
+            uiManager.ShowPanel<UIPanelBottomProperties>("UIPannelBottom", null);
         }
     }
 }
