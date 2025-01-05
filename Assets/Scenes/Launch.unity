@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592d29c83e9d7554cbac3a523dc84c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayMode: 2
+  PlayMode: 0
   HotfixUrl: https://bigboomdev-1318645715.cos.ap-shanghai.myqcloud.com/CDN/Android/test2
   PackageName: DefaultPackage
 --- !u!1660057539 &9223372036854775807

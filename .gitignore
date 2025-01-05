@@ -210,3 +210,6 @@ UniFramework.Machine.Player.csproj
 UniFramework.Utility.Player.csproj
 Unity.RenderPipelines.Universal.Config.Runtime.Player.csproj
 Unity.RenderPipelines.Universal.Config.Runtime.csproj
+
+Coffee.UIParticle.Editor.csproj
+Coffee.UIParticle.csproj
