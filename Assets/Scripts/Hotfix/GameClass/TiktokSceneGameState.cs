@@ -26,6 +26,9 @@ namespace Tiktok
         [Inject]
         ParallelLauncher veiwControllers;
 
+        [Inject]
+        GameLevelController gameLevelController;
+
         protected override async UniTask OnEnter()
         {
             var scene = await SwitchScene(sceneName, SceneMode.Additive);
@@ -38,7 +41,7 @@ namespace Tiktok
             await uiManager.Initialize("UISceneGameSettings");
 
             //启动关卡视图控制器
-
+            veiwControllers.Add(gameLevelController);
             veiwControllers.Run(null);
 
             //显示角色

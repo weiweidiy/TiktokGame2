@@ -14,6 +14,7 @@ namespace Game.Common
         /// <summary>
         /// 内部运行对象
         /// </summary>
+        [Inject]
         protected List<IRunable> internalRunables;
 
 
@@ -21,10 +22,18 @@ namespace Game.Common
         { 
         }
 
-        [Inject]
+        
         public ParallelLauncher(List<IRunable> runables)
         {
             this.internalRunables = runables;
+        }
+
+        public void Add(IRunable runable)
+        {
+            if (internalRunables == null)
+                internalRunables = new List<IRunable>();
+
+            internalRunables.Add(runable);
         }
 
         /// <summary>

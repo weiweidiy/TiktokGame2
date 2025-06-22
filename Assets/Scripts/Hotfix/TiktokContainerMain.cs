@@ -72,8 +72,8 @@ namespace Tiktok
             container.Bind<UIManager>().ToSingleton<UIManager>();
 
             //每次都是新的实例
-            container.Bind<IRunable>().ToSingleton<GameLevelController>();
-            container.Bind<IRunable>().ToSingleton<GameUnitController>();
+            container.Bind<GameLevelController>().ToSingleton<GameLevelController>();
+            container.Bind<GameUnitController>().ToSingleton<GameUnitController>();
             container.Bind<ParallelLauncher>().ToSelf();
 
 
