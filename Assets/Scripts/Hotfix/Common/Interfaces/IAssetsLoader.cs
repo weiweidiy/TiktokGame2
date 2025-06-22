@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace JFrame
+namespace JFramework
 {
     public enum SceneMode
     {

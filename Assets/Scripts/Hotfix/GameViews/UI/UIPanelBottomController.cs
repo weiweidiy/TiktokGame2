@@ -1,6 +1,6 @@
 ﻿using deVoid.UIFramework;
 
-namespace JFrame.Game.View
+namespace JFramework.Game.View
 {
     public class UIPanelBottomController : APanelController<UIPanelBottomProperties>
     {

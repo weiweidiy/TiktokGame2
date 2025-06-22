@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
-using JFrame.Common;
+using JFramework.Common;
 
-namespace JFrame
+namespace JFramework
 {
     public interface ITransitionProvider
     {

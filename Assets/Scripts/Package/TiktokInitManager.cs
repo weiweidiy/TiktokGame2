@@ -1,4 +1,4 @@
-﻿using JFrame.Package;
+﻿using JFramework.Package;
 using UnityEngine;
 
 public class TiktokInitManager : BaseRunable

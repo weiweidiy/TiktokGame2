@@ -1,7 +1,8 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
 using deVoid.UIFramework;
-using JFrame.Common;
+using JFramework.Common;
+using JFramework.Package;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,7 @@ using UnityEngine.Device;
 using UnityEngine.Rendering.Universal;
 
 
-namespace JFrame
+namespace JFramework
 {
     /// <summary>
     /// UI管理器

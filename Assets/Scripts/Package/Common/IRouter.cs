@@ -1,4 +1,4 @@
-﻿namespace JFrame.Package
+﻿namespace JFramework.Package
 {
     /// <summary>
     /// 获取更新地址接口

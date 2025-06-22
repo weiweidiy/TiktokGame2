@@ -1,11 +1,15 @@
 using Adic;
 using Adic.Container;
 using GameCommands;
-using JFrame;
-using JFrame.Common;
 using Stateless;
-using TiktokModels;
+using Tiktok;
 using UnityEngine;
+using JFramework;
+using JFramework.Common;
+using JFramework.Extern;
+using Game.Common;
+using JFramework.Package;
+
 
 namespace Tiktok
 {
@@ -24,7 +28,7 @@ namespace Tiktok
                            .RegisterExtension<CommanderContainerExtension>();
 
 
-            ////绑定通用工具类(无依赖)
+            ////绑定通用工具类(无依赖)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //container.Bind<PrefabLocation>().ToSingleton<PrefabLocation>();
             //container.Bind<WarriorAnimation>().ToSingleton<WarriorAnimation>();
             container.Bind<Utility>().ToSingleton<Utility>();
@@ -33,6 +37,13 @@ namespace Tiktok
             container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
+
+            //绑定网络
+            var litJson = new LitJsonSerializer();
+            var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:注册消息
+            resolve.RegisterMessageType(2, typeof(S2C_Login));
+            var strate = new JNetMessageJsonSerializerStrate(litJson);
+            container.Bind<JNetwork>().To(new JNetwork(new FakeSocket(), new JTaskCompletionSourceManager<IUnique>(), new JNetworkMessageProcessStrate(strate, resolve, null, null)));
 
             ///依赖EventManager，BaseClassPool
             container.Bind<CommonEventManager>().ToSingleton<CommonEventManager>();
@@ -43,9 +54,9 @@ namespace Tiktok
 
 
 
-            ////绑定模型
+            ////绑定模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ///依赖CommonEventManager
-            container.Bind<PlayerModel>().ToSingleton<PlayerModel>();
+            container.Bind<LevelsModel>().ToSingleton<LevelsModel>();
             //container.Bind<UserModel>().ToSingleton<UserModel>();
             //container.Bind<TeamModel>().ToSingleton<TeamModel>();
             //container.Bind<PowerModel>().ToSingleton<PowerModel>();
@@ -53,11 +64,18 @@ namespace Tiktok
             //container.Bind<TeamScoreModel>().ToSingleton<TeamScoreModel>();
 
 
-            ////绑定视图controller
+            ////绑定视图controller~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ///依赖IAssetsLoader
-            container.Bind<IGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
+            container.Bind<TiktokGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
+            container.Bind<TiktokGameObjectManager>().ToSingleton();
             ///依赖IAssetsLoader
             container.Bind<UIManager>().ToSingleton<UIManager>();
+
+            //每次都是新的实例
+            container.Bind<IRunable>().ToSingleton<GameLevelController>();
+            container.Bind<IRunable>().ToSingleton<GameUnitController>();
+            container.Bind<ParallelLauncher>().ToSelf();
+
 
             //container.Bind<SceneSM>().ToSingleton<SceneSM>();
             //container.Bind<SceneController>().ToSingleton<SceneController>();

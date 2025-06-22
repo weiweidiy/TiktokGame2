@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JFrame.Package
+namespace JFramework.Package
 {
     /// <summary>
     /// 透传参数数据

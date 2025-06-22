@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace JFrame
+namespace JFramework
 {
     public interface ITransition
     {

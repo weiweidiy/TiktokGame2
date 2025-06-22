@@ -6,11 +6,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JFrame.Game.View
+namespace JFramework.Game.View
 {
     public class UIPanelMenuController : APanelController<UIPanelMenuProperties>
     {
         [SerializeField] Button btnEnter;
+        [SerializeField] TextMeshProUGUI txtConfirm;
 
         protected override void OnPropertiesSet()
         {
@@ -18,18 +19,19 @@ namespace JFrame.Game.View
 
             btnEnter.onClick.AddListener(() =>
             {
-                Properties.OnBtnEnterClick();
+                Properties.OnBtnEnterClick(this);
             });
         }
     }
 
+
     public class UIPanelMenuProperties : PanelProperties
     {
-        public event Action onBtnEnterclick;
+        public event Action<UIPanelMenuController> onBtnEnterclick;
 
-        public void OnBtnEnterClick()
+        public void OnBtnEnterClick(UIPanelMenuController controller)
         {
-            onBtnEnterclick?.Invoke();
+            onBtnEnterclick?.Invoke(controller);
         }
     }
 

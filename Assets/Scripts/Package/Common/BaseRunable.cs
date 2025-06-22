@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JFrame.Package
+namespace JFramework.Package
 {
     /// <summary>
     /// 抽象可运行对象

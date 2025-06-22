@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JFrame
+namespace JFramework
 {
     /// <summary>
     /// GameObject对象池
@@ -21,7 +21,7 @@ namespace JFrame
         /// 用于注册所有对象池游戏对象
         /// </summary>
         /// <returns></returns>
-        public abstract UniTask Initialize();
+        //public abstract UniTask Initialize();
 
         /// <summary>
         /// 获取资源加载器
@@ -34,12 +34,12 @@ namespace JFrame
         /// </summary>
         /// <param name="location"></param>
         /// <param name="capacity"></param>
-        /// <param name="onCreate"></param>
+        /// <param name="onCreate">rent时候如果新创建实例则调用</param>
         /// <param name="onRelease"></param>
         /// <param name="onRent"></param>
         /// <param name="onReturn"></param>
         /// <exception cref="System.Exception"></exception>
-        protected async UniTask Regist(string location , Transform root = null, int capacity = 10 
+        public async UniTask Regist(string location , Transform root = null, int capacity = 10 
                                 , Action<GameObject> onCreate = null
                                 , Action<GameObject> onRelease = null
                                 , Action<GameObject> onRent = null
@@ -56,10 +56,15 @@ namespace JFrame
             goPool.OnRent = onRent;
             goPool.OnReturn = onReturn;
             go.name = location;
-            
+
+            goPool.Return(go);
+
+
             originObject.Add(location, goPool);
             //隐藏起来
             go.SetActive(false);
+
+            
         }
 
         /// <summary>

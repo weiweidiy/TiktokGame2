@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "2414e77fefdd5d6fe44510437d2394eecaf989f0"
     },
+    "com.hiplay.jframework": {
+      "version": "git@github.com:weiweidiy/com.hiplay.jframwork.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "79a334fdd22f02aa983d76b1f0b42f806f111d0e"
+    },
     "com.tuyoogame.yooasset": {
       "version": "2.2.4-preview",
       "depth": 0,

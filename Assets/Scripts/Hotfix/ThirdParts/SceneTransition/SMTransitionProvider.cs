@@ -2,7 +2,7 @@ using Adic;
 using Cysharp.Threading.Tasks;
 
 
-namespace JFrame.Common
+namespace JFramework.Common
 {
     /// <summary>
     /// SMTransition提供者

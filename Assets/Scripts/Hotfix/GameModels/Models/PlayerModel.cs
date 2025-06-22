@@ -1,24 +1,27 @@
 using Adic;
-using JFrame;
+using JFramework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace TiktokModels
+namespace Tiktok
 {
-    public struct PlayerVO
-    {
-        public string name;
-        public string uid;
-    }
+    //public struct PlayerVO
+    //{
+    //    public string name;
+    //    public string uid;
+    //}
 
-    public class PlayerModel : BaseModel<List<PlayerVO>>
-    {
-        [Inject]
-        public PlayerModel(CommonEventManager eventManager) : base(eventManager) { }
+    //public class PlayerModel : BaseModel<List<PlayerVO>>
+    //{
+    //    [Inject]
+    //    public PlayerModel(CommonEventManager eventManager) : base(eventManager) { }
 
 
-    }
+    //}
+
+
+
 
 }

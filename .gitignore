@@ -213,3 +213,6 @@ Unity.RenderPipelines.Universal.Config.Runtime.csproj
 
 Coffee.UIParticle.Editor.csproj
 Coffee.UIParticle.csproj
+Coffee.UIParticle.Player.csproj
+JFramework.Player.csproj
+JFramework.csproj

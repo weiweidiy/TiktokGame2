@@ -1,8 +1,8 @@
 
 
 using Cysharp.Threading.Tasks;
-using JFrame;
-using JFrame.Common;
+using JFramework;
+using JFramework.Common;
 using System;
 using System.Collections;
 using UnityEngine;

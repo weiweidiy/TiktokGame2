@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JFrame.Package
+namespace JFramework.Package
 {
     /// <summary>
-    /// 通用启动器，负责启动应用
+    /// 通用启动器，负责启动应用，串行运行
     /// </summary>
     public class CommonLauncher : BaseRunable
     {

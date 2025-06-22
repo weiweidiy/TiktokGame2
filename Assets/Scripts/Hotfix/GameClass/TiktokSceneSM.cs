@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using JFrame;
+using JFramework;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Tiktok
 {
-    public class TiktokSceneSM : BaseSM<TiktokSceneSMContext, TiktokSceneState, TiktokSceneSMTrigger>
+    public class TiktokSceneSM : BaseSMAsync<TiktokSceneSMContext, TiktokSceneState, TiktokSceneSMTrigger>
     {
         TiktokSceneInitState initState;
         TiktokSceneMenuState menuState;

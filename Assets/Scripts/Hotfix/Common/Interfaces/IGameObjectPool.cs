@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace JFrame
+namespace JFramework
 {
     public interface IGameObjectPool
     {

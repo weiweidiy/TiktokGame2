@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-namespace JFrame
+namespace JFramework
 {
 
     public class YooAssetsLoader : IAssetsLoader

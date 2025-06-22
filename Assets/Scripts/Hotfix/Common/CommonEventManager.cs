@@ -1,6 +1,6 @@
 ﻿using Adic;
 
-namespace JFrame
+namespace JFramework
 {
     /// <summary>
     /// 通用的事件中心
@@ -26,7 +26,7 @@ namespace JFrame
         /// </summary>
         /// <typeparam name="TEvent"></typeparam>
         /// <param name="arg"></param>
-        public void SendEvent<TEvent>(object arg) where TEvent : JFrame.Event
+        public void SendEvent<TEvent>(object arg) where TEvent : JFramework.Event
         {
             var obj = classPool.Rent<TEvent>();
             obj.Body = arg;

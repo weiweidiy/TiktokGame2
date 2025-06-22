@@ -1,4 +1,4 @@
-﻿using JFrame;
+﻿using JFramework;
 using System;
 
 namespace Tiktok

@@ -19,12 +19,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic types
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<GameCommands.CommandStartupGame.<InitializeViewSM>d__8>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseGameObjectPool.<Regist>d__3>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSM.<OnEnter>d__6<object,object,object>>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSM.<OnExit>d__7<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<GameCommands.CommandStartupGame.<InitializeViews>d__8>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseGameObjectPool.<Regist>d__2>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSMAsync.<OnEnter>d__6<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.BaseSMAsync.<OnExit>d__7<object,object,object>>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.Common.SMTransitionProvider.<InstantiateAsync>d__1,object>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.UIManager.<Initialize>d__4>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<JFrame.YooAssetsLoader.<InstantiateAsync>d__1,object>
@@ -47,16 +47,16 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Stateless.StateMachine.StateRepresentation.<ExecuteEntryActionsAsync>d__11<object,object>>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Stateless.StateMachine.StateRepresentation.<ExecuteExitActionsAsync>d__12<object,object>>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Stateless.StateMachine.StateRepresentation.<ExitAsync>d__10<object,object>,object>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Tiktok.TiktokGameObjectManager.<Initialize>d__3>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Tiktok.TiktokSceneGameState.<OnEnter>d__5>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Tiktok.TiktokGameObjectManager.<Initialize>d__4>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Tiktok.TiktokSceneGameState.<OnEnter>d__6>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Tiktok.TiktokSceneMenuState.<OnEnter>d__7>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Tiktok.TiktokSceneMenuState.<OnExit>d__9>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<GameCommands.CommandStartupGame.<InitializeViewSM>d__8>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseGameObjectPool.<Regist>d__3>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSM.<OnEnter>d__6<object,object,object>>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSM.<OnExit>d__7<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<GameCommands.CommandStartupGame.<InitializeViews>d__8>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseGameObjectPool.<Regist>d__2>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSMAsync.<OnEnter>d__6<object,object,object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.BaseSMAsync.<OnExit>d__7<object,object,object>>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.Common.SMTransitionProvider.<InstantiateAsync>d__1,object>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.UIManager.<Initialize>d__4>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<JFrame.YooAssetsLoader.<InstantiateAsync>d__1,object>
@@ -79,8 +79,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Stateless.StateMachine.StateRepresentation.<ExecuteEntryActionsAsync>d__11<object,object>>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Stateless.StateMachine.StateRepresentation.<ExecuteExitActionsAsync>d__12<object,object>>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Stateless.StateMachine.StateRepresentation.<ExitAsync>d__10<object,object>,object>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Tiktok.TiktokGameObjectManager.<Initialize>d__3>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Tiktok.TiktokSceneGameState.<OnEnter>d__5>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Tiktok.TiktokGameObjectManager.<Initialize>d__4>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Tiktok.TiktokSceneGameState.<OnEnter>d__6>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Tiktok.TiktokSceneMenuState.<OnEnter>d__7>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Tiktok.TiktokSceneMenuState.<OnExit>d__9>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<UnityEngine.SceneManagement.Scene>
@@ -91,10 +91,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.CompilerServices.IStateMachineRunnerPromise<object>
 	// Cysharp.Threading.Tasks.ITaskPoolNode<object>
 	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>
-	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>
 	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>
 	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
 	// Cysharp.Threading.Tasks.IUniTaskSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
@@ -121,10 +119,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.IUniTaskSource<int>
 	// Cysharp.Threading.Tasks.IUniTaskSource<object>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
@@ -151,10 +147,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<int>
 	// Cysharp.Threading.Tasks.UniTask.Awaiter<object>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
@@ -181,10 +175,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<int>
 	// Cysharp.Threading.Tasks.UniTask.IsCanceledSource<object>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
@@ -211,10 +203,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<int>
 	// Cysharp.Threading.Tasks.UniTask.MemoizeSource<object>
 	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>
-	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
 	// Cysharp.Threading.Tasks.UniTask<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
@@ -285,6 +275,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// MackySoft.XPool.FactoryPool<object>
 	// MackySoft.XPool.ObjectModel.PoolBase<object>
 	// MackySoft.XPool.Unity.UnityObjectPool<object>
+	// System.Action<Consolation.TestConsole.Log>
 	// System.Action<DG.Tweening.Plugins.Options.PathOptions,object,UnityEngine.Quaternion,object>
 	// System.Action<JFrame.HandlerWrapper>
 	// System.Action<LitJson.PropertyMetadata>
@@ -307,21 +298,21 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Buffers.TlsOverPerCoreLockedStacksArrayPool<int>
 	// System.ByReference<int>
 	// System.ByReference<ushort>
+	// System.Collections.Generic.ArraySortHelper<Consolation.TestConsole.Log>
 	// System.Collections.Generic.ArraySortHelper<JFrame.HandlerWrapper>
 	// System.Collections.Generic.ArraySortHelper<LitJson.PropertyMetadata>
 	// System.Collections.Generic.ArraySortHelper<SMTetrisTransition.Tile>
 	// System.Collections.Generic.ArraySortHelper<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.ArraySortHelper<object>
+	// System.Collections.Generic.Comparer<Consolation.TestConsole.Log>
 	// System.Collections.Generic.Comparer<JFrame.HandlerWrapper>
 	// System.Collections.Generic.Comparer<LitJson.PropertyMetadata>
 	// System.Collections.Generic.Comparer<SMTetrisTransition.Tile>
 	// System.Collections.Generic.Comparer<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.Comparer<System.Guid>
 	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
-	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
 	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>
 	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>
 	// System.Collections.Generic.Comparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>
@@ -345,36 +336,42 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Comparer<byte>
 	// System.Collections.Generic.Comparer<int>
 	// System.Collections.Generic.Comparer<object>
+	// System.Collections.Generic.Dictionary.Enumerator<int,UnityEngine.Color>
 	// System.Collections.Generic.Dictionary.Enumerator<int,object>
 	// System.Collections.Generic.Dictionary.Enumerator<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.Dictionary.Enumerator<object,LitJson.ArrayMetadata>
 	// System.Collections.Generic.Dictionary.Enumerator<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.Dictionary.Enumerator<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.Dictionary.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,UnityEngine.Color>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,object>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,LitJson.ArrayMetadata>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.KeyCollection<int,UnityEngine.Color>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,object>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,LitJson.ArrayMetadata>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,object>
+	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,UnityEngine.Color>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,object>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,LitJson.ArrayMetadata>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.ValueCollection<int,UnityEngine.Color>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,object>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,LitJson.ArrayMetadata>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,object>
+	// System.Collections.Generic.Dictionary<int,UnityEngine.Color>
 	// System.Collections.Generic.Dictionary<int,object>
 	// System.Collections.Generic.Dictionary<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.Dictionary<object,LitJson.ArrayMetadata>
@@ -386,10 +383,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.EqualityComparer<LitJson.ObjectMetadata>
 	// System.Collections.Generic.EqualityComparer<LitJson.PropertyMetadata>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
-	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>
@@ -409,6 +404,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,int>>
 	// System.Collections.Generic.EqualityComparer<System.ValueTuple<byte,object>>
+	// System.Collections.Generic.EqualityComparer<UnityEngine.Color>
 	// System.Collections.Generic.EqualityComparer<UnityEngine.SceneManagement.Scene>
 	// System.Collections.Generic.EqualityComparer<byte>
 	// System.Collections.Generic.EqualityComparer<int>
@@ -416,9 +412,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.HashSet.Enumerator<object>
 	// System.Collections.Generic.HashSet<object>
 	// System.Collections.Generic.HashSetEqualityComparer<object>
+	// System.Collections.Generic.ICollection<Consolation.TestConsole.Log>
 	// System.Collections.Generic.ICollection<JFrame.HandlerWrapper>
 	// System.Collections.Generic.ICollection<LitJson.PropertyMetadata>
 	// System.Collections.Generic.ICollection<SMTetrisTransition.Tile>
+	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,UnityEngine.Color>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,object>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,JFrame.HandlerWrapper>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,LitJson.ArrayMetadata>>
@@ -426,6 +424,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,LitJson.PropertyMetadata>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.ICollection<object>
+	// System.Collections.Generic.IComparer<Consolation.TestConsole.Log>
 	// System.Collections.Generic.IComparer<JFrame.HandlerWrapper>
 	// System.Collections.Generic.IComparer<LitJson.PropertyMetadata>
 	// System.Collections.Generic.IComparer<SMTetrisTransition.Tile>
@@ -438,10 +437,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IDictionary<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.IDictionary<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.IDictionary<object,object>
+	// System.Collections.Generic.IEnumerable<Consolation.TestConsole.Log>
 	// System.Collections.Generic.IEnumerable<JFrame.HandlerWrapper>
 	// System.Collections.Generic.IEnumerable<LitJson.PropertyMetadata>
 	// System.Collections.Generic.IEnumerable<SMTetrisTransition.Tile>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.UIntPtr,object>>
+	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int,UnityEngine.Color>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int,object>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,JFrame.HandlerWrapper>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,LitJson.ArrayMetadata>>
@@ -449,10 +450,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,LitJson.PropertyMetadata>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.IEnumerable<object>
+	// System.Collections.Generic.IEnumerator<Consolation.TestConsole.Log>
 	// System.Collections.Generic.IEnumerator<JFrame.HandlerWrapper>
 	// System.Collections.Generic.IEnumerator<LitJson.PropertyMetadata>
 	// System.Collections.Generic.IEnumerator<SMTetrisTransition.Tile>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.UIntPtr,object>>
+	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<int,UnityEngine.Color>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<int,object>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,JFrame.HandlerWrapper>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,LitJson.ArrayMetadata>>
@@ -462,38 +465,41 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerator<object>
 	// System.Collections.Generic.IEqualityComparer<int>
 	// System.Collections.Generic.IEqualityComparer<object>
+	// System.Collections.Generic.IList<Consolation.TestConsole.Log>
 	// System.Collections.Generic.IList<JFrame.HandlerWrapper>
 	// System.Collections.Generic.IList<LitJson.PropertyMetadata>
 	// System.Collections.Generic.IList<SMTetrisTransition.Tile>
 	// System.Collections.Generic.IList<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.IList<object>
 	// System.Collections.Generic.KeyValuePair<System.UIntPtr,object>
+	// System.Collections.Generic.KeyValuePair<int,UnityEngine.Color>
 	// System.Collections.Generic.KeyValuePair<int,object>
 	// System.Collections.Generic.KeyValuePair<object,JFrame.HandlerWrapper>
 	// System.Collections.Generic.KeyValuePair<object,LitJson.ArrayMetadata>
 	// System.Collections.Generic.KeyValuePair<object,LitJson.ObjectMetadata>
 	// System.Collections.Generic.KeyValuePair<object,LitJson.PropertyMetadata>
 	// System.Collections.Generic.KeyValuePair<object,object>
+	// System.Collections.Generic.List.Enumerator<Consolation.TestConsole.Log>
 	// System.Collections.Generic.List.Enumerator<JFrame.HandlerWrapper>
 	// System.Collections.Generic.List.Enumerator<LitJson.PropertyMetadata>
 	// System.Collections.Generic.List.Enumerator<SMTetrisTransition.Tile>
 	// System.Collections.Generic.List.Enumerator<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.List.Enumerator<object>
+	// System.Collections.Generic.List<Consolation.TestConsole.Log>
 	// System.Collections.Generic.List<JFrame.HandlerWrapper>
 	// System.Collections.Generic.List<LitJson.PropertyMetadata>
 	// System.Collections.Generic.List<SMTetrisTransition.Tile>
 	// System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.List<object>
+	// System.Collections.Generic.ObjectComparer<Consolation.TestConsole.Log>
 	// System.Collections.Generic.ObjectComparer<JFrame.HandlerWrapper>
 	// System.Collections.Generic.ObjectComparer<LitJson.PropertyMetadata>
 	// System.Collections.Generic.ObjectComparer<SMTetrisTransition.Tile>
 	// System.Collections.Generic.ObjectComparer<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.ObjectComparer<System.Guid>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
-	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>
-	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>
@@ -519,10 +525,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<LitJson.ObjectMetadata>
 	// System.Collections.Generic.ObjectEqualityComparer<LitJson.PropertyMetadata>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
-	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>
-	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>
@@ -539,6 +543,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,int>>
 	// System.Collections.Generic.ObjectEqualityComparer<System.ValueTuple<byte,object>>
+	// System.Collections.Generic.ObjectEqualityComparer<UnityEngine.Color>
 	// System.Collections.Generic.ObjectEqualityComparer<UnityEngine.SceneManagement.Scene>
 	// System.Collections.Generic.ObjectEqualityComparer<byte>
 	// System.Collections.Generic.ObjectEqualityComparer<int>
@@ -554,11 +559,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Stack<int>
 	// System.Collections.Generic.Stack<object>
 	// System.Collections.Generic.ValueListBuilder<int>
+	// System.Collections.ObjectModel.ReadOnlyCollection<Consolation.TestConsole.Log>
 	// System.Collections.ObjectModel.ReadOnlyCollection<JFrame.HandlerWrapper>
 	// System.Collections.ObjectModel.ReadOnlyCollection<LitJson.PropertyMetadata>
 	// System.Collections.ObjectModel.ReadOnlyCollection<SMTetrisTransition.Tile>
 	// System.Collections.ObjectModel.ReadOnlyCollection<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.ObjectModel.ReadOnlyCollection<object>
+	// System.Comparison<Consolation.TestConsole.Log>
 	// System.Comparison<JFrame.HandlerWrapper>
 	// System.Comparison<LitJson.PropertyMetadata>
 	// System.Comparison<SMTetrisTransition.Tile>
@@ -633,6 +640,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Linq.OrderedEnumerable<object>
 	// System.Linq.Set<object>
 	// System.Nullable<UnityEngine.Vector3>
+	// System.Predicate<Consolation.TestConsole.Log>
 	// System.Predicate<JFrame.HandlerWrapper>
 	// System.Predicate<LitJson.PropertyMetadata>
 	// System.Predicate<SMTetrisTransition.Tile>
@@ -667,10 +675,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Threading.Tasks.TaskFactory<object>
 	// System.Tuple<object,object>
 	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>>
-	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>>
 	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>>
 	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>>
-	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>>
 	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,object>>>>>>>>>
 	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,UnityEngine.SceneManagement.Scene>>>>>>>>
 	// System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,System.ValueTuple<byte,int>>>>>>>>
@@ -700,11 +706,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	public void RefMethods()
 	{
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,GameCommands.CommandStartupGame.<InitializeViewSM>d__8>(Cysharp.Threading.Tasks.UniTask.Awaiter&,GameCommands.CommandStartupGame.<InitializeViewSM>d__8&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSM.<OnEnter>d__6<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSM.<OnEnter>d__6<object,object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSM.<OnExit>d__7<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSM.<OnExit>d__7<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,GameCommands.CommandStartupGame.<InitializeViews>d__8>(Cysharp.Threading.Tasks.UniTask.Awaiter&,GameCommands.CommandStartupGame.<InitializeViews>d__8&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSMAsync.<OnEnter>d__6<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSMAsync.<OnEnter>d__6<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,JFrame.BaseSMAsync.<OnExit>d__7<object,object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,JFrame.BaseSMAsync.<OnExit>d__7<object,object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Stateless.StateMachine.<HandleReentryTriggerAsync>d__21<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Stateless.StateMachine.<HandleReentryTriggerAsync>d__21<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Stateless.StateMachine.<HandleTransitioningTriggerAsync>d__22<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Stateless.StateMachine.<HandleTransitioningTriggerAsync>d__22<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Stateless.StateMachine.<InternalFireAsync>d__18<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Stateless.StateMachine.<InternalFireAsync>d__18<object,object>&)
@@ -718,13 +724,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Stateless.StateMachine.StateRepresentation.<ExecuteDeactivationActionsAsync>d__8<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Stateless.StateMachine.StateRepresentation.<ExecuteDeactivationActionsAsync>d__8<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Stateless.StateMachine.StateRepresentation.<ExecuteEntryActionsAsync>d__11<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Stateless.StateMachine.StateRepresentation.<ExecuteEntryActionsAsync>d__11<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Stateless.StateMachine.StateRepresentation.<ExecuteExitActionsAsync>d__12<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Stateless.StateMachine.StateRepresentation.<ExecuteExitActionsAsync>d__12<object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokGameObjectManager.<Initialize>d__3>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokGameObjectManager.<Initialize>d__3&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokSceneGameState.<OnEnter>d__5>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokSceneGameState.<OnEnter>d__5&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokGameObjectManager.<Initialize>d__4>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokGameObjectManager.<Initialize>d__4&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokSceneGameState.<OnEnter>d__6>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokSceneGameState.<OnEnter>d__6&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokSceneMenuState.<OnEnter>d__7>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokSceneMenuState.<OnEnter>d__7&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokSceneMenuState.<OnExit>d__9>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokSceneMenuState.<OnExit>d__9&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<UnityEngine.SceneManagement.Scene>,Tiktok.TiktokSceneGameState.<OnEnter>d__5>(Cysharp.Threading.Tasks.UniTask.Awaiter<UnityEngine.SceneManagement.Scene>&,Tiktok.TiktokSceneGameState.<OnEnter>d__5&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<UnityEngine.SceneManagement.Scene>,Tiktok.TiktokSceneGameState.<OnEnter>d__6>(Cysharp.Threading.Tasks.UniTask.Awaiter<UnityEngine.SceneManagement.Scene>&,Tiktok.TiktokSceneGameState.<OnEnter>d__6&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<UnityEngine.SceneManagement.Scene>,Tiktok.TiktokSceneMenuState.<OnEnter>d__7>(Cysharp.Threading.Tasks.UniTask.Awaiter<UnityEngine.SceneManagement.Scene>&,Tiktok.TiktokSceneMenuState.<OnEnter>d__7&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,JFrame.BaseGameObjectPool.<Regist>d__3>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,JFrame.BaseGameObjectPool.<Regist>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,JFrame.BaseGameObjectPool.<Regist>d__2>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,JFrame.BaseGameObjectPool.<Regist>d__2&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,JFrame.UIManager.<Initialize>d__4>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,JFrame.UIManager.<Initialize>d__4&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,Stateless.StateMachine.<HandleReentryTriggerAsync>d__21<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,Stateless.StateMachine.<HandleReentryTriggerAsync>d__21<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,Stateless.StateMachine.<HandleTransitioningTriggerAsync>d__22<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,Stateless.StateMachine.<HandleTransitioningTriggerAsync>d__22<object,object>&)
@@ -738,12 +744,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,JFrame.Common.SMTransitionProvider.<InstantiateAsync>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,JFrame.Common.SMTransitionProvider.<InstantiateAsync>d__1&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,Stateless.StateMachine.<EnterStateAsync>d__23<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,Stateless.StateMachine.<EnterStateAsync>d__23<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,Stateless.StateMachine.StateRepresentation.<ExitAsync>d__10<object,object>>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,Stateless.StateMachine.StateRepresentation.<ExitAsync>d__10<object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<GameCommands.CommandStartupGame.<InitializeViewSM>d__8>(GameCommands.CommandStartupGame.<InitializeViewSM>d__8&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseGameObjectPool.<Regist>d__3>(JFrame.BaseGameObjectPool.<Regist>d__3&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>(JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>(JFrame.BaseSM.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSM.<OnEnter>d__6<object,object,object>>(JFrame.BaseSM.<OnEnter>d__6<object,object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSM.<OnExit>d__7<object,object,object>>(JFrame.BaseSM.<OnExit>d__7<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<GameCommands.CommandStartupGame.<InitializeViews>d__8>(GameCommands.CommandStartupGame.<InitializeViews>d__8&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseGameObjectPool.<Regist>d__2>(JFrame.BaseGameObjectPool.<Regist>d__2&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>>(JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__0>d<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>>(JFrame.BaseSMAsync.<>c__DisplayClass5_0.<<Initialize>b__1>d<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSMAsync.<OnEnter>d__6<object,object,object>>(JFrame.BaseSMAsync.<OnEnter>d__6<object,object,object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.BaseSMAsync.<OnExit>d__7<object,object,object>>(JFrame.BaseSMAsync.<OnExit>d__7<object,object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<JFrame.UIManager.<Initialize>d__4>(JFrame.UIManager.<Initialize>d__4&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Stateless.StateMachine.<HandleReentryTriggerAsync>d__21<object,object>>(Stateless.StateMachine.<HandleReentryTriggerAsync>d__21<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Stateless.StateMachine.<HandleTransitioningTriggerAsync>d__22<object,object>>(Stateless.StateMachine.<HandleTransitioningTriggerAsync>d__22<object,object>&)
@@ -758,8 +764,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Stateless.StateMachine.StateRepresentation.<ExecuteDeactivationActionsAsync>d__8<object,object>>(Stateless.StateMachine.StateRepresentation.<ExecuteDeactivationActionsAsync>d__8<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Stateless.StateMachine.StateRepresentation.<ExecuteEntryActionsAsync>d__11<object,object>>(Stateless.StateMachine.StateRepresentation.<ExecuteEntryActionsAsync>d__11<object,object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Stateless.StateMachine.StateRepresentation.<ExecuteExitActionsAsync>d__12<object,object>>(Stateless.StateMachine.StateRepresentation.<ExecuteExitActionsAsync>d__12<object,object>&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Tiktok.TiktokGameObjectManager.<Initialize>d__3>(Tiktok.TiktokGameObjectManager.<Initialize>d__3&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Tiktok.TiktokSceneGameState.<OnEnter>d__5>(Tiktok.TiktokSceneGameState.<OnEnter>d__5&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Tiktok.TiktokGameObjectManager.<Initialize>d__4>(Tiktok.TiktokGameObjectManager.<Initialize>d__4&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Tiktok.TiktokSceneGameState.<OnEnter>d__6>(Tiktok.TiktokSceneGameState.<OnEnter>d__6&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Tiktok.TiktokSceneMenuState.<OnEnter>d__7>(Tiktok.TiktokSceneMenuState.<OnEnter>d__7&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Tiktok.TiktokSceneMenuState.<OnExit>d__9>(Tiktok.TiktokSceneMenuState.<OnExit>d__9&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<UnityEngine.SceneManagement.Scene>.Start<JFrame.YooAssetsLoader.<LoadSceneAsync>d__3>(JFrame.YooAssetsLoader.<LoadSceneAsync>d__3&)
@@ -898,9 +904,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.Start<JFrame.Configuration.ConfigurationManager.<SaveAllAsync>d__28>(JFrame.Configuration.ConfigurationManager.<SaveAllAsync>d__28&)
 		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.Start<JFrame.Configuration.ConfigurationManager.<SaveAsync>d__29>(JFrame.Configuration.ConfigurationManager.<SaveAsync>d__29&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,GameCommands.CommandStartupGame.<Execute>d__5>(Cysharp.Threading.Tasks.UniTask.Awaiter&,GameCommands.CommandStartupGame.<Execute>d__5&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<GameCommands.CommandStartupGame.<Execute>d__5>(GameCommands.CommandStartupGame.<Execute>d__5&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8>(Tiktok.TiktokSceneMenuState.<UiArg_onBtnEnterclick>d__8&)
 		// object& System.Runtime.CompilerServices.Unsafe.As<object,object>(object&)

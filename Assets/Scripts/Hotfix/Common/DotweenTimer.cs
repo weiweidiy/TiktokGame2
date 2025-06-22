@@ -2,7 +2,7 @@
 
 using DG.Tweening;
 
-namespace JFrame
+namespace JFramework
 {
     public class DotweenTimer : ITimer
     {

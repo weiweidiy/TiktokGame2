@@ -1,8 +1,9 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
-using JFrame;
-using JFrame.Common;
-using JFrame.Game.View;
+using JFramework;
+using JFramework.Common;
+using JFramework.Game.View;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
@@ -29,6 +30,12 @@ namespace Tiktok
         [Inject]
         ITransitionProvider transitionProvider;
 
+        [Inject]
+        JNetwork jNetwork;
+
+        [Inject]
+        LevelsModel levelModel;
+
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
         string sceneName = "SceneMenu";
@@ -37,16 +44,13 @@ namespace Tiktok
         {
             CheckInject();
 
-            var scene = await SwitchScene(sceneName, JFrame.SceneMode.Additive);
+            //初始化游戏对象管理器
+            await gameObjectManager.Initialize();
+
+            var scene = await SwitchScene(sceneName, JFramework.SceneMode.Additive);
 
             //设置为活动场景
             SceneManager.SetActiveScene(scene);
-
-
-            //初始化视图(场景，角色，UI等）
-            //负责背景，角色，场景特效等 to do: 提前到startupcommand里？
-            await gameObjectManager.Initialize();
-
 
             //初始化ui管理器
             await uiManager.Initialize("UISceneMenuSettings");
@@ -57,11 +61,26 @@ namespace Tiktok
             uiManager.ShowPanel<UIPanelMenuProperties>("UIMenu", uiArg);
         }
 
-        private async void UiArg_onBtnEnterclick()
+        private async void UiArg_onBtnEnterclick(UIPanelMenuController controller)
         {
+            //Debug.LogError("UiArg_onBtnEnterclick");
             var transition = await transitionProvider.InstantiateAsync("SMBlindsTransition");
             await transition.TransitionOut();
+
+            //链接服务器
+            await jNetwork.Connect("");
+            Debug.Log("链接成功");
+            var c2sLogin = new C2S_Login();
+            c2sLogin.Uid = Guid.NewGuid().ToString();
+            c2sLogin.TypeId = 1;
+            var loginData = await jNetwork.SendMessage<S2C_Login>(c2sLogin);
+
+
+            //初始化必要模型
+            levelModel.Initialize(loginData.LevelData.LevelsData);
+
             await context.sm.SwitchToGame();
+            Debug.Log("SwitchToGame done " + loginData.Code);
             await transition.TransitionIn();
         }
 

@@ -3,7 +3,7 @@
 using DG.Tweening;
 using System;
 
-namespace JFrame
+namespace JFramework
 {
     public class DotweenUtils : ITimerUtils
 
