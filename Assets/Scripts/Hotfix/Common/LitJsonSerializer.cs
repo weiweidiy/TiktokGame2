@@ -5,16 +5,18 @@ using UnityEngine;
 using JFramework;
 using System;
 using LitJson;
+using System.Text;
 
 namespace JFramework.Extern
 {
 
-    public class LitJsonSerializer : IJsonSerializer
+    public class LitJsonSerializer : ISerializer, IDeserializer
     {
-        public string ToJson(object obj)
+        public string Serialize(object obj)
         {
             return JsonMapper.ToJson(obj);
         }
+
 
         public T ToObject<T>(string str)
         {
@@ -24,6 +26,17 @@ namespace JFramework.Extern
         public object ToObject(string json, Type type)
         {
             return JsonMapper.ToObject(json, type);
+        }
+
+        public object ToObject(byte[] bytes, Type type)
+        {
+            var json = Encoding.UTF8.GetString(bytes);
+            return JsonMapper.ToObject(json, type);
+        }
+
+        public T ToObject<T>(byte[] bytes)
+        {
+            return default(T);
         }
     }
 }

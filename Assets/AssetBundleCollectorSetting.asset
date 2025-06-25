@@ -79,3 +79,11 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/Downloads/GameRes/Dynamic/Configs
+        CollectorGUID: 7491aca262199ff42bbac1438b8b9c4b
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

@@ -3,11 +3,14 @@ using YooAsset;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using JFramework.Game;
+using System.Threading.Tasks;
+using System.Text;
+using Adic;
 
 namespace JFramework
 {
-
-    public class YooAssetsLoader : IAssetsLoader
+    public class YooAssetsLoader : IAssetsLoader, IConfigLoader
     {
         public UniTask<GameObject> InstantiateAsync(string location)
         {
@@ -28,6 +31,12 @@ namespace JFramework
             var handle = YooAssets.LoadAssetAsync<T>(location);
             await handle;
             return handle.AssetObject as T;
+        }
+
+        public async Task<byte[]> LoadBytesAsync(string location)
+        {
+            var text = await LoadAssetAsync<TextAsset>(location);
+            return text.bytes;
         }
 
         public async UniTask<Scene> LoadSceneAsync(string sceneName, SceneMode mode)

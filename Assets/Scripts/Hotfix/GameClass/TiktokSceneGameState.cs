@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Game.Common;
 using JFramework;
+using JFramework.Game;
 using JFramework.Game.View;
 using MackySoft.XPool.Unity;
 using UnityEngine;
@@ -28,6 +29,9 @@ namespace Tiktok
 
         [Inject]
         GameLevelController gameLevelController;
+
+        [Inject]
+        IJConfigManager jConfigManager;
 
         protected override async UniTask OnEnter()
         {

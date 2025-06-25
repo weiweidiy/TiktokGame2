@@ -1,7 +1,9 @@
 ﻿using Adic;
 using Game.Common;
 using JFramework;
+using JFramework.Game;
 using JFramework.Package;
+using UnityEngine;
 
 
 namespace Tiktok
@@ -12,6 +14,9 @@ namespace Tiktok
     public class GameLevelController : BaseViewController
     {
         [Inject]
+        IJConfigManager jConfigManager;
+
+        [Inject]
         public GameLevelController(CommonEventManager eventManager) : base(eventManager)
         {
         }
@@ -19,7 +24,12 @@ namespace Tiktok
         protected override void OnRun(RunableExtraData extraData)
         {
             base.OnRun(extraData);
-            
+
+            var lst = jConfigManager.GetAll<LevelsData>();
+            foreach (var level in lst)
+            {
+                Debug.Log(level.Name);
+            }
         }
 
         protected override void OnStop()

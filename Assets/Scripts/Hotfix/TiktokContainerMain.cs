@@ -9,6 +9,7 @@ using JFramework.Common;
 using JFramework.Extern;
 using Game.Common;
 using JFramework.Package;
+using JFramework.Game;
 
 
 namespace Tiktok
@@ -37,13 +38,17 @@ namespace Tiktok
             container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
+            container.Bind<IConfigLoader>().ToSingleton<YooAssetsLoader>();
 
             //绑定网络
             var litJson = new LitJsonSerializer();
-            var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:注册消息
+            var resolve = new JNetMessageJsonTypeResolver(litJson, litJson); //to do:注册消息
             resolve.RegisterMessageType(2, typeof(S2C_Login));
-            var strate = new JNetMessageJsonSerializerStrate(litJson);
-            container.Bind<JNetwork>().To(new JNetwork(new FakeSocket(), new JTaskCompletionSourceManager<IUnique>(), new JNetworkMessageProcessStrate(strate, resolve, null, null)));
+            var strate = new JNetMessageJsonSerializerStrate(litJson, litJson);
+            container.Bind<JNetwork>().To(new JNetwork(new SocketFactory(), new JTaskCompletionSourceManager<IUnique>(), new JNetworkMessageProcessStrate(strate, resolve, null, null)));
+
+            container.Bind<IJConfigManager>().ToSingleton<TiktokConfigManager>();
+
 
             ///依赖EventManager，BaseClassPool
             container.Bind<CommonEventManager>().ToSingleton<CommonEventManager>();

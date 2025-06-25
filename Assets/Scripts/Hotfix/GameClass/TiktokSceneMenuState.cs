@@ -1,12 +1,12 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
 using JFramework;
-using JFramework.Common;
+using JFramework.Extern;
+using JFramework.Game;
 using JFramework.Game.View;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using YooAsset;
 
 namespace Tiktok
 {
@@ -36,6 +36,9 @@ namespace Tiktok
         [Inject]
         LevelsModel levelModel;
 
+        [Inject]
+        IJConfigManager jConfigManager;
+
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
         string sceneName = "SceneMenu";
@@ -54,6 +57,10 @@ namespace Tiktok
 
             //初始化ui管理器
             await uiManager.Initialize("UISceneMenuSettings");
+
+            //加载配置表
+            jConfigManager.RegisterTable<LevelsCfg, LevelsData>(nameof(LevelsCfg), new LitJsonSerializer());
+            await jConfigManager.PreloadAllAsync();
 
             //显示menuUI
             var uiArg = new UIPanelMenuProperties();
