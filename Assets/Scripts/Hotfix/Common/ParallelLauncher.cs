@@ -14,7 +14,7 @@ namespace Game.Common
         /// <summary>
         /// 内部运行对象
         /// </summary>
-        [Inject]
+
         protected List<IRunable> internalRunables;
 
 

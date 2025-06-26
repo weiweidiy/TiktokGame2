@@ -40,13 +40,17 @@ namespace Tiktok
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
             container.Bind<IConfigLoader>().ToSingleton<YooAssetsLoader>();
 
-            //绑定网络
-            var litJson = new LitJsonSerializer();
-            var resolve = new JNetMessageJsonTypeResolver(litJson, litJson); //to do:注册消息
-            resolve.RegisterMessageType(2, typeof(S2C_Login));
-            var strate = new JNetMessageJsonSerializerStrate(litJson, litJson);
-            container.Bind<JNetwork>().To(new JNetwork(new SocketFactory(), new JTaskCompletionSourceManager<IUnique>(), new JNetworkMessageProcessStrate(strate, resolve, null, null)));
+            //绑定网络类
+            container.Bind<IDataConverter>().ToSingleton<LitJsonSerializer>();
+            container.Bind<IDeserializer>().ToSingleton<LitJsonSerializer>();
+            container.Bind<IMessageTypeResolver>().ToSingleton<TiktokJNetMessageJsonTypeResolver>();
+            container.Bind<INetMessageSerializerStrate>().ToSingleton<TiktokJNetMessageJsonSerializerStrate>();
+            container.Bind<INetworkMessageProcessStrate>().ToSingleton<TiktokJNetworkMessageProcessStrate>();
+            container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
+            container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
+            container.Bind<IJNetwork>().ToSingleton<TiktokJNetwork>();
 
+            //绑定配置表管理类
             container.Bind<IJConfigManager>().ToSingleton<TiktokConfigManager>();
 
 
@@ -77,7 +81,7 @@ namespace Tiktok
             container.Bind<UIManager>().ToSingleton<UIManager>();
 
             //每次都是新的实例
-            container.Bind<GameLevelController>().ToSingleton<GameLevelController>();
+            container.Bind<GameLevelViewController>().ToSingleton<GameLevelViewController>();
             container.Bind<GameUnitController>().ToSingleton<GameUnitController>();
             container.Bind<ParallelLauncher>().ToSelf();
 

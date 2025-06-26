@@ -10,7 +10,7 @@ using System.Text;
 namespace JFramework.Extern
 {
 
-    public class LitJsonSerializer : ISerializer, IDeserializer
+    public class LitJsonSerializer : IDataConverter
     {
         public string Serialize(object obj)
         {

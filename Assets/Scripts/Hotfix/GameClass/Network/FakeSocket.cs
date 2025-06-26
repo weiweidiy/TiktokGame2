@@ -21,9 +21,9 @@ namespace Tiktok
         public FakeSocket()
         {
             var litJson = new LitJsonSerializer();
-            var resolve = new JNetMessageJsonTypeResolver(litJson, litJson); //to do:注册消息
+            var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:注册消息
             resolve.RegisterMessageType(1, typeof(C2S_Login));
-            var strate = new JNetMessageJsonSerializerStrate(litJson, litJson);
+            var strate = new JNetMessageJsonSerializerStrate(litJson);
 
             fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null));
         }

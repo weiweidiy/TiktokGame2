@@ -27,8 +27,11 @@ namespace Tiktok
         [Inject]
         ParallelLauncher veiwControllers;
 
+        /// <summary>
+        /// 所有
+        /// </summary>
         [Inject]
-        GameLevelController gameLevelController;
+        GameLevelViewController gameLevelController;
 
         [Inject]
         IJConfigManager jConfigManager;
@@ -44,23 +47,32 @@ namespace Tiktok
             //初始化ui管理器
             await uiManager.Initialize("UISceneGameSettings");
 
-            //启动关卡视图控制器
-            veiwControllers.Add(gameLevelController);
-            veiwControllers.Run(null);
 
-            //显示角色
-            var goRole = gameObjectManager.Rent("Role");
-            goRole.transform.parent = root.transform;
-            //gameObjectManager.Return(goRole);
+            //初始化所有视图控制器
+            InitializeVeiwControllers();
 
-
-
-            //显示ui
-            uiManager.ShowPanel<UIPanelBottomProperties>("UIPannelBottom", null);
-
+            //显示UI
+            ShowUI();
 
             //完成后，才会切换完成
             Debug.Log("SwitchToGame OnEnter done");
         }
+
+        void InitializeVeiwControllers()
+        {
+            //启动关卡视图控制器
+            veiwControllers.Add(gameLevelController);
+            veiwControllers.Run(null);
+        }
+
+        void ShowUI()
+        {
+            //显示底部按钮栏
+            uiManager.ShowPanel<UIPanelBottomProperties>("UIPannelBottom", null);
+        }
     }
 }
+//显示角色
+//var goRole = gameObjectManager.Rent("Role");
+//goRole.transform.parent = root.transform;
+//gameObjectManager.Return(goRole);

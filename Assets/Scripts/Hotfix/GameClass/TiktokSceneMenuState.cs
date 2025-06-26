@@ -31,13 +31,16 @@ namespace Tiktok
         ITransitionProvider transitionProvider;
 
         [Inject]
-        JNetwork jNetwork;
+        IJNetwork jNetwork;
 
         [Inject]
         LevelsModel levelModel;
 
         [Inject]
         IJConfigManager jConfigManager;
+
+        [Inject]
+        IDeserializer deserializer;
 
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
@@ -59,7 +62,7 @@ namespace Tiktok
             await uiManager.Initialize("UISceneMenuSettings");
 
             //加载配置表
-            jConfigManager.RegisterTable<LevelsCfg, LevelsData>(nameof(LevelsCfg), new LitJsonSerializer());
+            jConfigManager.RegisterTable<LevelsCfg, LevelsData>(nameof(LevelsCfg), deserializer);
             await jConfigManager.PreloadAllAsync();
 
             //显示menuUI
