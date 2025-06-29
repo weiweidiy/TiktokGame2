@@ -90,7 +90,7 @@ namespace JFramework
 
         public void Write(string toPath, string buffer, Encoding encoding = null)
         {
-            PlayerPrefs.SetString(toPath, Serialize(buffer));
+            PlayerPrefs.SetString(toPath, buffer);
         }
 
         public Task WriteAsync(string toPath, byte[] buffer, Encoding encoding = null)

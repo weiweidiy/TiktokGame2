@@ -62,8 +62,6 @@ namespace Tiktok
             SceneManager.SetActiveScene(scene);
 
 
-
-
             //初始化ui管理器
             await uiManager.Initialize("UISceneMenuSettings");
 
@@ -94,7 +92,7 @@ namespace Tiktok
 
 
             await context.sm.SwitchToGame();
-            Debug.Log("SwitchToGame done " + loginData.Code);
+            Debug.Log("SwitchToGame done " + loginData.LevelData.CurLevelUid);
             await transition.TransitionIn();
         }
 

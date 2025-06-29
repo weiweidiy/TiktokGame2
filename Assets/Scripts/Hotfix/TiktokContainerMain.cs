@@ -42,8 +42,11 @@ namespace Tiktok
             container.Bind<IDataConverter>().ToSingleton<LitJsonSerializer>();
             container.Bind<IDeserializer>().ToSingleton<LitJsonSerializer>();
 
-            //绑定配置表管理类
+            //绑定配置表管理类 dependence : IConfigLoader,IDeserializer
             container.Bind<IJConfigManager>().ToSingleton<TiktokConfigManager>();
+
+            //绑定存档管理器 dependence : IDataConverter
+            container.Bind<IDataManager>().ToSingleton<UnityPrefDataManager>();
 
             //绑定网络类
             container.Bind<INetMessageRegister>().ToSingleton<TiktokNetMessageRegister>();
@@ -53,7 +56,6 @@ namespace Tiktok
             container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
             container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
             container.Bind<IJNetwork>().ToSingleton<CommonJNetwork>();
-
 
 
             ///依赖EventManager，BaseClassPool

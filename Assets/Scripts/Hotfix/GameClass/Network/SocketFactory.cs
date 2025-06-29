@@ -9,9 +9,12 @@ namespace Tiktok
         [Inject]
         IJConfigManager jConfigManager;
 
+        [Inject]
+        IDataManager dataManager;
+
         public IJSocket Create()
         {
-            return new FakeSocket(jConfigManager);
+            return new FakeSocket(jConfigManager, dataManager);
         }
     }
 }

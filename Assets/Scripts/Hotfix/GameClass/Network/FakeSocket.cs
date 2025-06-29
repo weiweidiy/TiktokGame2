@@ -19,14 +19,14 @@ namespace Tiktok
 
         FakeServer fakeServer;
 
-        public FakeSocket(IJConfigManager jConfigManager)
+        public FakeSocket(IJConfigManager jConfigManager, IDataManager dataManager)
         {
             var litJson = new LitJsonSerializer();
             var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:×¢²áÏûÏ¢
             resolve.RegisterMessageType(1, typeof(C2S_Login));
             var strate = new JNetMessageJsonSerializerStrate(litJson);
 
-            fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null), jConfigManager);
+            fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null), jConfigManager, dataManager);
         }
 
         public void Close()

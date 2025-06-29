@@ -1,7 +1,9 @@
 ﻿using JFramework;
 using JFramework.Game;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Tiktok;
+using UnityEditor.Experimental.GraphView;
 
 
 namespace Tiktok
@@ -15,15 +17,15 @@ namespace Tiktok
 
         IJConfigManager configManager;
 
-        JDataStore jDataStore;
+        IGameDataStore jDataStore;
 
-        public FakeServer(INetworkMessageProcessStrate processStrate, IJConfigManager configManager)
+        public FakeServer(INetworkMessageProcessStrate processStrate, IJConfigManager configManager, IDataManager dataManager)
         {
             this.processStrate = processStrate;
             this.configManager = configManager;
 
             levelsManager = new LevelsManager(new CommonEventManager(new TiktokClassPool()));
-            //jDataStore = new JDataStore()
+            jDataStore = new JDataStore(dataManager);
 
             Initialize();
         }
@@ -50,34 +52,50 @@ namespace Tiktok
         }
 
 
-        public void Initialize()
+        public async void Initialize()
         {
             //初始化游戏数据
-            levelsManager.Initialize(GetLevelDataFromDataBase());
+            levelsManager.Initialize(await GetLevelDataFromDataBase());
         }
 
 
-        LevelData GetLevelDataFromDataBase()
+        async Task<LevelData> GetLevelDataFromDataBase()
         {
-            var levelData = new LevelData();
+            //从存档里获取记录，如果没有就创建个默认的
+            var levelData = await jDataStore.GetAsync<LevelData>(nameof(LevelData));
+
+            if (levelData != null)
+                return levelData;
+
+            //没有数据，要创建默认数据
+            levelData = new LevelData();
             levelData.CurLevelUid = "1";
 
             var dicLevelsData = new Dictionary<string, List<LevelNodeVO>>();
             levelData.LevelsData = dicLevelsData;
+            var allNodes = configManager.GetAll<LevelsNodesCfgData>();
 
+            var curLevelUid = "";
+            List<LevelNodeVO> nodes = null;
 
-            var allNodes =  configManager.GetAll<LevelsNodesCfgData>();
+            foreach (var levelNode in allNodes)
+            {
+                var levelUid = levelNode.LevelUid;
+                if (curLevelUid != levelUid)
+                {
+                    curLevelUid = levelNode.LevelUid;
+                    nodes = new List<LevelNodeVO>();
+                    dicLevelsData.Add(curLevelUid, nodes);
+                }
 
-            //假数据，真是从数据库获取
-            List<LevelNodeVO> nodes = new List<LevelNodeVO>();
-            var vo = new LevelNodeVO();
-            vo.uid = "1";
-            vo.state = LevelState.Locked;
-            nodes.Add(vo);
-            dicLevelsData.Add("1", nodes);
+                var vo = new LevelNodeVO();
+                vo.uid = levelNode.Uid;
+                vo.state = levelNode.Uid == "1" ? LevelState.Unlocked : LevelState.Locked;
+                nodes.Add(vo);
 
+            }
 
-
+            await jDataStore.SaveAsync<LevelData>(nameof(LevelData), levelData);
             return levelData;
         }
     }
