@@ -2,8 +2,7 @@
 using JFramework.Game;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Tiktok;
-using UnityEditor.Experimental.GraphView;
+
 
 
 namespace Tiktok
@@ -29,13 +28,19 @@ namespace Tiktok
 
             Initialize();
         }
+        public async void Initialize()
+        {
+            //初始化游戏数据
+            levelsManager.Initialize(await GetLevelDataFromDataBase());
+        }
+
 
 
         public byte[] OnRevieveData(byte[] data)
         {
             //处理收到的消息
             var message = processStrate.ProcessComingMessage(data);
-            if (message.TypeId == 1) //收到登录消息
+            if (message.TypeId == (int)ProtocolType.LoginReq) //收到登录消息
             {
                 return OnLogin(message);
             }
@@ -46,17 +51,17 @@ namespace Tiktok
 
         byte[] OnLogin(IJNetMessage message)
         {
-            var response = new S2C_Login() { Uid = message.Uid, TypeId = 2, Code = 1 };
-            response.LevelData = levelsManager.Data;
+            var response = new LoginRes() { 
+                Code = 0 , 
+                Uid = message.Uid,
+                LevelData = levelsManager.Data 
+            };
+
             return processStrate.ProcessOutMessage(response);
         }
 
 
-        public async void Initialize()
-        {
-            //初始化游戏数据
-            levelsManager.Initialize(await GetLevelDataFromDataBase());
-        }
+
 
 
         async Task<LevelData> GetLevelDataFromDataBase()

@@ -22,6 +22,8 @@ namespace Tiktok
         [Inject]
         TiktokGameObjectManager gameObjectManager;
 
+        TiktokBackgroundView curBackgroundView;
+
         [Inject]
         public GameLevelViewController(CommonEventManager eventManager) : base(eventManager)
         {
@@ -33,24 +35,23 @@ namespace Tiktok
 
             var curLevelId = levelsMode.GetCurLevelUid();
             var cfgData = jConfigManager.Get<LevelsCfgData>(curLevelId);
-            var prefabData =jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
+            var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
 
 
             var goLevel = gameObjectManager.Rent(prefabData.PrefabName);
             goLevel.transform.parent = gameObjectManager.GoRoot.transform;
+            curBackgroundView = goLevel.GetComponent<TiktokBackgroundView>();
             //gameObjectManager.Return(goRole);
-
-
-            //var lst = jConfigManager.GetAll<LevelsCfgData>();
-            //foreach (var level in lst)
-            //{
-            //    Debug.Log(level.Name);
-            //}
         }
 
         protected override void OnStop()
         {
             base.OnStop();
+        }
+
+        public Transform GetNode(int index)
+        {
+            return curBackgroundView.GetNode(index);
         }
     }
 }

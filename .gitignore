@@ -216,3 +216,9 @@ Coffee.UIParticle.csproj
 Coffee.UIParticle.Player.csproj
 JFramework.Player.csproj
 JFramework.csproj
+CW.Common.Player.csproj
+CW.Common.csproj
+LeanCommon.Player.csproj
+LeanCommon.csproj
+LeanTouch.Player.csproj
+LeanTouch.csproj

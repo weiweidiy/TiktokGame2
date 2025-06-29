@@ -11,7 +11,7 @@ namespace Tiktok
         {
             var tables = new Dictionary<int, Type>();
 
-            tables.Add(2, typeof(S2C_Login)); //只需要注册服务器返回的消息类型
+            tables.Add(2, typeof(LoginRes)); //只需要注册服务器返回的消息类型
 
             return tables;
         }

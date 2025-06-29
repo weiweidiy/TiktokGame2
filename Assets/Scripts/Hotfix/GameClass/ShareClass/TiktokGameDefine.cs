@@ -11,5 +11,13 @@ namespace Tiktok
         Completed = 1 << 1, //ÒÑÍê³É
     }
 
+    public enum ProtocolType
+    {
+        LoginReq = 1,
+        LoginRes = 2,
+        FightReq = 3,
+        FightRes = 4
+
+    }
 }
 

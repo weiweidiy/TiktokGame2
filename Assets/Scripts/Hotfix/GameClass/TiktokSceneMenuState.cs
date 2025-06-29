@@ -81,10 +81,11 @@ namespace Tiktok
             //链接服务器
             await jNetwork.Connect("");
             Debug.Log("链接成功");
-            var c2sLogin = new C2S_Login();
+            var c2sLogin = new LoginReq();
             c2sLogin.Uid = Guid.NewGuid().ToString();
-            c2sLogin.TypeId = 1;
-            var loginData = await jNetwork.SendMessage<S2C_Login>(c2sLogin);
+
+
+            var loginData = await jNetwork.SendMessage<LoginRes>(c2sLogin);
 
 
             //初始化必要模型

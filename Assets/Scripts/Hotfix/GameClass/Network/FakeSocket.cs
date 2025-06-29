@@ -23,7 +23,7 @@ namespace Tiktok
         {
             var litJson = new LitJsonSerializer();
             var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:×¢²áÏûÏ¢
-            resolve.RegisterMessageType(1, typeof(C2S_Login));
+            resolve.RegisterMessageType(1, typeof(LoginReq));
             var strate = new JNetMessageJsonSerializerStrate(litJson);
 
             fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null), jConfigManager, dataManager);
