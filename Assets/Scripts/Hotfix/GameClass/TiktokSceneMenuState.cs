@@ -39,9 +39,6 @@ namespace Tiktok
         [Inject]
         IJConfigManager jConfigManager;
 
-        [Inject]
-        IDeserializer deserializer;
-
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
         string sceneName = "SceneMenu";
@@ -50,20 +47,26 @@ namespace Tiktok
         {
             CheckInject();
 
-            //初始化游戏对象管理器
-            await gameObjectManager.Initialize();
+            //to do: 因为持久保留，要先清理，或者通过参数确定是否要重新初始化
 
+            ////加载配置表        
+            //await jConfigManager.PreloadAllAsync();
+            ////初始化游戏对象管理器
+            //await gameObjectManager.Initialize();
+
+
+            //这个之前会持久保留，不会被销毁
             var scene = await SwitchScene(sceneName, JFramework.SceneMode.Additive);
 
             //设置为活动场景
             SceneManager.SetActiveScene(scene);
 
+
+
+
             //初始化ui管理器
             await uiManager.Initialize("UISceneMenuSettings");
 
-            //加载配置表
-            jConfigManager.RegisterTable<LevelsCfg, LevelsData>(nameof(LevelsCfg), deserializer);
-            await jConfigManager.PreloadAllAsync();
 
             //显示menuUI
             var uiArg = new UIPanelMenuProperties();
@@ -87,7 +90,8 @@ namespace Tiktok
 
 
             //初始化必要模型
-            levelModel.Initialize(loginData.LevelData.LevelsData);
+            levelModel.Initialize(loginData.LevelData);
+
 
             await context.sm.SwitchToGame();
             Debug.Log("SwitchToGame done " + loginData.Code);

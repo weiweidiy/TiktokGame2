@@ -5,8 +5,8 @@ namespace Tiktok
 {
     public class LevelData
     {
-        public int CurLevel;
-        public List<LevelVO> LevelsData;
+        public string CurLevelUid;
+        public Dictionary<string, List<LevelNodeVO>> LevelsData;
     }
 }
 

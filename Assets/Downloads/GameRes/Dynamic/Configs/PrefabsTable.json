@@ -1,0 +1,22 @@
+[
+  {
+    "Uid":"1",
+    "PrefabName":"Level_1"
+   },
+  {
+    "Uid":"2",
+    "PrefabName":"Level_2"
+   },
+  {
+    "Uid":"3",
+    "PrefabName":"Level_3"
+   },
+  {
+    "Uid":"4",
+    "PrefabName":"Level_4"
+   },
+  {
+    "Uid":"100",
+    "PrefabName":"Role_1"
+   }
+]

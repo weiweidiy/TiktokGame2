@@ -1,6 +1,9 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
+using JFramework;
+using JFramework.Game;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -18,6 +21,11 @@ namespace Tiktok
 
         GameObject pools;
 
+        public GameObject GoRoot { get; set; }
+
+        [Inject]
+        IJConfigManager jConfigManager;
+
         [Inject]
         public TiktokGameObjectManager(TiktokGameObjectPool goPool)
         {
@@ -31,7 +39,19 @@ namespace Tiktok
         {
             pools = new GameObject("Pools");
 
-            await goPool.Regist("Role", pools.transform,10, OnCreate, OnRelease, OnRent,OnReturn);
+            var prefabsList = jConfigManager.GetAll<PrefabsCfgData>();
+            var tasks = new List<UniTask>();
+            foreach (var prefabs in prefabsList)
+            {
+                var location = prefabs.PrefabName;
+                if (goPool.HasRegist(location))
+                    continue;
+
+                var taskLevels = goPool.Regist(location, pools.transform, 10, OnCreate, OnRelease, OnRent, OnReturn);
+                tasks.Add(taskLevels);
+            }        
+
+            await UniTask.WhenAll(tasks);
         }
 
         private void OnReturn(GameObject go)

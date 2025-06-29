@@ -31,7 +31,10 @@ namespace Tiktok
         /// 所有
         /// </summary>
         [Inject]
-        GameLevelViewController gameLevelController;
+        GameLevelViewController gameLevelViewController;
+
+        [Inject]
+        GameLevelNodeViewController gameLevelNodeViewController;
 
         [Inject]
         IJConfigManager jConfigManager;
@@ -44,6 +47,7 @@ namespace Tiktok
             SceneManager.SetActiveScene(scene);
 
             var root = new GameObject("root");
+            gameObjectManager.GoRoot = root;
             //初始化ui管理器
             await uiManager.Initialize("UISceneGameSettings");
 
@@ -61,7 +65,8 @@ namespace Tiktok
         void InitializeVeiwControllers()
         {
             //启动关卡视图控制器
-            veiwControllers.Add(gameLevelController);
+            veiwControllers.Add(gameLevelViewController);
+            veiwControllers.Add(gameLevelNodeViewController);
             veiwControllers.Run(null);
         }
 

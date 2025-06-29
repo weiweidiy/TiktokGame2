@@ -17,6 +17,12 @@ namespace Tiktok
         IJConfigManager jConfigManager;
 
         [Inject]
+        LevelsModel levelsMode;
+
+        [Inject]
+        TiktokGameObjectManager gameObjectManager;
+
+        [Inject]
         public GameLevelViewController(CommonEventManager eventManager) : base(eventManager)
         {
         }
@@ -25,24 +31,26 @@ namespace Tiktok
         {
             base.OnRun(extraData);
 
-            var lst = jConfigManager.GetAll<LevelsData>();
-            foreach (var level in lst)
-            {
-                Debug.Log(level.Name);
-            }
+            var curLevelId = levelsMode.GetCurLevelUid();
+            var cfgData = jConfigManager.Get<LevelsCfgData>(curLevelId);
+            var prefabData =jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
+
+
+            var goLevel = gameObjectManager.Rent(prefabData.PrefabName);
+            goLevel.transform.parent = gameObjectManager.GoRoot.transform;
+            //gameObjectManager.Return(goRole);
+
+
+            //var lst = jConfigManager.GetAll<LevelsCfgData>();
+            //foreach (var level in lst)
+            //{
+            //    Debug.Log(level.Name);
+            //}
         }
 
         protected override void OnStop()
         {
             base.OnStop();
-        }
-    }
-
-    public class GameUnitController : BaseViewController
-    {
-        [Inject]
-        public GameUnitController(CommonEventManager eventManager) : base(eventManager)
-        {
         }
     }
 }

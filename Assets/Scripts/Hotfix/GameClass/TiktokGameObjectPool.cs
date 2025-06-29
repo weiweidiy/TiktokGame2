@@ -1,5 +1,6 @@
 ﻿using Adic;
 using Cysharp.Threading.Tasks;
+using Game.Common;
 using JFramework;
 using System;
 using System.Threading.Tasks;

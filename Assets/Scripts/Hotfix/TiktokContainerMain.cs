@@ -39,19 +39,21 @@ namespace Tiktok
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
             container.Bind<IConfigLoader>().ToSingleton<YooAssetsLoader>();
-
-            //绑定网络类
             container.Bind<IDataConverter>().ToSingleton<LitJsonSerializer>();
             container.Bind<IDeserializer>().ToSingleton<LitJsonSerializer>();
-            container.Bind<IMessageTypeResolver>().ToSingleton<TiktokJNetMessageJsonTypeResolver>();
-            container.Bind<INetMessageSerializerStrate>().ToSingleton<TiktokJNetMessageJsonSerializerStrate>();
-            container.Bind<INetworkMessageProcessStrate>().ToSingleton<TiktokJNetworkMessageProcessStrate>();
-            container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
-            container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
-            container.Bind<IJNetwork>().ToSingleton<TiktokJNetwork>();
 
             //绑定配置表管理类
             container.Bind<IJConfigManager>().ToSingleton<TiktokConfigManager>();
+
+            //绑定网络类
+            container.Bind<INetMessageRegister>().ToSingleton<TiktokNetMessageRegister>();
+            container.Bind<IMessageTypeResolver>().ToSingleton<CommonJNetMessageTypeResolver>();
+            container.Bind<INetMessageSerializerStrate>().ToSingleton<CommonJNetMessageJsonSerializerStrate>();
+            container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonJNetworkMessageProcessStrate>();
+            container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
+            container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
+            container.Bind<IJNetwork>().ToSingleton<CommonJNetwork>();
+
 
 
             ///依赖EventManager，BaseClassPool
@@ -82,7 +84,7 @@ namespace Tiktok
 
             //每次都是新的实例
             container.Bind<GameLevelViewController>().ToSingleton<GameLevelViewController>();
-            container.Bind<GameUnitController>().ToSingleton<GameUnitController>();
+            container.Bind<GameLevelNodeViewController>().ToSingleton<GameLevelNodeViewController>();
             container.Bind<ParallelLauncher>().ToSelf();
 
 

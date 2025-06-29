@@ -1,5 +1,6 @@
 using JFramework;
 using JFramework.Extern;
+using JFramework.Game;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,14 +19,14 @@ namespace Tiktok
 
         FakeServer fakeServer;
 
-        public FakeSocket()
+        public FakeSocket(IJConfigManager jConfigManager)
         {
             var litJson = new LitJsonSerializer();
             var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:×¢²áÏûÏ¢
             resolve.RegisterMessageType(1, typeof(C2S_Login));
             var strate = new JNetMessageJsonSerializerStrate(litJson);
 
-            fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null));
+            fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null), jConfigManager);
         }
 
         public void Close()

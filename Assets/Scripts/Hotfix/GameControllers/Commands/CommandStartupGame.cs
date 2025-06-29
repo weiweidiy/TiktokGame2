@@ -2,6 +2,7 @@ using Adic;
 using Adic.Container;
 using Cysharp.Threading.Tasks;
 using JFramework;
+using JFramework.Game;
 using Tiktok;
 using UnityEngine;
 
@@ -27,6 +28,15 @@ namespace GameCommands
         [Inject]
         BaseClassPool classPool;
 
+        /// <summary>
+        /// 游戏场景对象管理器
+        /// </summary>
+        [Inject]
+        TiktokGameObjectManager gameObjectManager;
+
+
+        [Inject]
+        IJConfigManager jConfigManager;
 
 
         /// <summary>
@@ -81,6 +91,13 @@ namespace GameCommands
             var context = container.Resolve<TiktokSceneSMContext>();
             context.sm = sm;
             sm.Initialize(context);
+
+            //加载配置表        
+            await jConfigManager.PreloadAllAsync();
+            //初始化游戏对象管理器
+            await gameObjectManager.Initialize();
+
+
             await sm.SwitchToMenu();                 
         }
 

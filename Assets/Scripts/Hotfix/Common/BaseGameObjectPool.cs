@@ -1,10 +1,11 @@
 ﻿using Cysharp.Threading.Tasks;
+using JFramework;
 using MackySoft.XPool.Unity;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JFramework
+namespace Game.Common
 {
     /// <summary>
     /// GameObject对象池
@@ -58,13 +59,16 @@ namespace JFramework
             go.name = location;
 
             goPool.Return(go);
-
-
             originObject.Add(location, goPool);
             //隐藏起来
             go.SetActive(false);
 
             
+        }
+
+        public bool HasRegist(string location)
+        {
+            return originObject.ContainsKey(location);
         }
 
         /// <summary>
