@@ -2,6 +2,8 @@
 using Game.Common;
 using JFramework;
 using JFramework.Package;
+using System.Net.Sockets;
+using UnityEngine;
 
 
 namespace Tiktok
@@ -35,9 +37,24 @@ namespace Tiktok
             jNetwork.onMessage -= JNetwork_onMessage;
         }
 
-        private void JNetwork_onMessage(IJNetMessage obj)
+        private void JNetwork_onMessage(IJNetMessage message)
         {
-           // throw new System.NotImplementedException();
+            switch ((ProtocolType)message.TypeId)
+            {
+                case ProtocolType.FightRes:
+                    {
+                        Debug.Log("收到 FightRes");
+                    }
+                    return;
+                case ProtocolType.LevelNodeUnlockedNtf:
+                    {
+                        Debug.Log("收到 LevelNodeUnlockedNtf");
+                    }
+                    return ;
+
+                default: return;
+            }
+
         }
     }
 }

@@ -1,3 +1,4 @@
+using Adic;
 using JFramework;
 using JFramework.Extern;
 using JFramework.Game;
@@ -19,14 +20,10 @@ namespace Tiktok
 
         FakeServer fakeServer;
 
-        public FakeSocket(IJConfigManager jConfigManager, IDataManager dataManager)
+        [Inject]
+        public void Initialize(FakeServer fakeServer)
         {
-            var litJson = new LitJsonSerializer();
-            var resolve = new JNetMessageJsonTypeResolver(litJson); //to do:×¢²áÏûÏ¢
-            resolve.RegisterMessageType(1, typeof(LoginReq));
-            var strate = new JNetMessageJsonSerializerStrate(litJson);
-
-            fakeServer = new FakeServer(new JNetworkMessageProcessStrate(strate,resolve,null,null), jConfigManager, dataManager);
+            this.fakeServer = fakeServer;
         }
 
         public void Close()
@@ -48,11 +45,17 @@ namespace Tiktok
         public void Send(byte[] data)
         {
             //throw new NotImplementedException();
+
             var response = fakeServer.OnRevieveData(data);
 
             onBinary?.Invoke(this, response);
-
         }
+
+        public void Recieve(byte[] data)
+        {
+            onBinary?.Invoke(this, data);
+        }
+ 
     }
 }
 

@@ -1,5 +1,7 @@
 ﻿using Adic;
+using Adic.Container;
 using Game.Common;
+using GameCommands;
 using JFramework;
 using JFramework.Game;
 using JFramework.Package;
@@ -15,6 +17,9 @@ namespace Tiktok
     /// </summary>
     public class GameLevelNodeViewController : BaseGameController
     {
+        [Inject]
+        IInjectionContainer container;
+
         [Inject]
         IJConfigManager jConfigManager;
 
@@ -63,14 +68,13 @@ namespace Tiktok
             }
         }
 
-        private async void NodeView_onClicked(TiktokLevelNodeView nodeView)
+        private void NodeView_onClicked(TiktokLevelNodeView nodeView)
         {
             var nodeUid = dicLevelNodesView[nodeView.GetHashCode()];
             Debug.Log(nodeUid + "  节点被点击了");
-            var req = new FightReq();
-            req.Uid = Guid.NewGuid().ToString();
-            req.LevelNodeUid = nodeUid;
-            var response = await jNetwork.SendMessage<FightRes>(req);
+
+            var dispatcher = container.GetCommandDispatcher();
+            dispatcher.Dispatch<CommandFight>(nodeUid);
 
         }
 

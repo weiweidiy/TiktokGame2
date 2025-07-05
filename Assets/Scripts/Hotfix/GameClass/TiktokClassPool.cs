@@ -7,7 +7,10 @@ namespace Tiktok
     {
         public override void Initialize()
         {
-
+            Regist<LoginReq>();
+            Regist<LoginRes>();
+            Regist<FightReq>();
+            Regist<FightRes>();
         }
 
         void RegistEvent<T>(Action<Event> onRent = null, Action<Event> onReturn = null, Action<Event> onRelease = null) where T : Event, new()

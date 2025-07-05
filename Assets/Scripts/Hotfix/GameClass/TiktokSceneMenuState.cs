@@ -39,6 +39,9 @@ namespace Tiktok
         [Inject]
         IJConfigManager jConfigManager;
 
+        [Inject]
+        TiktokClassPool classPool;
+
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 
         string sceneName = "SceneMenu";
@@ -81,11 +84,13 @@ namespace Tiktok
             //链接服务器
             await jNetwork.Connect("");
             Debug.Log("链接成功");
-            var c2sLogin = new LoginReq();
-            c2sLogin.Uid = Guid.NewGuid().ToString();
+            //var c2sLogin = new LoginReq();
+            //c2sLogin.Uid = Guid.NewGuid().ToString();
 
-
-            var loginData = await jNetwork.SendMessage<LoginRes>(c2sLogin);
+            var loginReq = classPool.Rent<LoginReq>();
+            loginReq.Uid = Guid.NewGuid().ToString();
+            var loginData = await jNetwork.SendMessage<LoginRes>(loginReq);
+            classPool.Return(loginReq);
 
 
             //初始化必要模型

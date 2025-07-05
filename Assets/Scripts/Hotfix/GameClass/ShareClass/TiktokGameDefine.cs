@@ -16,8 +16,10 @@ namespace Tiktok
         LoginReq = 1,
         LoginRes = 2,
         FightReq = 3,
-        FightRes = 4
+        FightRes = 4,
 
+        //服务器推送消息
+        LevelNodeUnlockedNtf = 1000,
     }
 }
 

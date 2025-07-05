@@ -49,13 +49,14 @@ namespace Tiktok
             container.Bind<IDataManager>().ToSingleton<UnityPrefDataManager>();
 
             //绑定网络类
-            container.Bind<INetMessageRegister>().ToSingleton<TiktokNetMessageRegister>();
-            container.Bind<IMessageTypeResolver>().ToSingleton<CommonJNetMessageTypeResolver>();
+            container.Bind<INetMessageRegister>().ToSingleton<TiktokClientNetMessageRegister>().As("Client");
+            container.Bind<IMessageTypeResolver>().ToSingleton<CommonClientJNetMessageTypeResolver>().As("Client");
             container.Bind<INetMessageSerializerStrate>().ToSingleton<CommonJNetMessageJsonSerializerStrate>();
-            container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonJNetworkMessageProcessStrate>();
+            container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonClientJNetworkMessageProcessStrate>().As("Client");
+            container.Bind<IJSocket>().To<FakeSocket>();
             container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
             container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
-            container.Bind<IJNetwork>().ToSingleton<CommonJNetwork>();
+            container.Bind<IJNetwork>().ToSingleton<CommonClientJNetwork>();
 
 
             ///依赖EventManager，BaseClassPool
@@ -117,6 +118,20 @@ namespace Tiktok
             //container.RegisterCommand<CommandStartupGame>();
             //container.RegisterCommand<CommandSwitchToBattleScene>();
             //container.RegisterCommand<CommandNextBattleState>();
+
+
+
+
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 服务器相关 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+            container.Bind<LevelsManager>().ToSingleton();
+            container.Bind<INetMessageRegister>().ToSingleton<TiktokServerNetMessageRegister>().As("Server");
+            container.Bind<IMessageTypeResolver>().ToSingleton<CommonServerJNetMessageTypeResolver>().As("Server");
+            container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonServerJNetworkMessageProcessStrate>().As("Server");
+            container.Bind<FakeServer>().ToSingleton();
+            
+            container.Bind<FakeNotifier>().ToSingleton();
+
         }
 
         public override void Init()

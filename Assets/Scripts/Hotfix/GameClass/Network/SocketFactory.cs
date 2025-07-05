@@ -1,4 +1,5 @@
 ﻿using Adic;
+using Adic.Container;
 using JFramework;
 using JFramework.Game;
 
@@ -12,9 +13,15 @@ namespace Tiktok
         [Inject]
         IDataManager dataManager;
 
+        [Inject]
+        IInjectionContainer container;
+
         public IJSocket Create()
         {
-            return new FakeSocket(jConfigManager, dataManager);
+            var socket = container.Resolve<IJSocket>();
+            return socket;
+
+            //return new FakeSocket(jConfigManager, dataManager);
         }
     }
 }

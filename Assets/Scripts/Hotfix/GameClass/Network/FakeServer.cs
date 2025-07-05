@@ -1,8 +1,12 @@
-﻿using JFramework;
+﻿using Adic;
+using Cysharp.Threading.Tasks;
+using JFramework;
 using JFramework.Game;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine;
 
 
 
@@ -19,18 +23,25 @@ namespace Tiktok
 
         IGameDataStore jDataStore;
 
-        public FakeServer(INetworkMessageProcessStrate processStrate, IJConfigManager configManager, IDataManager dataManager)
+        FakeNotifier clientNotifier;
+
+        [Inject]
+        public FakeServer([Inject("Server")]INetworkMessageProcessStrate processStrate, IJConfigManager configManager, IDataManager dataManager , LevelsManager levelManager)
         {
             this.processStrate = processStrate;
             this.jConfigManager = configManager;
+            this.levelsManager = levelManager;
 
-            levelsManager = new LevelsManager(new CommonEventManager(new TiktokClassPool()));
+            //levelsManager = new LevelsManager(new CommonEventManager(new TiktokClassPool()));
             jDataStore = new JDataStore(dataManager);
 
-            Initialize();
+            //Initialize();
         }
-        public async void Initialize()
+
+        [Inject]
+        public async void Initialize(FakeNotifier clientNotifier)
         {
+            this.clientNotifier = clientNotifier;
             //初始化游戏数据
             levelsManager.Initialize(await GetLevelDataFromDataBase());
         }
@@ -49,7 +60,7 @@ namespace Tiktok
                 case (int)ProtocolType.FightReq:
                     return OnFight(message);
                 default:
-                    return null;
+                    throw new Exception("没有实现协议 " +message.TypeId);
 
             }
         }
@@ -65,6 +76,8 @@ namespace Tiktok
                 LevelData = levelsManager.Data
             };
 
+
+
             return processStrate.ProcessOutMessage(response);
         }
 
@@ -74,21 +87,41 @@ namespace Tiktok
             var fightReq = message as FightReq;
             var nodeUid = fightReq.LevelNodeUid;
 
+
+            //检查是否解锁
+ 
+
             //to do: 模拟战斗
+            var result = true;
+
 
             //根据战斗结果，解锁后续节点或关卡
             var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(nodeUid);
             var nextNodeUid = nodeCfgData.NextUid;
+
+            if (result)
+            {
+                //解锁
+                levelsManager.UnlockNodes(nextNodeUid);
+                //通知解锁
+                UniTask.Run(() =>
+                {
+                    var ntf = new LevelNodeUnlockedNtf();
+                    ntf.Uid = Guid.NewGuid().ToString();
+                    ntf.LevelNodeUid = nextNodeUid;
+                    var msgNtf = processStrate.ProcessOutMessage(ntf);
+                    clientNotifier.Notify(msgNtf);
+                }); 
+            }
+
 
             var response = new FightRes()
             {
                 Code = 0,
                 Uid = message.Uid,
             };
-
             return processStrate.ProcessOutMessage(response);
         }
-
 
         async Task<LevelData> GetLevelDataFromDataBase()
         {
