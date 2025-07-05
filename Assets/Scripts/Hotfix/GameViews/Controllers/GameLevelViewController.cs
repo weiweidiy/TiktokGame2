@@ -11,7 +11,7 @@ namespace Tiktok
     /// <summary>
     /// 游戏关卡控制器
     /// </summary>
-    public class GameLevelViewController : BaseViewController
+    public class GameLevelViewController : BaseGameController
     {
         [Inject]
         IJConfigManager jConfigManager;

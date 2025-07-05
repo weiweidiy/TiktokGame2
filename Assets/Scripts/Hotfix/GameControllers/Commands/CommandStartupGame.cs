@@ -1,6 +1,7 @@
 using Adic;
 using Adic.Container;
 using Cysharp.Threading.Tasks;
+using Game.Common;
 using JFramework;
 using JFramework.Game;
 using Tiktok;
@@ -37,6 +38,12 @@ namespace GameCommands
 
         [Inject]
         IJConfigManager jConfigManager;
+
+        [Inject]
+        TiktokNetMessageController tiktokNetMessageController;
+
+        [Inject]
+        ParallelLauncher parallelLauncher;
 
 
         /// <summary>
@@ -97,6 +104,8 @@ namespace GameCommands
             //初始化游戏对象管理器
             await gameObjectManager.Initialize();
 
+            parallelLauncher.Add(tiktokNetMessageController);
+            parallelLauncher.Run(null);
 
             await sm.SwitchToMenu();                 
         }

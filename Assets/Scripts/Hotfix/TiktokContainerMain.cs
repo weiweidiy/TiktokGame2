@@ -32,8 +32,8 @@ namespace Tiktok
             ////绑定通用工具类(无依赖)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //container.Bind<PrefabLocation>().ToSingleton<PrefabLocation>();
             //container.Bind<WarriorAnimation>().ToSingleton<WarriorAnimation>();
-            container.Bind<Utility>().ToSingleton<Utility>();
-            container.Bind<EventManager>().ToSingleton<EventManager>();
+            container.Bind<Utility>().ToSingleton();
+            container.Bind<EventManager>().ToSingleton();
             container.Bind<IAssetsLoader>().ToSingleton<YooAssetsLoader>();
             container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
@@ -59,7 +59,7 @@ namespace Tiktok
 
 
             ///依赖EventManager，BaseClassPool
-            container.Bind<CommonEventManager>().ToSingleton<CommonEventManager>();
+            container.Bind<CommonEventManager>().ToSingleton();
 
             ////绑定通用逻辑
             //container.Bind<GameObjectManager>().ToSingleton<MyGameObjectPool>();
@@ -79,14 +79,17 @@ namespace Tiktok
 
             ////绑定视图controller~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ///依赖IAssetsLoader
-            container.Bind<TiktokGameObjectPool>().ToSingleton<TiktokGameObjectPool>();
+            container.Bind<TiktokGameObjectPool>().ToSingleton();
             container.Bind<TiktokGameObjectManager>().ToSingleton();
             ///依赖IAssetsLoader
-            container.Bind<UIManager>().ToSingleton<UIManager>();
+            container.Bind<UIManager>().ToSingleton();
 
+            //消息处理
+            container.Bind<TiktokNetMessageController>().ToSingleton();
+            
+            container.Bind<GameLevelViewController>().ToSingleton();
+            container.Bind<GameLevelNodeViewController>().ToSingleton();
             //每次都是新的实例
-            container.Bind<GameLevelViewController>().ToSingleton<GameLevelViewController>();
-            container.Bind<GameLevelNodeViewController>().ToSingleton<GameLevelNodeViewController>();
             container.Bind<ParallelLauncher>().ToSelf();
 
 
@@ -100,11 +103,11 @@ namespace Tiktok
 
 
             //绑定系统
-            container.Bind<TiktokSceneInitState>().ToSingleton<TiktokSceneInitState>();
-            container.Bind<TiktokSceneMenuState>().ToSingleton<TiktokSceneMenuState>();
-            container.Bind<TiktokSceneGameState>().ToSingleton<TiktokSceneGameState>();
-            container.Bind<TiktokSceneSMContext>().ToSingleton<TiktokSceneSMContext>();
-            container.Bind<TiktokSceneSM>().ToSingleton<TiktokSceneSM>();
+            container.Bind<TiktokSceneInitState>().ToSingleton();
+            container.Bind<TiktokSceneMenuState>().ToSingleton();
+            container.Bind<TiktokSceneGameState>().ToSingleton();
+            container.Bind<TiktokSceneSMContext>().ToSingleton();
+            container.Bind<TiktokSceneSM>().ToSingleton();
 
             //container.Bind<BattleCalculator>().ToSingleton<BattleCalculator>();
             //container.Bind<BattleSystem>().ToSingleton<BattleSystem>();

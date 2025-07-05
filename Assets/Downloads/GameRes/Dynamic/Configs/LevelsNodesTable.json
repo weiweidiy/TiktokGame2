@@ -3,66 +3,99 @@
     "Uid":"1",
     "LevelUid":"1",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "2"
+         ]
    },
   {
     "Uid":"2",
     "LevelUid":"1",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "3"
+         ]
    },
   {
     "Uid":"3",
     "LevelUid":"1",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "4,5"
+         ]
    },
   {
     "Uid":"4",
     "LevelUid":"1",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "0"
+         ]
    },
   {
     "Uid":"5",
     "LevelUid":"1",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "6"
+         ]
    },
   {
     "Uid":"6",
     "LevelUid":"2",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "7"
+         ]
    },
   {
     "Uid":"7",
     "LevelUid":"2",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "8"
+         ]
    },
   {
     "Uid":"8",
     "LevelUid":"2",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "9"
+         ]
    },
   {
     "Uid":"9",
     "LevelUid":"2",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "10"
+         ]
    },
   {
     "Uid":"10",
     "LevelUid":"2",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "11"
+         ]
    },
   {
     "Uid":"11",
     "LevelUid":"2",
     "PrefabUid":"100",
-    "EventType":"Fight"
+    "EventType":"Fight",
+    "NextUid":[
+            "12"
+         ]
    }
 ]

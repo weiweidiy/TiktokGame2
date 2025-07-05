@@ -3,11 +3,14 @@ using JFramework.Package;
 
 namespace Game.Common
 {
-    public class BaseViewController : BaseRunable
+    /// <summary>
+    /// 游戏控制器基类，游戏业务逻辑写在这里
+    /// </summary>
+    public class BaseGameController : BaseRunable
     {
         protected EventManager eventManager;
 
-        public BaseViewController(EventManager eventManager)
+        public BaseGameController(EventManager eventManager)
         {
             this.eventManager = eventManager;
         }

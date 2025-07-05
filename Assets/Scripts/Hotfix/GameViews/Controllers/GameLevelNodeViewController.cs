@@ -3,16 +3,23 @@ using Game.Common;
 using JFramework;
 using JFramework.Game;
 using JFramework.Package;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 namespace Tiktok
 {
-    public class GameLevelNodeViewController : BaseViewController
+    /// <summary>
+    /// 关卡节点视图控制器
+    /// </summary>
+    public class GameLevelNodeViewController : BaseGameController
     {
         [Inject]
         IJConfigManager jConfigManager;
+
+        [Inject]
+        IJNetwork jNetwork; //用命令代替
 
         [Inject]
         LevelsModel levelsMode;
@@ -23,6 +30,9 @@ namespace Tiktok
         [Inject]
         GameLevelViewController gameLevelViewController;
 
+        /// <summary>
+        /// 当前关卡所有节点
+        /// </summary>
         Dictionary<int, string> dicLevelNodesView = new Dictionary<int, string>();
 
         [Inject]
@@ -53,10 +63,15 @@ namespace Tiktok
             }
         }
 
-        private void NodeView_onClicked(TiktokLevelNodeView nodeView)
+        private async void NodeView_onClicked(TiktokLevelNodeView nodeView)
         {
             var nodeUid = dicLevelNodesView[nodeView.GetHashCode()];
             Debug.Log(nodeUid + "  节点被点击了");
+            var req = new FightReq();
+            req.Uid = Guid.NewGuid().ToString();
+            req.LevelNodeUid = nodeUid;
+            var response = await jNetwork.SendMessage<FightRes>(req);
+
         }
 
         protected override void OnStop()

@@ -25,5 +25,8 @@ namespace JFramework
         //关卡事件
         public string EventType;
 
+        //后置节点
+        public List<string> NextUid;
+
     }
 }

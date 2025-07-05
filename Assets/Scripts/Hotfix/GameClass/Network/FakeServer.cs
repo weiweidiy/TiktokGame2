@@ -1,5 +1,6 @@
 ﻿using JFramework;
 using JFramework.Game;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,14 +15,14 @@ namespace Tiktok
 
         LevelsManager levelsManager;
 
-        IJConfigManager configManager;
+        IJConfigManager jConfigManager;
 
         IGameDataStore jDataStore;
 
         public FakeServer(INetworkMessageProcessStrate processStrate, IJConfigManager configManager, IDataManager dataManager)
         {
             this.processStrate = processStrate;
-            this.configManager = configManager;
+            this.jConfigManager = configManager;
 
             levelsManager = new LevelsManager(new CommonEventManager(new TiktokClassPool()));
             jDataStore = new JDataStore(dataManager);
@@ -40,28 +41,53 @@ namespace Tiktok
         {
             //处理收到的消息
             var message = processStrate.ProcessComingMessage(data);
-            if (message.TypeId == (int)ProtocolType.LoginReq) //收到登录消息
+            switch (message.TypeId)
             {
-                return OnLogin(message);
-            }
+                case (int)ProtocolType.LoginReq:
+                    return OnLogin(message);
 
-            return null;
+                case (int)ProtocolType.FightReq:
+                    return OnFight(message);
+                default:
+                    return null;
+
+            }
         }
+
 
 
         byte[] OnLogin(IJNetMessage message)
         {
-            var response = new LoginRes() { 
-                Code = 0 , 
+            var response = new LoginRes()
+            {
+                Code = 0,
                 Uid = message.Uid,
-                LevelData = levelsManager.Data 
+                LevelData = levelsManager.Data
             };
 
             return processStrate.ProcessOutMessage(response);
         }
 
 
+        private byte[] OnFight(IJNetMessage message)
+        {
+            var fightReq = message as FightReq;
+            var nodeUid = fightReq.LevelNodeUid;
 
+            //to do: 模拟战斗
+
+            //根据战斗结果，解锁后续节点或关卡
+            var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(nodeUid);
+            var nextNodeUid = nodeCfgData.NextUid;
+
+            var response = new FightRes()
+            {
+                Code = 0,
+                Uid = message.Uid,
+            };
+
+            return processStrate.ProcessOutMessage(response);
+        }
 
 
         async Task<LevelData> GetLevelDataFromDataBase()
@@ -78,7 +104,7 @@ namespace Tiktok
 
             var dicLevelsData = new Dictionary<string, List<LevelNodeVO>>();
             levelData.LevelsData = dicLevelsData;
-            var allNodes = configManager.GetAll<LevelsNodesCfgData>();
+            var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
 
             var curLevelUid = "";
             List<LevelNodeVO> nodes = null;
