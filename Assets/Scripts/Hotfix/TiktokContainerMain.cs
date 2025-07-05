@@ -33,9 +33,10 @@ namespace Tiktok
             //container.Bind<PrefabLocation>().ToSingleton<PrefabLocation>();
             //container.Bind<WarriorAnimation>().ToSingleton<WarriorAnimation>();
             container.Bind<Utility>().ToSingleton();
-            container.Bind<EventManager>().ToSingleton();
+            
             container.Bind<IAssetsLoader>().ToSingleton<YooAssetsLoader>();
             container.Bind<BaseClassPool>().ToSingleton<TiktokClassPool>();
+            container.Bind<EventManager>().ToSingleton<CommonEventManager>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
             container.Bind<IConfigLoader>().ToSingleton<YooAssetsLoader>();
@@ -47,6 +48,7 @@ namespace Tiktok
 
             //绑定存档管理器 dependence : IDataConverter
             container.Bind<IDataManager>().ToSingleton<UnityPrefDataManager>();
+            container.Bind<IGameDataStore>().ToSingleton<CommonDataStore>();
 
             //绑定网络类
             container.Bind<INetMessageRegister>().ToSingleton<TiktokClientNetMessageRegister>().As("Client");
@@ -59,8 +61,8 @@ namespace Tiktok
             container.Bind<IJNetwork>().ToSingleton<CommonClientJNetwork>();
 
 
-            ///依赖EventManager，BaseClassPool
-            container.Bind<CommonEventManager>().ToSingleton();
+            ///依赖BaseClassPool
+            //container.Bind<CommonEventManager>().ToSingleton();
 
             ////绑定通用逻辑
             //container.Bind<GameObjectManager>().ToSingleton<MyGameObjectPool>();
@@ -123,13 +125,13 @@ namespace Tiktok
 
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 服务器相关 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            
 
             container.Bind<LevelsManager>().ToSingleton();
             container.Bind<INetMessageRegister>().ToSingleton<TiktokServerNetMessageRegister>().As("Server");
             container.Bind<IMessageTypeResolver>().ToSingleton<CommonServerJNetMessageTypeResolver>().As("Server");
             container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonServerJNetworkMessageProcessStrate>().As("Server");
-            container.Bind<FakeServer>().ToSingleton();
-            
+            container.Bind<FakeServer>().ToSingleton();         
             container.Bind<FakeNotifier>().ToSingleton();
 
         }

@@ -4,6 +4,7 @@ using JFramework.Game;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Tiktok;
 using UnityEngine;
 
@@ -13,56 +14,48 @@ namespace Tiktok
     public class LevelsManager : BaseModel<LevelData>
     {
         IJConfigManager jConfigManager;
+
+        IGameDataStore dataStore;
+
        [Inject]
-        public LevelsManager(CommonEventManager eventManager, IJConfigManager jConfigManager) : base(eventManager)
+        public LevelsManager(CommonEventManager eventManager, IJConfigManager jConfigManager, IGameDataStore dataStore) : base(eventManager)
         {
             this.jConfigManager = jConfigManager;
+            this.dataStore = dataStore;
         }
 
-        public void UnlockNodes(List<string> nodesUid)
+        public async Task<List<string>> UnlockNodes(List<string> nodesUid)
         {
+            var result = new List<string>();
             foreach (string nodeUid in nodesUid) {
 
-                UnlockNode(nodeUid);
+                var success = UnlockNode(nodeUid);
+                if (success) result.Add(nodeUid);
             }
+
+            if (result.Count > 0)
+                await dataStore.SaveAsync(nameof(LevelData), Data);
+
+            return result;
         }
 
-        void UnlockNode(string nodeUid)
+        bool UnlockNode(string nodeUid)
         {
+            if (nodeUid == "0")
+                return false;
+
             var levelData = Data;
 
             var cfgData = jConfigManager.Get<LevelsNodesCfgData>(nodeUid);
-            var key = cfgData.LevelUid;
+            var vo = Data.LevelsData[nodeUid];
 
-            if (Data.LevelsData.TryGetValue(key, out List<LevelNodeVO> list))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (list[i].uid == nodeUid)
-                    {
-                        LevelNodeVO node = list[i];
-                        node.state = LevelState.Unlocked;
-                        list[i] = node;
-                        break;
-                    }
-                }
-            }
+            if (vo.state == LevelState.Unlocked) //已经解锁了，所以不用解锁了
+                return false;
 
+            vo.state = LevelState.Unlocked;
+            Data.LevelsData[nodeUid] = vo;
 
-        }
-
-        public void UpdateStateByUid(List<LevelNodeVO> list, string uid, LevelState newState)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].uid == uid)
-                {
-                    LevelNodeVO node = list[i];
-                    node.state = newState;
-                    list[i] = node; // 必须重新赋值，因为结构体是值类型
-                    break; // 如果只需要修改第一个匹配项
-                }
-            }
+            return true;
         }
     }
 }

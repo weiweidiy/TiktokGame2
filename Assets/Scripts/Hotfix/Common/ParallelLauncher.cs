@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using Adic;
+using JFramework;
 
 ///游戏可以服用
 namespace Game.Common

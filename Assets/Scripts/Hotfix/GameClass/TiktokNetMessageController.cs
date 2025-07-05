@@ -17,7 +17,7 @@ namespace Tiktok
         IJNetwork jNetwork;
 
         [Inject]
-        public TiktokNetMessageController(EventManager eventManager) : base(eventManager)
+        public TiktokNetMessageController(EventManager eventManager, BaseClassPool classPool) : base(eventManager, classPool)
         {
         }
 
@@ -44,11 +44,14 @@ namespace Tiktok
                 case ProtocolType.FightRes:
                     {
                         Debug.Log("收到 FightRes");
+
+                        SendEvent<EventFight>(message);
                     }
                     return;
                 case ProtocolType.LevelNodeUnlockedNtf:
                     {
                         Debug.Log("收到 LevelNodeUnlockedNtf");
+                        SendEvent<EventLevelNodeUnlock>(message);
                     }
                     return ;
 

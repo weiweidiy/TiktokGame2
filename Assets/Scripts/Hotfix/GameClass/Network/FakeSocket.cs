@@ -42,11 +42,11 @@ namespace Tiktok
             onOpen?.Invoke(this);
         }
 
-        public void Send(byte[] data)
+        public async void Send(byte[] data)
         {
             //throw new NotImplementedException();
 
-            var response = fakeServer.OnRevieveData(data);
+            var response = await fakeServer.OnRevieveData(data);
 
             onBinary?.Invoke(this, response);
         }

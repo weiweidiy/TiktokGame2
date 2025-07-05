@@ -19,14 +19,17 @@ namespace JFramework
         //关卡uid
         public string LevelUid;
 
-        //关卡节点Uid
-        public string PrefabUid;
+        //关卡序列
+        public int NodeIndex;
 
         //关卡事件
         public string EventType;
 
         //后置节点
         public List<string> NextUid;
+
+        //关卡节点Uid
+        public string PrefabUid;
 
     }
 }

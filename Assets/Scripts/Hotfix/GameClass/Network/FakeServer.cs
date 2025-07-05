@@ -26,70 +26,75 @@ namespace Tiktok
         FakeNotifier clientNotifier;
 
         [Inject]
-        public FakeServer([Inject("Server")]INetworkMessageProcessStrate processStrate, IJConfigManager configManager, IDataManager dataManager , LevelsManager levelManager)
+        public FakeServer(IGameDataStore jDataStore, IJConfigManager configManager, LevelsManager levelManager, [Inject("Server")] INetworkMessageProcessStrate processStrate)
         {
             this.processStrate = processStrate;
             this.jConfigManager = configManager;
             this.levelsManager = levelManager;
-
-            //levelsManager = new LevelsManager(new CommonEventManager(new TiktokClassPool()));
-            jDataStore = new JDataStore(dataManager);
-
-            //Initialize();
+            this.jDataStore = jDataStore;
         }
 
         [Inject]
-        public async void Initialize(FakeNotifier clientNotifier)
+        public void Initialize(FakeNotifier clientNotifier)
         {
             this.clientNotifier = clientNotifier;
-            //初始化游戏数据
-            levelsManager.Initialize(await GetLevelDataFromDataBase());
         }
 
 
 
-        public byte[] OnRevieveData(byte[] data)
+        public async Task<byte[]> OnRevieveData(byte[] data)
         {
             //处理收到的消息
             var message = processStrate.ProcessComingMessage(data);
             switch (message.TypeId)
             {
                 case (int)ProtocolType.LoginReq:
-                    return OnLogin(message);
+                    return await OnLogin(message);
 
                 case (int)ProtocolType.FightReq:
-                    return OnFight(message);
+                    return await OnFight(message);
                 default:
-                    throw new Exception("没有实现协议 " +message.TypeId);
+                    throw new Exception("没有实现协议 " + message.TypeId);
 
             }
         }
 
 
 
-        byte[] OnLogin(IJNetMessage message)
+        async Task<byte[]> OnLogin(IJNetMessage message)
         {
+            var msg = message as LoginReq;
+            var hasAccount = await jDataStore.ExistsAsync(nameof(AccountData));
+            if (!hasAccount)
+            {
+                var accountData = new AccountData();
+                accountData.AccountId = "test";
+                await jDataStore.SaveAsync(nameof(AccountData), accountData);
+            }
+
+            //初始化管理器
+            levelsManager.Initialize(await GetLevelDataFromDataBase(""));
+
+
+            //返回登录成功
             var response = new LoginRes()
             {
                 Code = 0,
                 Uid = message.Uid,
                 LevelData = levelsManager.Data
             };
-
-
-
             return processStrate.ProcessOutMessage(response);
         }
 
 
-        private byte[] OnFight(IJNetMessage message)
+        private async Task<byte[]> OnFight(IJNetMessage message)
         {
             var fightReq = message as FightReq;
             var nodeUid = fightReq.LevelNodeUid;
 
 
             //检查是否解锁
- 
+
 
             //to do: 模拟战斗
             var result = true;
@@ -102,16 +107,11 @@ namespace Tiktok
             if (result)
             {
                 //解锁
-                levelsManager.UnlockNodes(nextNodeUid);
+                var unlocked = await levelsManager.UnlockNodes(nextNodeUid);
                 //通知解锁
-                UniTask.Run(() =>
-                {
-                    var ntf = new LevelNodeUnlockedNtf();
-                    ntf.Uid = Guid.NewGuid().ToString();
-                    ntf.LevelNodeUid = nextNodeUid;
-                    var msgNtf = processStrate.ProcessOutMessage(ntf);
-                    clientNotifier.Notify(msgNtf);
-                }); 
+                if (unlocked.Count > 0)
+                    NotifyUnlock(unlocked);
+
             }
 
 
@@ -123,7 +123,17 @@ namespace Tiktok
             return processStrate.ProcessOutMessage(response);
         }
 
-        async Task<LevelData> GetLevelDataFromDataBase()
+        private async void NotifyUnlock(List<string> nextNodeUid)
+        {
+            await UniTask.Yield();
+            var ntf = new LevelNodeUnlockedNtf();
+            ntf.Uid = Guid.NewGuid().ToString();
+            ntf.LevelNodeUid = nextNodeUid;
+            var msgNtf = processStrate.ProcessOutMessage(ntf);
+            clientNotifier.Notify(msgNtf);
+        }
+
+        async Task<LevelData> GetLevelDataFromDataBase(string accountId)
         {
             //从存档里获取记录，如果没有就创建个默认的
             var levelData = await jDataStore.GetAsync<LevelData>(nameof(LevelData));
@@ -135,31 +145,21 @@ namespace Tiktok
             levelData = new LevelData();
             levelData.CurLevelUid = "1";
 
-            var dicLevelsData = new Dictionary<string, List<LevelNodeVO>>();
+            var dicLevelsData = new Dictionary<string, LevelNodeVO>();
             levelData.LevelsData = dicLevelsData;
-            var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
+            var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>(); //这里还没有预加载呢
 
-            var curLevelUid = "";
-            List<LevelNodeVO> nodes = null;
 
             foreach (var levelNode in allNodes)
             {
-                var levelUid = levelNode.LevelUid;
-                if (curLevelUid != levelUid)
-                {
-                    curLevelUid = levelNode.LevelUid;
-                    nodes = new List<LevelNodeVO>();
-                    dicLevelsData.Add(curLevelUid, nodes);
-                }
-
                 var vo = new LevelNodeVO();
                 vo.uid = levelNode.Uid;
                 vo.state = levelNode.Uid == "1" ? LevelState.Unlocked : LevelState.Locked;
-                nodes.Add(vo);
+                dicLevelsData.Add(levelNode.Uid, vo);
 
             }
 
-            await jDataStore.SaveAsync<LevelData>(nameof(LevelData), levelData);
+            await jDataStore.SaveAsync(nameof(LevelData), levelData);
             return levelData;
         }
     }

@@ -10,9 +10,12 @@ namespace Game.Common
     {
         protected EventManager eventManager;
 
-        public BaseGameController(EventManager eventManager)
+        protected BaseClassPool classPool;
+
+        public BaseGameController(EventManager eventManager, BaseClassPool classPool)
         {
             this.eventManager = eventManager;
+            this.classPool = classPool;
         }
 
         /// <summary>
@@ -22,9 +25,10 @@ namespace Game.Common
         /// <param name="arg"></param>
         protected void SendEvent<T>(object arg) where T : Event
         {
-            var e = default(T);
+            var e = classPool.Rent<T>();
             e.Body = arg;
             eventManager.Raise(e);
+            classPool.Return(e);
         }
 
     }
