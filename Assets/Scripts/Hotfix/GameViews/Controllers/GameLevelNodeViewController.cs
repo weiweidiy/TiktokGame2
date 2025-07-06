@@ -42,7 +42,7 @@ namespace Tiktok
         Dictionary<string, TiktokLevelNodeView> dicLevelNodesView = new Dictionary<string, TiktokLevelNodeView>();
 
         [Inject]
-        public GameLevelNodeViewController(EventManager eventManager, BaseClassPool classPool) : base(eventManager, classPool)
+        public GameLevelNodeViewController(EventManager eventManager) : base(eventManager)
         {
         }
 
@@ -115,8 +115,8 @@ namespace Tiktok
 
         private void OnLevelNodeUnlock(EventLevelNodeUnlock e)
         {
-            var data = e.Body as LevelNodeUnlockedNtf;
-            foreach (var uid in data.LevelNodeUid)
+            var data = e.Body as List<string>;
+            foreach (var uid in data)
             {
                 Debug.Log("关卡解锁了 " + uid);
                 ShowNode(uid); 

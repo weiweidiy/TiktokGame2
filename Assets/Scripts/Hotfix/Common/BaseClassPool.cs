@@ -7,7 +7,7 @@ namespace JFramework
     /// <summary>
     /// 普通类的对象池
     /// </summary>
-    public abstract class BaseClassPool
+    public abstract class BaseClassPool : IObjectPool
     {
         Dictionary<string, object> factories = new Dictionary<string, object>();
 
@@ -20,20 +20,21 @@ namespace JFramework
         }
 
 
-        public T Rent<T>() where T : class
+        public T Rent<T>(Action<T> onGet = null)// where T : class
         {
             var pool = GetPool<T>();
-           
-            return pool.Rent();
+            var result = pool.Rent();
+            onGet?.Invoke(result);
+            return result;
         }
 
-        public void Return<T>(T instance) where T : class
+        public void Return<T>(T instance) //where T : class
         {
             var pool = GetPool<T>();
             pool.Return(instance);
         }
 
-        private FactoryPool<T> GetPool<T>() where T : class
+        private FactoryPool<T> GetPool<T>() //where T : class
         {
             var key = typeof(T).ToString();
             if (factories.ContainsKey(key))

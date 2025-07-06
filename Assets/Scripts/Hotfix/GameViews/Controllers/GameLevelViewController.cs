@@ -25,7 +25,7 @@ namespace Tiktok
         TiktokBackgroundView curBackgroundView;
 
         [Inject]
-        public GameLevelViewController(EventManager eventManager,BaseClassPool classPool) : base(eventManager, classPool)
+        public GameLevelViewController(EventManager eventManager) : base(eventManager)
         {
         }
 

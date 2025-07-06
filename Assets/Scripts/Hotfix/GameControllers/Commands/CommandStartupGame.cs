@@ -27,7 +27,7 @@ namespace GameCommands
         /// 普通类对象池
         /// </summary>
         [Inject]
-        BaseClassPool classPool;
+        IObjectPool classPool;
 
         /// <summary>
         /// 游戏场景对象管理器
@@ -75,7 +75,7 @@ namespace GameCommands
         void InitializeTools()
         {
             //普通类对象池初始化，注册类
-            classPool.Initialize();
+            (classPool as TiktokClassPool).Initialize();
         }
 
         /// <summary>

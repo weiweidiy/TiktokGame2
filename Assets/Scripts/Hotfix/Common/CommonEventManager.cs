@@ -10,10 +10,10 @@ namespace JFramework
         /// <summary>
         /// 普通类的对象池
         /// </summary>
-        BaseClassPool classPool;
+        IObjectPool classPool;
 
         [Inject]
-        public CommonEventManager(BaseClassPool classPool) : base()
+        public CommonEventManager(IObjectPool classPool) : base(classPool)
         {
             if (classPool == null)
                 throw new System.Exception(this.GetType().ToString() + " Inject BaseClassPool failed !");
@@ -21,17 +21,17 @@ namespace JFramework
             this.classPool = classPool;
         }
 
-        /// <summary>
-        /// 发送消息
-        /// </summary>
-        /// <typeparam name="TEvent"></typeparam>
-        /// <param name="arg"></param>
-        public void SendEvent<TEvent>(object arg) where TEvent : JFramework.Event
-        {
-            var obj = classPool.Rent<TEvent>();
-            obj.Body = arg;
-            Raise(obj);
-            classPool.Return(obj);
-        }
+        ///// <summary>
+        ///// 发送消息
+        ///// </summary>
+        ///// <typeparam name="TEvent"></typeparam>
+        ///// <param name="arg"></param>
+        //public void SendEvent<TEvent>(object arg) where TEvent : JFramework.Event
+        //{
+        //    var obj = classPool.Rent<TEvent>();
+        //    obj.Body = arg;
+        //    Raise(obj);
+        //    classPool.Return(obj);
+        //}
     }
 }

@@ -17,7 +17,10 @@ namespace Tiktok
         IJNetwork jNetwork;
 
         [Inject]
-        public TiktokNetMessageController(EventManager eventManager, BaseClassPool classPool) : base(eventManager, classPool)
+        LevelsModel levelsModel;
+
+        [Inject]
+        public TiktokNetMessageController(EventManager eventManager) : base(eventManager)
         {
         }
 
@@ -37,7 +40,7 @@ namespace Tiktok
             jNetwork.onMessage -= JNetwork_onMessage;
         }
 
-        private void JNetwork_onMessage(IJNetMessage message)
+        private async void JNetwork_onMessage(IJNetMessage message)
         {
             switch ((ProtocolType)message.TypeId)
             {
@@ -51,7 +54,8 @@ namespace Tiktok
                 case ProtocolType.LevelNodeUnlockedNtf:
                     {
                         Debug.Log("收到 LevelNodeUnlockedNtf");
-                        SendEvent<EventLevelNodeUnlock>(message);
+                        var msg = message as LevelNodeUnlockedNtf;
+                        await levelsModel.UnlockNodes(msg.LevelNodeUid);              
                     }
                     return ;
 
