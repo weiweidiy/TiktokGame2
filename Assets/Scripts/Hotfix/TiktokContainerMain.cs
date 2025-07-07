@@ -21,6 +21,8 @@ namespace Tiktok
     {
         IInjectionContainer container;
 
+        public IInjectionContainer Container { get { return container; } }
+
         public override void SetupContainers()
         {
             container = AddContainer<InjectionContainer>(/*ResolutionMode.RETURN_NULL*/)
@@ -51,7 +53,7 @@ namespace Tiktok
             container.Bind<IGameDataStore>().ToSingleton<CommonDataStore>();
 
             //绑定网络类
-            container.Bind<INetMessageRegister>().ToSingleton<TiktokClientNetMessageRegister>().As("Client");
+            container.Bind<ITypeRegister>().ToSingleton<TiktokClientNetMessageRegister>().As("Client");
             container.Bind<IMessageTypeResolver>().ToSingleton<CommonClientJNetMessageTypeResolver>().As("Client");
             container.Bind<INetMessageSerializerStrate>().ToSingleton<CommonJNetMessageJsonSerializerStrate>();
             container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonClientJNetworkMessageProcessStrate>().As("Client");
@@ -128,7 +130,7 @@ namespace Tiktok
             
 
             container.Bind<LevelsManager>().ToSingleton();
-            container.Bind<INetMessageRegister>().ToSingleton<TiktokServerNetMessageRegister>().As("Server");
+            container.Bind<ITypeRegister>().ToSingleton<TiktokServerNetMessageRegister>().As("Server");
             container.Bind<IMessageTypeResolver>().ToSingleton<CommonServerJNetMessageTypeResolver>().As("Server");
             container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonServerJNetworkMessageProcessStrate>().As("Server");
             container.Bind<FakeServer>().ToSingleton();         

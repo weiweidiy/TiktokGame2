@@ -11,7 +11,7 @@ namespace Game.Common
     public class CommonClientJNetMessageTypeResolver : JNetMessageJsonTypeResolver
     {
         [Inject]
-        public CommonClientJNetMessageTypeResolver(IDeserializer deserializer , [Inject("Client")] INetMessageRegister register) : base(deserializer, register)
+        public CommonClientJNetMessageTypeResolver(IDeserializer deserializer , [Inject("Client")] ITypeRegister register) : base(deserializer, register)
         {            
         }
     }
@@ -19,7 +19,7 @@ namespace Game.Common
     public class CommonServerJNetMessageTypeResolver : JNetMessageJsonTypeResolver
     {
         [Inject]
-        public CommonServerJNetMessageTypeResolver(IDeserializer deserializer, [Inject("Server")] INetMessageRegister register) : base(deserializer, register)
+        public CommonServerJNetMessageTypeResolver(IDeserializer deserializer, [Inject("Server")] ITypeRegister register) : base(deserializer, register)
         {
         }
     }

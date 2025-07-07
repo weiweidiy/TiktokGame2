@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Tiktok
 {
-    public class TiktokServerNetMessageRegister : INetMessageRegister
+    public class TiktokServerNetMessageRegister : ITypeRegister
     {
-        public Dictionary<int, Type> GetAllTables()
+        public Dictionary<int, Type> GetTypes()
         {
             var tables = new Dictionary<int, Type>();
 

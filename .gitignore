@@ -211,6 +211,7 @@ UniFramework.Utility.Player.csproj
 Unity.RenderPipelines.Universal.Config.Runtime.Player.csproj
 Unity.RenderPipelines.Universal.Config.Runtime.csproj
 
+Sirenix.OdinInspector.Modules.UnityMathematics.csproj
 Coffee.UIParticle.Editor.csproj
 Coffee.UIParticle.csproj
 Coffee.UIParticle.Player.csproj
