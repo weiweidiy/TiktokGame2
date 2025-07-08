@@ -75,7 +75,7 @@ namespace GameCommands
         void InitializeTools()
         {
             //普通类对象池初始化，注册类
-            (classPool as TiktokClassPool).Initialize();
+            //(classPool as TiktokClassPool).Initialize();
         }
 
         /// <summary>

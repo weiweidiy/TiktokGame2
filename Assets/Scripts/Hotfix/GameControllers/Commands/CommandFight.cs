@@ -1,4 +1,5 @@
 ﻿using Adic;
+using Game.Common;
 using JFramework;
 using System;
 using Tiktok;
@@ -12,7 +13,7 @@ namespace GameCommands
         IJNetwork jNetwork;
 
         [Inject]
-        TiktokClassPool classPool;
+        IObjectPool classPool;
 
         public override async void Execute(params object[] parameters)
         {

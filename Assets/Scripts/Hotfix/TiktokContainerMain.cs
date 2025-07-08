@@ -37,7 +37,8 @@ namespace Tiktok
             container.Bind<Utility>().ToSingleton();
             
             container.Bind<IAssetsLoader>().ToSingleton<YooAssetsLoader>();
-            container.Bind<IObjectPool>().ToSingleton<TiktokClassPool>();
+            container.Bind<ITypeRegister>().ToSingleton<TiktokClassRegister>();
+            container.Bind<IObjectPool>().ToSingleton<CommonClassPool>();
             container.Bind<EventManager>().ToSingleton<CommonEventManager>();
             container.Bind<ITimerUtils>().ToSingleton<DotweenUtils>();
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();

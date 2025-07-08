@@ -40,7 +40,7 @@ namespace Tiktok
         IJConfigManager jConfigManager;
 
         [Inject]
-        TiktokClassPool classPool;
+        IObjectPool classPool;
 
         protected override IAssetsLoader AssetsLoader => _assetsLoader;
 

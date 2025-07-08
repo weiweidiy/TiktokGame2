@@ -17,7 +17,7 @@ namespace Tiktok
         /// </summary>
         TiktokGameObjectPool goPool;
 
-        GameLevelViewController bgController;
+        //GameLevelViewController bgController;
 
         GameObject pools;
 
