@@ -7,6 +7,7 @@
     "NextUid":[
             "2"
          ],
+    "PreUid":"0",
     "PrefabUid":"100"
    },
   {
@@ -17,6 +18,7 @@
     "NextUid":[
             "3"
          ],
+    "PreUid":"1",
     "PrefabUid":"100"
    },
   {
@@ -28,6 +30,7 @@
             "4",
             "5"
          ],
+    "PreUid":"2",
     "PrefabUid":"100"
    },
   {
@@ -38,6 +41,7 @@
     "NextUid":[
             "0"
          ],
+    "PreUid":"3",
     "PrefabUid":"100"
    },
   {
@@ -48,6 +52,7 @@
     "NextUid":[
             "6"
          ],
+    "PreUid":"3",
     "PrefabUid":"100"
    },
   {
@@ -58,6 +63,7 @@
     "NextUid":[
             "7"
          ],
+    "PreUid":"5",
     "PrefabUid":"100"
    },
   {
@@ -68,6 +74,7 @@
     "NextUid":[
             "8"
          ],
+    "PreUid":"6",
     "PrefabUid":"100"
    },
   {
@@ -78,6 +85,7 @@
     "NextUid":[
             "9"
          ],
+    "PreUid":"7",
     "PrefabUid":"100"
    },
   {
@@ -88,6 +96,7 @@
     "NextUid":[
             "10"
          ],
+    "PreUid":"8",
     "PrefabUid":"100"
    },
   {
@@ -98,6 +107,7 @@
     "NextUid":[
             "11"
          ],
+    "PreUid":"9",
     "PrefabUid":"100"
    },
   {
@@ -108,6 +118,7 @@
     "NextUid":[
             "12"
          ],
+    "PreUid":"10",
     "PrefabUid":"100"
    }
 ]

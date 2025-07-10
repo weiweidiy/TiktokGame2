@@ -28,6 +28,9 @@ namespace JFramework
         //后置节点
         public List<string> NextUid;
 
+        //前置节点
+        public string PreUid;
+
         //关卡节点Uid
         public string PrefabUid;
 

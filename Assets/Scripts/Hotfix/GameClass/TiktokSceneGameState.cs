@@ -34,6 +34,9 @@ namespace Tiktok
         GameLevelViewController gameLevelViewController;
 
         [Inject]
+        GameLevelUIController gameLevelUIController;
+
+        [Inject]
         GameLevelNodeViewController gameLevelNodeViewController;
 
         [Inject]
@@ -65,9 +68,14 @@ namespace Tiktok
         void InitializeVeiwControllers()
         {
             //启动关卡视图控制器
+
+
             veiwControllers.Add(gameLevelViewController);
+            veiwControllers.Add(gameLevelUIController);
             veiwControllers.Add(gameLevelNodeViewController);
             veiwControllers.Run(null);
+
+            gameLevelViewController.EnterLevel("1");
         }
 
         void ShowUI()

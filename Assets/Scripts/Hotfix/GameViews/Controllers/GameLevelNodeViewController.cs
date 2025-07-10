@@ -54,10 +54,34 @@ namespace Tiktok
         {
             base.OnRun(extraData);
 
-            var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
-           // Debug.LogError(allNodes.Count + "  " + jConfigManager.GetHashCode());
+            
 
-            var nodes = levelsMode.GetLevelNodes(levelsMode.GetCurLevelUid());
+            eventManager.AddListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
+            eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
+            eventManager.AddListener<EventExitLevel>(OnExitLevel);
+        }
+
+
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+
+            eventManager.RemoveListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
+            eventManager.RemoveListener<EventEnterLevel>(OnEnterLevel);
+            eventManager.RemoveListener<EventExitLevel>(OnExitLevel);
+            //to do: 归还所有节点
+            throw new Exception("没有处理OnStop");
+        }
+
+
+        private void OnEnterLevel(EventEnterLevel e)
+        {
+            var curLevelUid = (string)e.Body;
+            var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
+            // Debug.LogError(allNodes.Count + "  " + jConfigManager.GetHashCode());
+
+            var nodes = levelsMode.GetLevelNodes(curLevelUid);
             for (int i = 0; i < nodes.Count; i++)
             {
                 var node = nodes[i];
@@ -66,20 +90,17 @@ namespace Tiktok
                     ShowNode(node.uid);
                 }
             }
-
-            eventManager.AddListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
-
         }
 
-        protected override void OnStop()
+        private void OnExitLevel(EventExitLevel e)
         {
-            base.OnStop();
+            foreach (var view in dicLevelNodesView.Values)
+            {
+                gameObjectManager.Return(view.gameObject);
+            }
 
-            eventManager.RemoveListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
-            //to do: 归还所有节点
-            throw new Exception("没有处理OnStop");
-
-
+            dicLevelNodesView.Clear();
+            dicLevelNodesUid.Clear();
         }
 
         /// <summary>

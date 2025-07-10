@@ -3,6 +3,9 @@ using Game.Common;
 using JFramework;
 using JFramework.Game;
 using JFramework.Package;
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 
@@ -33,25 +36,67 @@ namespace Tiktok
         {
             base.OnRun(extraData);
 
-            var curLevelId = levelsMode.GetCurLevelUid();
-            var cfgData = jConfigManager.Get<LevelsCfgData>(curLevelId);
-            var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
-
-
-            var goLevel = gameObjectManager.Rent(prefabData.PrefabName);
-            goLevel.transform.parent = gameObjectManager.GoRoot.transform;
-            curBackgroundView = goLevel.GetComponent<TiktokBackgroundView>();
-            //gameObjectManager.Return(goRole);
+            eventManager.AddListener<EventLevelNodeUnlock>(OnNodeUnlocked);
         }
+
+
 
         protected override void OnStop()
         {
             base.OnStop();
+
+            eventManager.RemoveListener<EventLevelNodeUnlock>(OnNodeUnlocked);
         }
+
+
+        private void OnNodeUnlocked(EventLevelNodeUnlock e)
+        {
+            var nodes = e.Body as List<string>;
+
+            foreach (var uid in nodes) {
+                var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
+                var preUid = nodeCfgData.PreUid;
+                var preNode = jConfigManager.Get<LevelsNodesCfgData>(preUid);
+                if (preNode.LevelUid != nodeCfgData.LevelUid)
+                {
+                    //新关卡解锁了
+                    //Debug.LogError("新关卡解锁了 " + nodeCfgData.LevelUid);
+                    return;
+                }
+            }
+            
+        }
+
 
         public Transform GetNode(int index)
         {
             return curBackgroundView.GetNode(index);
+        }
+
+        /// <summary>
+        /// 进入指定关卡
+        /// </summary>
+        /// <param name="uid"></param>
+        public void EnterLevel(string uid)
+        {
+            //var curLevelId = levelsMode.GetCurLevelUid();
+            var cfgData = jConfigManager.Get<LevelsCfgData>(uid);
+            var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
+            var goLevel = gameObjectManager.Rent(prefabData.PrefabName);
+            goLevel.transform.parent = gameObjectManager.GoRoot.transform;
+            curBackgroundView = goLevel.GetComponent<TiktokBackgroundView>();
+
+            eventManager.Raise<EventEnterLevel>(uid);
+        }
+
+        /// <summary>
+        /// 退出当前关卡
+        /// </summary>
+        public void ExitCurLevel()
+        {
+            gameObjectManager.Return(curBackgroundView.gameObject);
+            curBackgroundView = null;
+            eventManager.Raise<EventExitLevel>(null);
         }
     }
 }
