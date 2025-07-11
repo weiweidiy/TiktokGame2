@@ -3,7 +3,8 @@ using Game.Common;
 using JFramework;
 using JFramework.Game.View;
 using JFramework.Package;
-using System;
+using UnityEngine;
+
 
 
 namespace Tiktok
@@ -32,7 +33,16 @@ namespace Tiktok
 
         private void OnLevelNodeUnlocked(EventLevelNodeUnlock e)
         {
-            uiManager.ShowPanel<UIPanelLevelProperties>("UILevel", null);
+            if (uiManager.IsPanelOpen(nameof(UIPanelLevel)))
+                return;
+            var uiArg = new UIPanelLevelProperties();
+            uiArg.onNextClick += UiArg_onNextClick;
+            uiManager.ShowPanel(nameof(UIPanelLevel), uiArg);
+        }
+
+        private void UiArg_onNextClick(UIPanelLevel obj)
+        {
+            Debug.Log("22222");
         }
     }
 }

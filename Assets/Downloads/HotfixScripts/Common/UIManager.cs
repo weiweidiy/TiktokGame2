@@ -119,6 +119,11 @@ namespace JFramework
             return screenId;
         }
 
+        public bool IsPanelOpen(string screenId)
+        {
+            return uiFrame.IsPanelOpen(screenId);
+        }
+
         /// <summary>
         /// 销毁一个ui(unregist)
         /// </summary>
