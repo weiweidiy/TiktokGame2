@@ -22,5 +22,11 @@ namespace JFramework
         //预制体
         public string PrefabUid;
 
+        //下一关Uid
+        public string Next;
+
+        //上一关Uid
+        public string Pre;
+
     }
 }

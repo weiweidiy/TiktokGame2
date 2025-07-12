@@ -16,8 +16,11 @@ namespace Tiktok
     /// </summary>
     public class GameLevelViewController : BaseGameController
     {
+        //[Inject]
+        //IJConfigManager jConfigManager;
+
         [Inject]
-        IJConfigManager jConfigManager;
+        TiktokConfigManager jConfigManager;
 
         [Inject]
         LevelsModel levelsMode;
@@ -54,14 +57,19 @@ namespace Tiktok
             var nodes = e.Body as List<string>;
 
             foreach (var uid in nodes) {
-                var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
-                var preUid = nodeCfgData.PreUid;
-                var preNode = jConfigManager.Get<LevelsNodesCfgData>(preUid);
-                if (preNode.LevelUid != nodeCfgData.LevelUid)
+                //var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
+                //var preUid = nodeCfgData.PreUid;
+                //var preNode = jConfigManager.Get<LevelsNodesCfgData>(preUid);
+                //if (preNode.LevelUid != nodeCfgData.LevelUid)
+                //{
+                //    //新关卡解锁了
+                //    //Debug.LogError("新关卡解锁了 " + nodeCfgData.LevelUid);
+                //    return;
+                //}
+
+                if(jConfigManager.IsNewLevelFirstNode(uid))
                 {
-                    //新关卡解锁了
-                    //Debug.LogError("新关卡解锁了 " + nodeCfgData.LevelUid);
-                    return;
+                    Debug.LogError("新关卡解锁了 " );
                 }
             }
             

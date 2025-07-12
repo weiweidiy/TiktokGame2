@@ -1,24 +1,65 @@
 ﻿using JFramework.Game;
 using Adic;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
 
 namespace JFramework
 {
-    public class TiktokConfigManager : JConfigManager
-    {       
-
+    public class TiktokConfigManager : IJConfigManager
+    {
         [Inject]
-        public TiktokConfigManager(IConfigLoader loader, IDeserializer deserializer) : base(loader)
+        IJConfigManager jConfigManager;
+
+        public bool IsNewLevelFirstNode(string uid)
         {
-            RegisterTable<LevelsTable, LevelsCfgData>(nameof(LevelsTable), deserializer);
-            RegisterTable<LevelsNodesTable, LevelsNodesCfgData>(nameof(LevelsNodesTable), deserializer);
-            RegisterTable<PrefabsTable, PrefabsCfgData>(nameof(PrefabsTable), deserializer);
+            var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
+            var preUid = nodeCfgData.PreUid;
+            var preNode = jConfigManager.Get<LevelsNodesCfgData>(preUid);
+            return preNode.LevelUid != nodeCfgData.LevelUid;
+
         }
 
-        //[Inject]
-        //public void Init(IDeserializer deserializer)
-        //{
+        public string GetNextLevel(string curUid)
+        {
+            var levelCfg = jConfigManager.Get<LevelsCfgData>(curUid);
+            return levelCfg.Next;
+        }
 
-        //}
+        public string GetPreLevel(string curUid)
+        {
+            var levelCfg = jConfigManager.Get<LevelsCfgData>(curUid);
+            return levelCfg.Pre;
+        }
+
+
+
+        public Task PreloadAllAsync(IProgress<LoadProgress> progress = null)
+        {
+            return jConfigManager.PreloadAllAsync(progress);
+        }
+
+        public void RegisterTable<TTable, TItem>(string path, IDeserializer deserializer)
+            where TTable : IConfigTable<TItem>, new()
+            where TItem : IUnique
+        {
+            jConfigManager.RegisterTable<TTable, TItem>(path, deserializer);
+        }
+
+        public List<TItem> Get<TItem>(Func<TItem, bool> predicate) where TItem : class, IUnique
+        {
+            return jConfigManager.Get<TItem>(predicate);
+        }
+
+        public TItem Get<TItem>(string uid) where TItem : class, IUnique
+        {
+            return jConfigManager.Get<TItem>(uid);
+        }
+
+        public List<TItem> GetAll<TItem>() where TItem : class, IUnique
+        {
+            return jConfigManager.GetAll<TItem>();
+        }
     }
 
 }

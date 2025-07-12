@@ -47,7 +47,8 @@ namespace Tiktok
             container.Bind<IDeserializer>().ToSingleton<LitJsonSerializer>();
 
             //绑定配置表管理类 dependence : IConfigLoader,IDeserializer
-            container.Bind<IJConfigManager>().ToSingleton<TiktokConfigManager>();
+            container.Bind<IJConfigManager>().ToSingleton<TiktokGenConfigManager>();
+            container.Bind<TiktokConfigManager>().ToSingleton();
 
             //绑定存档管理器 dependence : IDataConverter
             container.Bind<IDataManager>().ToSingleton<UnityPrefDataManager>();
