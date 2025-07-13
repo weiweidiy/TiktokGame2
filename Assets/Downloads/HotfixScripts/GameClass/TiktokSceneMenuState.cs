@@ -72,13 +72,13 @@ namespace Tiktok
             //显示menuUI
             var uiArg = new UIPanelMenuProperties();
             uiArg.onBtnEnterclick += UiArg_onBtnEnterclick; 
-            uiManager.ShowPanel<UIPanelMenuProperties>("UIMenu", uiArg);
+            uiManager.ShowPanel(nameof(UIPanelMenu), uiArg);
         }
 
-        private async void UiArg_onBtnEnterclick(UIPanelMenuController controller)
+        private async void UiArg_onBtnEnterclick(UIPanelMenu controller)
         {
             //Debug.LogError("UiArg_onBtnEnterclick");
-            var transition = await transitionProvider.InstantiateAsync("SMBlindsTransition");
+            var transition = await transitionProvider.InstantiateAsync(TransitionType.SMBlindsTransition.ToString());
             await transition.TransitionOut();
 
             //链接服务器
@@ -98,7 +98,7 @@ namespace Tiktok
 
 
             await context.sm.SwitchToGame();
-            Debug.Log("SwitchToGame done " + loginData.LevelData.CurLevelUid);
+            Debug.Log("SwitchToGame done " );
             await transition.TransitionIn();
         }
 

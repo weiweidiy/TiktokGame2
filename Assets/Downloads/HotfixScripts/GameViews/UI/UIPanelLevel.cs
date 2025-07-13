@@ -13,6 +13,8 @@ namespace JFramework.Game.View
         {
             base.OnPropertiesSet();
 
+            Refresh();
+
             btnPre.advancedEvents.onClick.AddListener(() =>
             {
                 Properties.OnBtnPreClick(this);
@@ -22,13 +24,31 @@ namespace JFramework.Game.View
             {
                 Properties.OnBtnNextClick(this);
             });
+
+            Properties.onRefresh += Properties_onRefresh;
+        }
+
+        private void Properties_onRefresh()
+        {
+            Refresh();
+        }
+
+        void Refresh()
+        {
+            btnPre.gameObject.SetActive(Properties.preLevelValid);
+            btnNext.gameObject.SetActive(Properties.nextLevelValid);
         }
     }
 
     public class UIPanelLevelProperties : PanelProperties
     {
+        public event Action onRefresh;
+
         public event Action<UIPanelLevel> onPreClick;
         public event Action<UIPanelLevel> onNextClick;
+
+        public bool preLevelValid { get; set; }
+        public bool nextLevelValid { get; set; }
 
         public void OnBtnPreClick(UIPanelLevel controller)
         {
@@ -37,6 +57,11 @@ namespace JFramework.Game.View
         public void OnBtnNextClick(UIPanelLevel controller)
         {
             onNextClick?.Invoke(controller);
+        }
+
+        public void Refresh()
+        {
+            onRefresh?.Invoke();
         }
     }
 }

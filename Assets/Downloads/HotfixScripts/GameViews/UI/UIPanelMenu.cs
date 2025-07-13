@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace JFramework.Game.View
 {
-    public class UIPanelMenuController : APanelController<UIPanelMenuProperties>
+    public class UIPanelMenu : APanelController<UIPanelMenuProperties>
     {
         [SerializeField] Button btnEnter;
         [SerializeField] TextMeshProUGUI txtConfirm;
@@ -27,9 +27,9 @@ namespace JFramework.Game.View
 
     public class UIPanelMenuProperties : PanelProperties
     {
-        public event Action<UIPanelMenuController> onBtnEnterclick;
+        public event Action<UIPanelMenu> onBtnEnterclick;
 
-        public void OnBtnEnterClick(UIPanelMenuController controller)
+        public void OnBtnEnterClick(UIPanelMenu controller)
         {
             onBtnEnterclick?.Invoke(controller);
         }

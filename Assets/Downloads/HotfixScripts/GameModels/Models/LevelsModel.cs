@@ -18,11 +18,12 @@ namespace Tiktok
             this.jConfigManager = jConfigManager;
         }
 
-        public string GetCurLevelUid()
-        {
-            return data.CurLevelUid;
-        }
 
+        /// <summary>
+        /// 获取所有指定关卡的所有节点数据
+        /// </summary>
+        /// <param name="levelUid"></param>
+        /// <returns></returns>
         public List<LevelNodeVO> GetLevelNodes(string levelUid)
         {
             var result = new List<LevelNodeVO>();
@@ -39,6 +40,27 @@ namespace Tiktok
             return result;
         }
 
+        /// <summary>
+        /// 指定关卡是否解锁了
+        /// </summary>
+        /// <param name="levelUid"></param>
+        /// <returns></returns>
+        public bool IsUnlocked(string levelUid)
+        {
+            var nodes = GetLevelNodes(levelUid);
+            foreach (var node in nodes)
+            {
+                if(node.state == LevelState.Unlocked)
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 解锁
+        /// </summary>
+        /// <param name="nodesUid"></param>
+        /// <returns></returns>
         public async Task<List<string>> UnlockNodes(List<string> nodesUid)
         {
             var result = new List<string>();
@@ -54,13 +76,11 @@ namespace Tiktok
             return result;
         }
 
-        protected virtual Task OnUnlock(List<string> result)
-        {
-            //发消息，服务器可以是存档
-            SendEvent<EventLevelNodeUnlock>(result);
-            return Task.CompletedTask;
-        }
-
+        /// <summary>
+        /// 解锁单个节点
+        /// </summary>
+        /// <param name="nodeUid"></param>
+        /// <returns></returns>
         protected bool UnlockNode(string nodeUid)
         {
             if (nodeUid == "0")
@@ -79,6 +99,20 @@ namespace Tiktok
 
             return true;
         }
+
+        /// <summary>
+        /// 解锁后续处理
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        protected virtual Task OnUnlock(List<string> result)
+        {
+            //发消息，服务器可以是存档
+            SendEvent<EventLevelNodeUnlock>(result);
+            return Task.CompletedTask;
+        }
+
+       
     }
 
 }

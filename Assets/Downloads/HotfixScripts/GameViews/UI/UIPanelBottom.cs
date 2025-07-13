@@ -2,7 +2,7 @@
 
 namespace JFramework.Game.View
 {
-    public class UIPanelBottomController : APanelController<UIPanelBottomProperties>
+    public class UIPanelBottom : APanelController<UIPanelBottomProperties>
     {
         protected override void OnPropertiesSet()
         {

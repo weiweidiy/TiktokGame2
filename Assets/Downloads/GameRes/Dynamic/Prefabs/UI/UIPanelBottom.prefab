@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2706999053828406315}
   - component: {fileID: -343860942871185726}
   m_Layer: 5
-  m_Name: UIPannelBottom
+  m_Name: UIPanelBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

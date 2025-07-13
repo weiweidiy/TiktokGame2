@@ -81,7 +81,7 @@ namespace Tiktok
         void ShowUI()
         {
             //显示底部按钮栏
-            uiManager.ShowPanel<UIPanelBottomProperties>("UIPannelBottom", null);
+            uiManager.ShowPanel<UIPanelBottomProperties>(nameof(UIPanelBottom), null);
         }
     }
 }

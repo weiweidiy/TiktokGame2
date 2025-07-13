@@ -21,5 +21,10 @@ namespace Tiktok
         //服务器推送消息
         LevelNodeUnlockedNtf = 1000,
     }
+
+    public enum TransitionType
+    {
+        SMBlindsTransition
+    }
 }
 

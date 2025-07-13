@@ -143,7 +143,7 @@ namespace Tiktok
 
             //没有数据，要创建默认数据
             levelData = new LevelData();
-            levelData.CurLevelUid = "1";
+            //levelData.CurLevelUid = "1";
 
             var dicLevelsData = new Dictionary<string, LevelNodeVO>();
             levelData.LevelsData = dicLevelsData;

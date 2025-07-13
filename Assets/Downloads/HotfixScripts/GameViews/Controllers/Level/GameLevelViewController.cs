@@ -28,6 +28,9 @@ namespace Tiktok
         [Inject]
         TiktokGameObjectManager gameObjectManager;
 
+        [Inject]
+        ITransitionProvider transitionProvider;
+
         TiktokBackgroundView curBackgroundView;
 
         [Inject]
@@ -40,6 +43,7 @@ namespace Tiktok
             base.OnRun(extraData);
 
             eventManager.AddListener<EventLevelNodeUnlock>(OnNodeUnlocked);
+            eventManager.AddListener<EventSwitchLevel>(OnSwitchLevel);
         }
 
 
@@ -49,6 +53,7 @@ namespace Tiktok
             base.OnStop();
 
             eventManager.RemoveListener<EventLevelNodeUnlock>(OnNodeUnlocked);
+            eventManager.RemoveListener<EventSwitchLevel>(OnSwitchLevel);
         }
 
 
@@ -57,15 +62,6 @@ namespace Tiktok
             var nodes = e.Body as List<string>;
 
             foreach (var uid in nodes) {
-                //var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
-                //var preUid = nodeCfgData.PreUid;
-                //var preNode = jConfigManager.Get<LevelsNodesCfgData>(preUid);
-                //if (preNode.LevelUid != nodeCfgData.LevelUid)
-                //{
-                //    //新关卡解锁了
-                //    //Debug.LogError("新关卡解锁了 " + nodeCfgData.LevelUid);
-                //    return;
-                //}
 
                 if(jConfigManager.IsNewLevelFirstNode(uid))
                 {
@@ -105,6 +101,17 @@ namespace Tiktok
             gameObjectManager.Return(curBackgroundView.gameObject);
             curBackgroundView = null;
             eventManager.Raise<EventExitLevel>(null);
+        }
+
+        private async void OnSwitchLevel(EventSwitchLevel e)
+        {
+            var targetUid = (string)e.Body;
+
+            var transition = await transitionProvider.InstantiateAsync(TransitionType.SMBlindsTransition.ToString());
+            await transition.TransitionOut();
+            ExitCurLevel();
+            EnterLevel(targetUid);
+            await transition.TransitionIn();
         }
     }
 }
