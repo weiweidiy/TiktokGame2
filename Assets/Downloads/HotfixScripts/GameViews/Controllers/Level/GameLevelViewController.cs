@@ -66,7 +66,7 @@ namespace Tiktok
 
                 if(jConfigManager.IsNewLevelFirstNode(uid))
                 {
-                    Debug.LogError("新关卡解锁了 " );
+                    //Debug.LogError("新关卡解锁了 " );
                 }
             }
             
@@ -90,6 +90,7 @@ namespace Tiktok
             var goLevel = gameObjectManager.Rent(prefabData.PrefabName);
             goLevel.transform.parent = gameObjectManager.GoRoot.transform;
             curBackgroundView = goLevel.GetComponent<TiktokBackgroundView>();
+
 
             eventManager.Raise<EventEnterLevel>(uid);
         }

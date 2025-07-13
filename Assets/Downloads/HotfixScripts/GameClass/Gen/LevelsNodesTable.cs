@@ -34,5 +34,8 @@ namespace JFramework
         //关卡节点Uid
         public string PrefabUid;
 
+        //底座预制体UID
+        public string BottomPrefabUid;
+
     }
 }

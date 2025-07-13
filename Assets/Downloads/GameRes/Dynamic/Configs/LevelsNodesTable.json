@@ -8,7 +8,8 @@
             "2"
          ],
     "PreUid":"0",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"2",
@@ -19,7 +20,8 @@
             "3"
          ],
     "PreUid":"1",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"3",
@@ -31,7 +33,8 @@
             "5"
          ],
     "PreUid":"2",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"4",
@@ -42,7 +45,8 @@
             "0"
          ],
     "PreUid":"3",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"5",
@@ -53,7 +57,8 @@
             "6"
          ],
     "PreUid":"3",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"6",
@@ -64,7 +69,8 @@
             "7"
          ],
     "PreUid":"5",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"7",
@@ -75,7 +81,8 @@
             "8"
          ],
     "PreUid":"6",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"8",
@@ -86,7 +93,8 @@
             "9"
          ],
     "PreUid":"7",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"9",
@@ -97,7 +105,8 @@
             "10"
          ],
     "PreUid":"8",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"10",
@@ -108,7 +117,8 @@
             "11"
          ],
     "PreUid":"9",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    },
   {
     "Uid":"11",
@@ -119,6 +129,7 @@
             "0"
          ],
     "PreUid":"10",
-    "PrefabUid":"100"
+    "PrefabUid":"100",
+    "BottomPrefabUid":"1000"
    }
 ]
