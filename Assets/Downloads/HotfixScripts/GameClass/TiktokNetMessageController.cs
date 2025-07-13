@@ -1,8 +1,7 @@
 ﻿using Adic;
 using Game.Common;
 using JFramework;
-using JFramework.Package;
-using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -24,11 +23,13 @@ namespace Tiktok
         {
         }
 
-        protected override void OnRun(RunableExtraData extraData)
+        protected override void OnStart(RunableExtraData extraData)
         {
-            base.OnRun(extraData);
+            base.OnStart(extraData);
 
             jNetwork.onMessage += JNetwork_onMessage;
+
+            SetStartComplete();
         }
 
 

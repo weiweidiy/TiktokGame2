@@ -1,5 +1,5 @@
 ﻿using JFramework;
-using JFramework.Package;
+
 
 namespace Game.Common
 {

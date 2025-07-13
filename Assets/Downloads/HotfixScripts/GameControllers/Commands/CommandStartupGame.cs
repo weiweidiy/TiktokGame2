@@ -105,7 +105,7 @@ namespace GameCommands
             await gameObjectManager.Initialize();
 
             parallelLauncher.Add(tiktokNetMessageController);
-            parallelLauncher.Run(null);
+            await parallelLauncher.Start(null);
 
             await sm.SwitchToMenu();                 
         }

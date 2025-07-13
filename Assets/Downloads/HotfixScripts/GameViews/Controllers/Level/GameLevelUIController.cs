@@ -2,7 +2,6 @@
 using Game.Common;
 using JFramework;
 using JFramework.Game.View;
-using JFramework.Package;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,9 +33,9 @@ namespace Tiktok
         {
         }
 
-        protected override void OnRun(RunableExtraData extraData)
+        protected override void OnStart(RunableExtraData extraData)
         {
-            base.OnRun(extraData);
+            base.OnStart(extraData);
 
             eventManager.AddListener<EventLevelNodeUnlock>(OnLevelNodeUnlocked);
             eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
@@ -44,6 +43,8 @@ namespace Tiktok
             uiArg = new UIPanelLevelProperties();
             uiArg.onPreClick += UiArg_onPreClick;
             uiArg.onNextClick += UiArg_onNextClick;
+
+            SetStartComplete();
         }
 
 

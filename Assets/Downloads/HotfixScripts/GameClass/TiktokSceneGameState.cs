@@ -65,7 +65,7 @@ namespace Tiktok
             Debug.Log("SwitchToGame OnEnter done");
         }
 
-        void InitializeVeiwControllers()
+        async void InitializeVeiwControllers()
         {
             //启动关卡视图控制器
 
@@ -73,7 +73,7 @@ namespace Tiktok
             veiwControllers.Add(gameLevelViewController);
             veiwControllers.Add(gameLevelUIController);
             veiwControllers.Add(gameLevelNodeViewController);
-            veiwControllers.Run(null);
+            await veiwControllers.Start(null);
 
             gameLevelViewController.EnterLevel("1");
         }

@@ -1,11 +1,10 @@
 ﻿using Adic;
 using Game.Common;
 using JFramework;
-using JFramework.Game;
-using JFramework.Package;
+
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+
 using UnityEngine;
 
 
@@ -38,12 +37,14 @@ namespace Tiktok
         {
         }
 
-        protected override void OnRun(RunableExtraData extraData)
+        protected override void OnStart(RunableExtraData extraData)
         {
-            base.OnRun(extraData);
+            base.OnStart(extraData);
 
             eventManager.AddListener<EventLevelNodeUnlock>(OnNodeUnlocked);
             eventManager.AddListener<EventSwitchLevel>(OnSwitchLevel);
+
+            SetStartComplete();
         }
 
 

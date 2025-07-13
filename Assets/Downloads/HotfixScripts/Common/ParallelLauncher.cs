@@ -1,4 +1,4 @@
-﻿using JFramework.Package;
+﻿//using JFramework.Package;
 using System.Collections.Generic;
 using System;
 using Adic;
@@ -40,15 +40,17 @@ namespace Game.Common
         /// <summary>
         /// 运行
         /// </summary>
-        protected override void OnRun(RunableExtraData extraData = null)
+        protected override async void OnStart(RunableExtraData extraData)
         {
-            base.OnRun(extraData);
+            base.OnStart(extraData);
 
             foreach(var runable in this.internalRunables)
             {
                 runable.onComplete += Runable_onComplete;
-                runable.Run(extraData);
+                await runable.Start(extraData);
             }
+
+            SetStartComplete();
         }
 
         protected override void OnStop()

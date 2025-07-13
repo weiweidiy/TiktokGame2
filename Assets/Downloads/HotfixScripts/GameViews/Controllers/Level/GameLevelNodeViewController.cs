@@ -4,7 +4,6 @@ using Game.Common;
 using GameCommands;
 using JFramework;
 using JFramework.Game;
-using JFramework.Package;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,15 +49,17 @@ namespace Tiktok
         /// 在game场景才会run
         /// </summary>
         /// <param name="extraData"></param>
-        protected override void OnRun(RunableExtraData extraData)
+        protected override void OnStart(RunableExtraData extraData)
         {
-            base.OnRun(extraData);
+            base.OnStart(extraData);
 
-            
+
 
             eventManager.AddListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
             eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
             eventManager.AddListener<EventExitLevel>(OnExitLevel);
+
+            SetStartComplete();
         }
 
 
