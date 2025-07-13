@@ -39,7 +39,7 @@ namespace Tiktok
         /// </summary>
         Dictionary<int, string> dicLevelNodesUid = new Dictionary<int, string>();
         Dictionary<string, TiktokLevelNodeView> dicLevelNodesView = new Dictionary<string, TiktokLevelNodeView>();
-        Dictionary<string, GameObject> dicLevelNodesBottomView = new Dictionary<string, GameObject>();
+        
 
         [Inject]
         public GameLevelNodeViewController(EventManager eventManager) : base(eventManager)
@@ -101,14 +101,14 @@ namespace Tiktok
                 gameObjectManager.Return(view.gameObject);
             }
 
-            foreach(var go in dicLevelNodesBottomView.Values)
-            {
-                gameObjectManager.Return(go);
-            }
+            //foreach(var go in dicLevelNodesBottomView.Values)
+            //{
+            //    gameObjectManager.Return(go);
+            //}
 
             dicLevelNodesView.Clear();
             dicLevelNodesUid.Clear();
-            dicLevelNodesBottomView.Clear();
+            //dicLevelNodesBottomView.Clear();
         }
 
         /// <summary>
@@ -122,11 +122,11 @@ namespace Tiktok
             var bottomPrefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.BottomPrefabUid);
             var nodeIndex = cfgData.NodeIndex;
 
-            //创建底座
-            var goBottom = gameObjectManager.Rent(bottomPrefabData.PrefabName);
-            goBottom.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
-            goBottom.transform.localPosition = Vector3.zero;
-            dicLevelNodesBottomView.Add(uid, goBottom);
+            ////创建底座
+            //var goBottom = gameObjectManager.Rent(bottomPrefabData.PrefabName);
+            //goBottom.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
+            //goBottom.transform.localPosition = Vector3.zero;
+            //dicLevelNodesBottomView.Add(uid, goBottom);
 
             //创建角色
             var go = gameObjectManager.Rent(prefabData.PrefabName);
