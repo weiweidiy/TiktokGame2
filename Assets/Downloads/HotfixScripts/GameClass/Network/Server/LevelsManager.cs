@@ -1,6 +1,7 @@
 using Adic;
 using JFramework;
 using JFramework.Game;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,11 @@ namespace Tiktok
         IGameDataStore dataStore;
 
        [Inject]
-        public LevelsManager(CommonEventManager eventManager, IJConfigManager jConfigManager, IGameDataStore dataStore) : base(eventManager, jConfigManager)
+        public LevelsManager(CommonEventManager eventManager, IJConfigManager jConfigManager, IGameDataStore dataStore, Func<LevelNodeVO, string> keySelector) : base(eventManager, jConfigManager, keySelector)
         {
             this.jConfigManager = jConfigManager;
             this.dataStore = dataStore;
         }
-
-        //public async Task<List<string>> TryUnlockNodes(List<string> nodesUid)
-        //{
-        //    var result = UnlockNodes(nodesUid);     
-
-        //    return result;
-        //}
 
         protected override async Task OnUnlock(List<string> result)
         {

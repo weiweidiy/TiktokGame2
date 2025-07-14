@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using Adic;
 using JFramework;
+using JFramework.Game;
 
 ///游戏可以服用
 namespace Game.Common
@@ -10,7 +11,7 @@ namespace Game.Common
     /// <summary>
     /// 并行执行器
     /// </summary>
-    public class ParallelLauncher : BaseRunable
+    public class ParallelLauncher : BaseViewController
     {
         /// <summary>
         /// 内部运行对象
@@ -18,16 +19,21 @@ namespace Game.Common
 
         protected List<IRunable> internalRunables;
 
-
-        public ParallelLauncher() 
-        { 
-        }
-
-        
-        public ParallelLauncher(List<IRunable> runables)
+        [Inject]
+        public ParallelLauncher(EventManager eventManager) : base(eventManager)
         {
-            this.internalRunables = runables;
         }
+
+
+        //public ParallelLauncher() 
+        //{ 
+        //}
+
+
+        //public ParallelLauncher(List<IRunable> runables)
+        //{
+        //    this.internalRunables = runables;
+        //}
 
         public void Add(IRunable runable)
         {
@@ -50,7 +56,7 @@ namespace Game.Common
                 await runable.Start(extraData);
             }
 
-            SetStartComplete();
+           // SetStartComplete();
         }
 
         protected override void OnStop()

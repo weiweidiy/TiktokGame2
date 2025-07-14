@@ -145,7 +145,8 @@ namespace Tiktok
             levelData = new LevelData();
             //levelData.CurLevelUid = "1";
 
-            var dicLevelsData = new Dictionary<string, LevelNodeVO>();
+            //var dicLevelsData = new Dictionary<string, LevelNodeVO>();
+            var dicLevelsData = new List<LevelNodeVO>();
             levelData.LevelsData = dicLevelsData;
             var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>(); //这里还没有预加载呢
 
@@ -153,9 +154,9 @@ namespace Tiktok
             foreach (var levelNode in allNodes)
             {
                 var vo = new LevelNodeVO();
-                vo.uid = levelNode.Uid;
+                vo.Uid = levelNode.Uid;
                 vo.state = levelNode.Uid == "1" ? LevelState.Unlocked : LevelState.Locked;
-                dicLevelsData.Add(levelNode.Uid, vo);
+                dicLevelsData.Add(vo);
 
             }
 

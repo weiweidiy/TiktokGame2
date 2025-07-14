@@ -1,4 +1,5 @@
 ﻿using JFramework;
+using JFramework.Game;
 
 
 namespace Game.Common
@@ -6,24 +7,13 @@ namespace Game.Common
     /// <summary>
     /// 游戏控制器基类，游戏业务逻辑写在这里
     /// </summary>
-    public class BaseGameController : BaseRunable
+    public abstract class BaseGameController : BaseViewController
     {
-        protected EventManager eventManager;
 
-        public BaseGameController(EventManager eventManager)
+        public BaseGameController(EventManager eventManager):base(eventManager) 
         {
             this.eventManager = eventManager;
 
-        }
-
-        /// <summary>
-        /// 发送消息
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="arg"></param>
-        protected void SendEvent<T>(object arg) where T : Event, new() 
-        {
-            eventManager.Raise<T>(arg);
         }
 
     }

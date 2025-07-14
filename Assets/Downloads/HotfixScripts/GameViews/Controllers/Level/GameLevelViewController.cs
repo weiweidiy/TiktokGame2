@@ -44,7 +44,7 @@ namespace Tiktok
             eventManager.AddListener<EventLevelNodeUnlock>(OnNodeUnlocked);
             eventManager.AddListener<EventSwitchLevel>(OnSwitchLevel);
 
-            SetStartComplete();
+            //SetStartComplete();
         }
 
 

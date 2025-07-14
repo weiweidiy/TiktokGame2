@@ -60,7 +60,7 @@ namespace Tiktok
             eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
             eventManager.AddListener<EventExitLevel>(OnExitLevel);
 
-            SetStartComplete();
+            //SetStartComplete();
         }
 
 
@@ -89,7 +89,7 @@ namespace Tiktok
                 var node = nodes[i];
                 if (node.state == LevelState.Unlocked)
                 {
-                    ShowNode(node.uid);
+                    ShowNode(node.Uid);
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Tiktok
             //var goBottom = gameObjectManager.Rent(bottomPrefabData.PrefabName);
             //goBottom.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
             //goBottom.transform.localPosition = Vector3.zero;
-            //dicLevelNodesBottomView.Add(uid, goBottom);
+            //dicLevelNodesBottomView.Add(Uid, goBottom);
 
             //创建角色
             var go = gameObjectManager.Rent(prefabData.PrefabName);
@@ -155,7 +155,7 @@ namespace Tiktok
             var data = e.Body as List<string>;
             foreach (var uid in data)
             {
-                Debug.Log("关卡解锁了 " + uid);
+                //Debug.Log("关卡解锁了 " + uid);
                 ShowNode(uid); 
             }
 

@@ -3,21 +3,29 @@ using JFramework;
 using JFramework.Game;
 using System;
 using System.Collections.Generic;
+
 using System.Threading.Tasks;
+using UnityEngine;
 
 
 namespace Tiktok
 {
-    public class LevelsModel : BaseModel<LevelData>
+    public class LevelsModel : BaseUnlockableModel<LevelData, LevelNodeVO> //  BaseModel<LevelData>
     {
         IJConfigManager jConfigManager;
 
         [Inject]
-        public LevelsModel(EventManager eventManager, IJConfigManager jConfigManager) : base(eventManager)
+        public LevelsModel(EventManager eventManager, IJConfigManager jConfigManager, Func<LevelNodeVO, string> keySelector) : base(keySelector,eventManager)
         {
             this.jConfigManager = jConfigManager;
         }
 
+        public override void Initialize(LevelData vo)
+        {
+            base.Initialize(vo);
+
+            AddRange(vo.LevelsData);
+        }
 
         /// <summary>
         /// 获取所有指定关卡的所有节点数据
@@ -28,9 +36,9 @@ namespace Tiktok
         {
             var result = new List<LevelNodeVO>();
 
-            foreach (var vo in data.LevelsData.Values)
+            foreach (var vo in data.LevelsData)
             {
-                var cfgData = jConfigManager.Get<LevelsNodesCfgData>(vo.uid);
+                var cfgData = jConfigManager.Get<LevelsNodesCfgData>(vo.Uid);
                 if (cfgData.LevelUid == levelUid)
                 {
                     result.Add(vo);
@@ -45,7 +53,7 @@ namespace Tiktok
         /// </summary>
         /// <param name="levelUid"></param>
         /// <returns></returns>
-        public bool IsUnlocked(string levelUid)
+        public bool IsLevelUnlocked(string levelUid)
         {
             var nodes = GetLevelNodes(levelUid);
             foreach (var node in nodes)
@@ -86,18 +94,19 @@ namespace Tiktok
             if (nodeUid == "0")
                 return false;
 
-            var levelData = Data;
+            return Unlock(nodeUid);
 
-            //var cfgData = jConfigManager.Get<LevelsNodesCfgData>(nodeUid);
-            var vo = Data.LevelsData[nodeUid];
+            //var levelData = Data;
 
-            if (vo.state == LevelState.Unlocked) //已经解锁了，所以不用解锁了
-                return false;
+            //var vo = Data.LevelsData[nodeUid];
 
-            vo.state = LevelState.Unlocked;
-            Data.LevelsData[nodeUid] = vo;
+            //if (vo.state == LevelState.Unlocked) //已经解锁了，所以不用解锁了
+            //    return false;
 
-            return true;
+            //vo.state = LevelState.Unlocked;
+            //Data.LevelsData[nodeUid] = vo;
+
+            //return true;
         }
 
         /// <summary>
@@ -109,10 +118,14 @@ namespace Tiktok
         {
             //发消息，服务器可以是存档
             SendEvent<EventLevelNodeUnlock>(result);
+            
             return Task.CompletedTask;
         }
 
-       
+        protected override void OnUpdateTData(List<LevelNodeVO> unlockableDatas)
+        {
+            Data.LevelsData = unlockableDatas;
+        }
     }
 
 }

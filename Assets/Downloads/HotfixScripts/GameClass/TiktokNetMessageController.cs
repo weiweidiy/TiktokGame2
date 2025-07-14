@@ -29,7 +29,7 @@ namespace Tiktok
 
             jNetwork.onMessage += JNetwork_onMessage;
 
-            SetStartComplete();
+            //SetStartComplete();
         }
 
 

@@ -44,7 +44,7 @@ namespace Tiktok
             uiArg.onPreClick += UiArg_onPreClick;
             uiArg.onNextClick += UiArg_onNextClick;
 
-            SetStartComplete();
+            //SetStartComplete();
         }
 
 
@@ -67,7 +67,7 @@ namespace Tiktok
             //如果没有前一关，没有后一关则返回，否则显示切换UI
             preLevelUid = configManager.GetPreLevel(curLevelUid);
             nextLevelUid = configManager.GetNextLevel(curLevelUid);
-            ShowUIPanelLevel(preLevelUid != "0", levelModel.IsUnlocked(nextLevelUid));
+            ShowUIPanelLevel(preLevelUid != "0", levelModel.IsLevelUnlocked(nextLevelUid));
         }
 
         void ShowUIPanelLevel(bool preValid, bool nextValid)
@@ -96,7 +96,8 @@ namespace Tiktok
             {
                 if (configManager.IsNewLevelFirstNode(uid))
                 {
-                    ShowUIPanelLevel(preLevelUid != "0", levelModel.IsUnlocked(nextLevelUid));
+                    Debug.Log("新关卡解锁了~");
+                    ShowUIPanelLevel(preLevelUid != "0", levelModel.IsLevelUnlocked(nextLevelUid));
                     return;
                 }
             } 

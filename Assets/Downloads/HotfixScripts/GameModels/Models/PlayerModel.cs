@@ -10,7 +10,7 @@ namespace Tiktok
     //public struct PlayerVO
     //{
     //    public string name;
-    //    public string uid;
+    //    public string Uid;
     //}
 
     //public class PlayerModel : BaseModel<List<PlayerVO>>

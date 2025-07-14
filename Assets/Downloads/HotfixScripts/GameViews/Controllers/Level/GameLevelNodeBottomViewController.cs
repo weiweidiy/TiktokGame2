@@ -37,7 +37,7 @@ namespace Tiktok
             eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
             eventManager.AddListener<EventExitLevel>(OnExitLevel);
 
-            SetStartComplete();
+            //SetStartComplete();
         }
 
         protected override void OnStop()
@@ -61,7 +61,7 @@ namespace Tiktok
                 var node = nodes[i];
                 if (node.state == LevelState.Unlocked)
                 {
-                    ShowNode(node.uid);
+                    ShowNode(node.Uid);
                 }
             }
         }
@@ -99,11 +99,11 @@ namespace Tiktok
 
         public void HideNode(string uid)
         {
-            //var view = dicLevelNodesView[uid];
+            //var view = dicLevelNodesView[Uid];
             //view.onClicked -= NodeView_onClicked;
 
             //dicLevelNodesUid.Remove(view.GetHashCode());
-            //dicLevelNodesView.Remove(uid);
+            //dicLevelNodesView.Remove(Uid);
 
             var go = dicLevelNodesBottomView[uid];
             dicLevelNodesBottomView.Remove(uid);
@@ -116,7 +116,7 @@ namespace Tiktok
             var data = e.Body as List<string>;
             foreach (var uid in data)
             {
-                Debug.Log("关卡解锁了 " + uid);
+                //Debug.Log("关卡解锁了 " + uid);
                 ShowNode(uid);
             }
 

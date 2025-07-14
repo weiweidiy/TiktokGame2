@@ -10,6 +10,7 @@ using JFramework.Extern;
 using Game.Common;
 using JFramework.Package;
 using JFramework.Game;
+using System;
 
 
 namespace Tiktok
@@ -75,6 +76,8 @@ namespace Tiktok
 
 
             ////绑定模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Func<LevelNodeVO, string> func = (node) => node.Uid;
+            container.Bind<Func<LevelNodeVO, string>>().To(func);
             ///依赖CommonEventManager
             container.Bind<LevelsModel>().ToSingleton<LevelsModel>();
             //container.Bind<UserModel>().ToSingleton<UserModel>();
