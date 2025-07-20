@@ -14,28 +14,16 @@ namespace Tiktok
     /// <summary>
     /// 关卡节点视图控制器
     /// </summary>
-    public class GameLevelNodeViewController : BaseGameController
+    public class GameLevelNodeViewController : GameLevelNodeBottomViewController
     {
         [Inject]
         IInjectionContainer container;
-
-        [Inject]
-        TiktokConfigManager jConfigManager;
-
-        [Inject]
-        LevelsModel levelsMode;
-
-        [Inject]
-        TiktokGameObjectManager gameObjectManager;
-
-        [Inject]
-        GameLevelViewController gameLevelViewController;
 
         /// <summary>
         /// 当前关卡所有节点
         /// </summary>
         Dictionary<int, string> dicLevelNodesUid = new Dictionary<int, string>();
-        Dictionary<string, TiktokLevelNodeView> dicLevelNodesView = new Dictionary<string, TiktokLevelNodeView>();
+        //Dictionary<string, TiktokLevelNodeView> dicLevelNodesView = new Dictionary<string, TiktokLevelNodeView>();
 
 
         [Inject]
@@ -43,168 +31,47 @@ namespace Tiktok
         {
         }
 
-        /// <summary>
-        /// 在game场景才会run
-        /// </summary>
-        /// <param name="extraData"></param>
-        protected override void OnStart(RunableExtraData extraData)
+        protected override void OnExitLevel(EventExitLevel e)
         {
-            base.OnStart(extraData);
-
-
-
-            eventManager.AddListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
-            eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
-            eventManager.AddListener<EventExitLevel>(OnExitLevel);
-
-            //SetStartComplete();
-        }
-
-
-
-        protected override void OnStop()
-        {
-            base.OnStop();
-
-            eventManager.RemoveListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
-            eventManager.RemoveListener<EventEnterLevel>(OnEnterLevel);
-            eventManager.RemoveListener<EventExitLevel>(OnExitLevel);
-            //to do: 归还所有节点
-            throw new Exception("没有处理OnStop");
-        }
-
-
-        private void OnEnterLevel(EventEnterLevel e)
-        {
-            var curLevelUid = (string)e.Body;
-            var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
-            // Debug.LogError(allNodes.Count + "  " + jConfigManager.GetHashCode());
-
-            var nodes = levelsMode.GetUnlockedLevelNodes(curLevelUid);
-            foreach (var node in nodes)
+            foreach(var go in dicGameObject.Values)
             {
-                //Debug.Log("关卡节点解锁了 " + node.NodeId);
-                ShowNode(node.NodeId.ToString());
-            }
-            //if (nodes.Count == 0)
-            //{
-            //    var firstUid = jConfigManager.GetDefaultFirstNode();
-            //    ShowNode(firstUid);
-
-            //}
-            //else
-            //{
-            //    foreach (var node in nodes)
-            //    {
-            //        //Debug.Log("关卡节点解锁了 " + node.NodeId);
-            //        ShowNode(node.NodeId.ToString());
-
-            //        var nextNodesUid = jConfigManager.GetNextLevelNode(node.NodeId.ToString());
-            //        foreach (var nextNodeUid in nextNodesUid)
-            //        {
-            //            if (!ContainsNodeId(nodes, nextNodeUid))
-            //            {
-            //                ShowNode(nextNodeUid);
-            //            }
-            //        }
-            //    }
-            //}
-        }
-
-        private void OnExitLevel(EventExitLevel e)
-        {
-            foreach (var view in dicLevelNodesView.Values)
-            {
-                gameObjectManager.Return(view.gameObject);
+                go.GetComponent<TiktokLevelNodeView>().onClicked -= NodeView_onClicked;
             }
 
-            dicLevelNodesView.Clear();
+            base.OnExitLevel(e);
             dicLevelNodesUid.Clear();
-            //dicLevelNodesBottomView.Clear();
-        }
-
-        public bool ContainsNodeId(List<LevelNodeDTO> nodes, string nodeUid)
-        {
-            foreach (var node in nodes)
-            {
-                if (node.NodeId == nodeUid)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public void ShowNodes(List<string> uids)
-        {
-            foreach (var uid in uids)
-            {
-                ShowNode(uid);
-            }
+            
         }
 
         /// <summary>
         /// 显示节点
         /// </summary>
         /// <param name="uid"></param>
-        public void ShowNode(string uid)
+        public override void ShowNode(string uid)
         {
-            var cfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
-            var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
-            var bottomPrefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.BottomPrefabUid);
-            var nodeIndex = cfgData.NodeIndex;
+            base.ShowNode(uid);
 
-            ////创建底座
-            //var goBottom = gameObjectManager.Rent(bottomPrefabData.PrefabName);
-            //goBottom.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
-            //goBottom.transform.localPosition = Vector3.zero;
-            //dicLevelNodesBottomView.Add(Uid, goBottom);
-
-            //创建角色
-            var go = gameObjectManager.Rent(prefabData.PrefabName);
-            go.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
-            go.transform.localPosition = Vector3.zero;
-            var nodeView = go.GetComponent<TiktokLevelNodeView>();
-            dicLevelNodesView.Add(uid, nodeView);
-            dicLevelNodesUid.Add(nodeView.GetHashCode(), uid);
+            var go = dicGameObject[uid];
+            var nodeView = go.GetComponent<TiktokLevelNodeView>();       
+            dicLevelNodesUid.Add(go.GetHashCode(), uid);
             nodeView.onClicked += NodeView_onClicked;
         }
 
-        public bool IsShow(string uid)
+        protected override string GetPrefabUid(LevelsNodesCfgData cfgData)
         {
-            return dicLevelNodesView.ContainsKey(uid);
-        }
-
-        public void HideNode(string uid)
-        {
-            var view = dicLevelNodesView[uid];
-            view.onClicked -= NodeView_onClicked;
-
-            dicLevelNodesUid.Remove(view.GetHashCode());
-            dicLevelNodesView.Remove(uid);
-
-            gameObjectManager.Return(view.gameObject);
+            return cfgData.PrefabUid;
         }
 
 
-        private void OnLevelNodeUpdate(EventLevelNodeUpdate e)
+        public override void HideNode(string uid)
         {
-            var data = e.Body as List<LevelNodeDTO>;
-            foreach(var nodeDTO in data)
-            {
-                var uid = nodeDTO.NodeId;
-                if (IsShow(uid))
-                {
-                    Debug.LogError("节点已经显示了 " + uid);
-                }
-                else
-                {
-                    ShowNode(uid);
-                }
-            }
-
-           
+            var go = dicGameObject[uid];
+            go.GetComponent<TiktokLevelNodeView>().onClicked -= NodeView_onClicked;
+            dicLevelNodesUid.Remove(go.GetHashCode());
+            
+            base.HideNode(uid);
         }
+
 
         /// <summary>
         /// 节点被点击
@@ -212,7 +79,7 @@ namespace Tiktok
         /// <param name="nodeView"></param>
         private void NodeView_onClicked(TiktokLevelNodeView nodeView)
         {
-            var nodeUid = dicLevelNodesUid[nodeView.GetHashCode()];
+            var nodeUid = dicLevelNodesUid[nodeView.gameObject.GetHashCode()];
             Debug.Log(nodeUid + "  节点被点击了");
             //to do: 后续UI，比如菜单按钮，由按钮触发事件
 
@@ -222,6 +89,21 @@ namespace Tiktok
 
         }
 
-
+        protected override void UpdateNode(LevelNodeDTO updatedNode)
+        {
+            //跟新角色动画
+            //if (dicGameObject.TryGetValue(updatedNode.NodeId.ToString(), out var go))
+            //{
+            //    var nodeView = go.GetComponent<TiktokLevelNodeView>();
+            //    if (nodeView != null)
+            //    {
+            //        nodeView.UpdateProcess(updatedNode.Process);
+            //    }
+            //}
+            //else
+            //{
+            //    Debug.LogError("节点 " + updatedNode.NodeId + " 不存在，无法更新");
+            //}
+        }
     }
 }

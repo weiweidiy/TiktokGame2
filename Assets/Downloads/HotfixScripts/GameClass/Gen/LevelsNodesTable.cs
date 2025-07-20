@@ -37,5 +37,8 @@ namespace JFramework
         //底座预制体UID
         public string BottomPrefabUid;
 
+        //成就预制体Uid
+        public string StarPrefabUid;
+
     }
 }

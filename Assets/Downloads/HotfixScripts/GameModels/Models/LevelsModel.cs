@@ -54,7 +54,7 @@ namespace Tiktok
                 var nextNodesUid = jConfigManager.GetNextLevelNode(node.NodeId.ToString());
                 foreach (var nextNodeUid in nextNodesUid)
                 {
-                    if (nextNodeUid == "0")
+                    if (nextNodeUid == "0" || node.Process > 1)
                         continue;
 
                     if (Get(nextNodeUid) == null)
@@ -105,17 +105,33 @@ namespace Tiktok
             return nodes.Count > 0;
         }
 
+        /// <summary>
+        /// <!-更新节点数据--->
+        /// </summary>
+        /// <param name="updatedNode"></param>
         public void UpdateNode(LevelNodeDTO updatedNode)
         {
             UpdateData(updatedNode);
 
             var nextNodes = AddNextNodes(new List<LevelNodeDTO> { updatedNode });
-
             var needUpdateNodes = new List<LevelNodeDTO> { updatedNode };
             needUpdateNodes.AddRange(nextNodes);
 
+            foreach(var node in needUpdateNodes)
+                UnityEngine.Debug.Log(" node uid " + node.NodeId + " process " + node.Process);
+
             SendEvent<EventLevelNodeUpdate>(needUpdateNodes);
 
+        }
+
+        public int GetNodeProcess(string nodeUid)
+        {
+            if (string.IsNullOrEmpty(nodeUid))
+                return 0;
+            var node = Get(nodeUid);
+            if (node != null)
+                return node.Process;
+            return 0;
         }
 
         ///// <summary>

@@ -9,21 +9,22 @@ using UnityEngine;
 
 namespace Tiktok
 {
+
     public class GameLevelNodeBottomViewController : BaseGameController
     {
         [Inject]
-        TiktokGameObjectManager gameObjectManager;
+        protected TiktokGameObjectManager gameObjectManager;
 
         [Inject]
-        GameLevelViewController gameLevelViewController;
+        protected GameLevelViewController gameLevelViewController;
 
         [Inject]
-        TiktokConfigManager jConfigManager;
+        protected TiktokConfigManager jConfigManager;
 
         [Inject]
-        LevelsModel levelsMode;
+        protected LevelsModel levelsMode;
 
-        Dictionary<string, GameObject> dicLevelNodesBottomView = new Dictionary<string, GameObject>();
+        protected Dictionary<string, GameObject> dicGameObject = new Dictionary<string, GameObject>();
 
         [Inject]
         public GameLevelNodeBottomViewController(EventManager eventManager) : base(eventManager)
@@ -50,7 +51,7 @@ namespace Tiktok
             eventManager.RemoveListener<EventExitLevel>(OnExitLevel);
         }
 
-        private void OnEnterLevel(EventEnterLevel e)
+        protected virtual void OnEnterLevel(EventEnterLevel e)
         {
             var curLevelUid = (string)e.Body;
             var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
@@ -76,7 +77,7 @@ namespace Tiktok
             return false;
         }
 
-        private void ShowNodes(List<string> nextNodesUid)
+        protected void ShowNodes(List<string> nextNodesUid)
         {
             foreach (var uid in nextNodesUid)
             {
@@ -85,44 +86,49 @@ namespace Tiktok
 
         }
 
-        private void OnExitLevel(EventExitLevel e)
+        protected virtual void OnExitLevel(EventExitLevel e)
         {
 
-            foreach (var go in dicLevelNodesBottomView.Values)
+            foreach (var go in dicGameObject.Values)
             {
                 gameObjectManager.Return(go);
             }
 
-            dicLevelNodesBottomView.Clear();
+            dicGameObject.Clear();
         }
 
         /// <summary>
         /// 显示节点
         /// </summary>
         /// <param name="uid"></param>
-        public void ShowNode(string uid)
+        public virtual void ShowNode(string uid)
         {
             var cfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
-            var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
-            var bottomPrefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.BottomPrefabUid);
+            var bottomPrefabData = jConfigManager.Get<PrefabsCfgData>(GetPrefabUid(cfgData));
             var nodeIndex = cfgData.NodeIndex;
 
             //创建底座
             var goBottom = gameObjectManager.Rent(bottomPrefabData.PrefabName);
             goBottom.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
             goBottom.transform.localPosition = Vector3.zero;
-            dicLevelNodesBottomView.Add(uid, goBottom);
+            dicGameObject.Add(uid, goBottom);
+        }
+
+
+        protected virtual string GetPrefabUid(LevelsNodesCfgData cfgData)
+        {
+            return cfgData.BottomPrefabUid;
         }
 
         public bool IsShow(string uid)
         {
-            return dicLevelNodesBottomView.ContainsKey(uid);
+            return dicGameObject.ContainsKey(uid);
         }
 
-        public void HideNode(string uid)
+        public virtual void HideNode(string uid)
         {
-            var go = dicLevelNodesBottomView[uid];
-            dicLevelNodesBottomView.Remove(uid);
+            var go = dicGameObject[uid];
+            dicGameObject.Remove(uid);
             gameObjectManager.Return(go);
         }
 
@@ -135,14 +141,16 @@ namespace Tiktok
                 var uid = nodeDTO.NodeId;
                 if (IsShow(uid))
                 {
-                    Debug.LogError("节点已经显示了 更新星星数" + uid);
+                    //Debug.LogError("节点已经显示了 更新星星数" + nodeDTO.Process);
+                    UpdateNode(nodeDTO);
                 }
                 else
                 {
                     ShowNode(uid);
                 }
             }
-
         }
+
+        protected virtual void UpdateNode(LevelNodeDTO updatedNode) {}
     }
 }
