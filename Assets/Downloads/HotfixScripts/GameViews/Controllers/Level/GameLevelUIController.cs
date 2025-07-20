@@ -37,7 +37,7 @@ namespace Tiktok
         {
             base.OnStart(extraData);
 
-            eventManager.AddListener<EventLevelNodeUnlock>(OnLevelNodeUnlocked);
+            eventManager.AddListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
             eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
 
             uiArg = new UIPanelLevelProperties();
@@ -53,7 +53,7 @@ namespace Tiktok
         {
             base.OnStop();
 
-            eventManager.RemoveListener<EventLevelNodeUnlock>(OnLevelNodeUnlocked);
+            eventManager.RemoveListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
             eventManager.RemoveListener<EventEnterLevel>(OnEnterLevel);
 
             uiArg.onPreClick -= UiArg_onPreClick;
@@ -86,21 +86,24 @@ namespace Tiktok
 
         }
 
-        private void OnLevelNodeUnlocked(EventLevelNodeUnlock e)
+        private void OnLevelNodeUpdate(EventLevelNodeUpdate e)
         {
             //if (uiManager.IsPanelOpen(nameof(UIPanelLevel)))
             //    return;
 
-            var lstNodeUid = e.Body as List<string>;
-            foreach (var uid in lstNodeUid)
+            var data = e.Body as List<LevelNodeDTO>;
+            foreach (var nodeDTO in data)
             {
+                var uid = nodeDTO.NodeId.ToString();
                 if (configManager.IsNewLevelFirstNode(uid))
                 {
-                    Debug.Log("新关卡解锁了~");
+                    //Debug.Log("新关卡解锁了~");
                     ShowUIPanelLevel(preLevelUid != "0", levelModel.IsLevelUnlocked(nextLevelUid));
                     return;
                 }
-            } 
+            }
+            
+            
         }
 
         private void UiArg_onPreClick(UIPanelLevel obj)

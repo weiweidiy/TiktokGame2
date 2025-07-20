@@ -15,9 +15,22 @@ namespace JFramework
         {
             var nodeCfgData = jConfigManager.Get<LevelsNodesCfgData>(uid);
             var preUid = nodeCfgData.PreUid;
+            if (preUid == "0")
+                return true;
             var preNode = jConfigManager.Get<LevelsNodesCfgData>(preUid);
             return preNode.LevelUid != nodeCfgData.LevelUid;
 
+        }
+
+        public string GetDefaultFirstNode()
+        {
+            return "1";
+        }
+
+        public List<string> GetNextLevelNode(string curUid)
+        {
+            var nodeCfg = jConfigManager.Get<LevelsNodesCfgData>(curUid);
+            return nodeCfg.NextUid;
         }
 
         public string GetNextLevel(string curUid)

@@ -11,15 +11,19 @@ namespace Tiktok
         {
             var result = new Dictionary<int, Type>();
 
-            result.Add(GetIndex(), typeof(LoginReq));
-            result.Add(GetIndex(), typeof(LoginRes));
-            result.Add(GetIndex(), typeof(FightReq));
-            result.Add(GetIndex(), typeof(FightRes));
-            result.Add(GetIndex(), typeof(LevelNodeUnlockedNtf));
+            //result.Add(GetIndex(), typeof(LoginReq));
+            //result.Add(GetIndex(), typeof(LoginRes));
+            //result.Add(GetIndex(), typeof(FightReq));
+            //result.Add(GetIndex(), typeof(FightRes));
+            //result.Add(GetIndex(), typeof(LevelNodeUnlockedNtf));
+
+
+            result.Add(GetIndex(), typeof(LevelNodeDTO));
+            result.Add(GetIndex(), typeof(FightDTO));
 
 
             result.Add(GetIndex(), typeof(EventFight));
-            result.Add(GetIndex(), typeof(EventLevelNodeUnlock));
+            result.Add(GetIndex(), typeof(EventLevelNodeUpdate));
             result.Add(GetIndex(), typeof(EventEnterLevel));
             result.Add(GetIndex(), typeof(EventExitLevel));
             result.Add(GetIndex(), typeof(EventSwitchLevel));

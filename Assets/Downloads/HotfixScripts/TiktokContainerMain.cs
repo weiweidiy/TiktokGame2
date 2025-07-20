@@ -11,6 +11,7 @@ using Game.Common;
 using JFramework.Package;
 using JFramework.Game;
 using System;
+using System.Net;
 
 
 namespace Tiktok
@@ -46,6 +47,8 @@ namespace Tiktok
             container.Bind<IConfigLoader>().ToSingleton<YooAssetsLoader>();
             container.Bind<IDataConverter>().ToSingleton<LitJsonSerializer>();
             container.Bind<IDeserializer>().ToSingleton<LitJsonSerializer>();
+            container.Bind<ISerializer>().ToSingleton<LitJsonSerializer>();
+            container.Bind<TiktokUnityHttpRequest>().ToSingleton<TiktokUnityHttpRequest>();
 
             //绑定配置表管理类 dependence : IConfigLoader,IDeserializer
             container.Bind<IJConfigManager>().ToSingleton<TiktokGenConfigManager>();
@@ -56,14 +59,14 @@ namespace Tiktok
             container.Bind<IGameDataStore>().ToSingleton<CommonDataStore>();
 
             //绑定网络类
-            container.Bind<ITypeRegister>().ToSingleton<TiktokClientNetMessageRegister>().As("Client");
-            container.Bind<IMessageTypeResolver>().ToSingleton<CommonClientJNetMessageTypeResolver>().As("Client");
-            container.Bind<INetMessageSerializerStrate>().ToSingleton<CommonJNetMessageJsonSerializerStrate>();
-            container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonClientJNetworkMessageProcessStrate>().As("Client");
-            container.Bind<IJSocket>().To<FakeSocket>();
-            container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
-            container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
-            container.Bind<IJNetwork>().ToSingleton<CommonClientJNetwork>();
+            //container.Bind<ITypeRegister>().ToSingleton<TiktokClientNetMessageRegister>().As("Client");
+            //container.Bind<IMessageTypeResolver>().ToSingleton<CommonClientJNetMessageTypeResolver>().As("Client");
+            //container.Bind<INetMessageSerializerStrate>().ToSingleton<CommonJNetMessageJsonSerializerStrate>();
+            //container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonClientJNetworkMessageProcessStrate>().As("Client");
+            ////container.Bind<IJSocket>().To<FakeSocket>();
+            //container.Bind<ISocketFactory>().ToSingleton<SocketFactory>();
+            //container.Bind<IJTaskCompletionSourceManager<IUnique>>().To<JTaskCompletionSourceManager<IUnique>>();
+            //container.Bind<IJNetwork>().ToSingleton<CommonClientJNetwork>();
 
 
             ///依赖BaseClassPool
@@ -76,8 +79,8 @@ namespace Tiktok
 
 
             ////绑定模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            Func<LevelNodeVO, string> func = (node) => node.Uid;
-            container.Bind<Func<LevelNodeVO, string>>().To(func);
+            Func<LevelNodeDTO, string> func = (node) => node.NodeId.ToString();
+            container.Bind<Func<LevelNodeDTO, string>>().To(func);
             ///依赖CommonEventManager
             container.Bind<LevelsModel>().ToSingleton<LevelsModel>();
             //container.Bind<UserModel>().ToSingleton<UserModel>();
@@ -95,7 +98,7 @@ namespace Tiktok
             container.Bind<UIManager>().ToSingleton();
 
             //消息处理
-            container.Bind<TiktokNetMessageController>().ToSingleton();
+            //container.Bind<TiktokNetMessageController>().ToSingleton();
             
             container.Bind<GameLevelViewController>().ToSingleton();
             container.Bind<GameLevelUIController>().ToSingleton();
@@ -136,13 +139,15 @@ namespace Tiktok
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 服务器相关 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             
 
-            container.Bind<LevelsManager>().ToSingleton();
-            container.Bind<ITypeRegister>().ToSingleton<TiktokServerNetMessageRegister>().As("Server");
-            container.Bind<IMessageTypeResolver>().ToSingleton<CommonServerJNetMessageTypeResolver>().As("Server");
-            container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonServerJNetworkMessageProcessStrate>().As("Server");
-            container.Bind<FakeServer>().ToSingleton();         
-            container.Bind<FakeNotifier>().ToSingleton();
+            //container.Bind<LevelsManager>().ToSingleton();
+            //container.Bind<ITypeRegister>().ToSingleton<TiktokServerNetMessageRegister>().As("Server");
+            //container.Bind<IMessageTypeResolver>().ToSingleton<CommonServerJNetMessageTypeResolver>().As("Server");
+            //container.Bind<INetworkMessageProcessStrate>().ToSingleton<CommonServerJNetworkMessageProcessStrate>().As("Server");
+            //container.Bind<FakeServer>().ToSingleton();         
+            //container.Bind<FakeNotifier>().ToSingleton();
 
+
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
         }
 
         public override void Init()

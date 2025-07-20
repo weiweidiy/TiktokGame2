@@ -6,39 +6,85 @@ using System.Collections.Generic;
 
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace Tiktok
 {
-    public class LevelsModel : BaseUnlockableModel<LevelData, LevelNodeVO> //  BaseModel<LevelData>
+    public class LevelsModel : BaseDictionaryModel<LevelNodeDTO> //  BaseModel<LevelData>
     {
-        IJConfigManager jConfigManager;
+        TiktokConfigManager jConfigManager;
 
         [Inject]
-        public LevelsModel(EventManager eventManager, IJConfigManager jConfigManager, Func<LevelNodeVO, string> keySelector) : base(keySelector,eventManager)
+        public LevelsModel(EventManager eventManager, TiktokConfigManager jConfigManager, Func<LevelNodeDTO, string> keySelector) : base(keySelector,eventManager)
         {
             this.jConfigManager = jConfigManager;
         }
 
-        public override void Initialize(LevelData vo)
+        public void Initialize(List<LevelNodeDTO> unlockedNodes)
         {
-            base.Initialize(vo);
+            AddRange(unlockedNodes);
 
-            AddRange(vo.LevelsData);
+            if(unlockedNodes.Count == 0)
+            {
+                //如果没有解锁的节点，则添加第一个默认节点
+                var firstNodeUid = jConfigManager.GetDefaultFirstNode();
+                if (firstNodeUid != null)
+                {
+                    var firstNode = new LevelNodeDTO
+                    {
+                        NodeId = firstNodeUid,
+                        Process = 0
+                    };
+                    Add(firstNode);
+                }
+            }
+            else
+                //更新并添加后置节点
+                AddNextNodes(unlockedNodes); 
         }
 
+
+        List<LevelNodeDTO> AddNextNodes(List<LevelNodeDTO> targetNodes)
+        {
+            var result = new List<LevelNodeDTO>();
+
+            foreach (var node in targetNodes)
+            {
+                var nextNodesUid = jConfigManager.GetNextLevelNode(node.NodeId.ToString());
+                foreach (var nextNodeUid in nextNodesUid)
+                {
+                    if (nextNodeUid == "0")
+                        continue;
+
+                    if (Get(nextNodeUid) == null)
+                    {
+                        var nextNode = new LevelNodeDTO
+                        {
+                            NodeId = nextNodeUid,
+                            Process = 0
+                        };
+                        Add(nextNode);
+                        result.Add(nextNode);
+                    }
+                }
+            }
+            return result;
+        }
+
+
         /// <summary>
-        /// 获取所有指定关卡的所有节点数据
+        /// 获取所有指定关卡的已经解锁的所有节点数据
         /// </summary>
         /// <param name="levelUid"></param>
         /// <returns></returns>
-        public List<LevelNodeVO> GetLevelNodes(string levelUid)
+        public List<LevelNodeDTO> GetUnlockedLevelNodes(string levelUid)
         {
-            var result = new List<LevelNodeVO>();
+            var result = new List<LevelNodeDTO>();
 
-            foreach (var vo in data.LevelsData)
+            foreach (var vo in GetAll())
             {
-                var cfgData = jConfigManager.Get<LevelsNodesCfgData>(vo.Uid);
+                var cfgData = jConfigManager.Get<LevelsNodesCfgData>(vo.NodeId.ToString());
                 if (cfgData.LevelUid == levelUid)
                 {
                     result.Add(vo);
@@ -55,77 +101,73 @@ namespace Tiktok
         /// <returns></returns>
         public bool IsLevelUnlocked(string levelUid)
         {
-            var nodes = GetLevelNodes(levelUid);
-            foreach (var node in nodes)
-            {
-                if(node.state == LevelState.Unlocked)
-                    return true;
-            }
-            return false;
+            var nodes = GetUnlockedLevelNodes(levelUid);
+            return nodes.Count > 0;
         }
 
-        /// <summary>
-        /// 解锁
-        /// </summary>
-        /// <param name="nodesUid"></param>
-        /// <returns></returns>
-        public async Task<List<string>> UnlockNodes(List<string> nodesUid)
+        public void UpdateNode(LevelNodeDTO updatedNode)
         {
-            var result = new List<string>();
-            foreach (string nodeUid in nodesUid)
-            {
+            UpdateData(updatedNode);
 
-                var success = UnlockNode(nodeUid);
-                if (success) result.Add(nodeUid);
-            }
+            var nextNodes = AddNextNodes(new List<LevelNodeDTO> { updatedNode });
 
-            await OnUnlock(result);
+            var needUpdateNodes = new List<LevelNodeDTO> { updatedNode };
+            needUpdateNodes.AddRange(nextNodes);
 
-            return result;
+            SendEvent<EventLevelNodeUpdate>(needUpdateNodes);
+
         }
 
-        /// <summary>
-        /// 解锁单个节点
-        /// </summary>
-        /// <param name="nodeUid"></param>
-        /// <returns></returns>
-        protected bool UnlockNode(string nodeUid)
-        {
-            if (nodeUid == "0")
-                return false;
+        ///// <summary>
+        ///// 解锁
+        ///// </summary>
+        ///// <param name="nodesUid"></param>
+        ///// <returns></returns>
+        //public async Task<List<string>> UnlockNodes(List<string> nodesUid)
+        //{
+        //    var result = new List<string>();
+        //    foreach (string nodeUid in nodesUid)
+        //    {
 
-            return Unlock(nodeUid);
+        //        var success = UnlockNode(nodeUid);
+        //        if (success) result.Add(nodeUid);
+        //    }
 
-            //var levelData = Data;
+        //    await OnUnlock(result);
 
-            //var vo = Data.LevelsData[nodeUid];
+        //    return result;
+        //}
 
-            //if (vo.state == LevelState.Unlocked) //已经解锁了，所以不用解锁了
-            //    return false;
+        ///// <summary>
+        ///// 解锁单个节点
+        ///// </summary>
+        ///// <param name="nodeUid"></param>
+        ///// <returns></returns>
+        //protected bool UnlockNode(string nodeUid)
+        //{
+        //    if (nodeUid == "0")
+        //        return false;
 
-            //vo.state = LevelState.Unlocked;
-            //Data.LevelsData[nodeUid] = vo;
+        //    return Unlock(nodeUid);
+        //}
 
-            //return true;
-        }
+        ///// <summary>
+        ///// 解锁后续处理
+        ///// </summary>
+        ///// <param name="result"></param>
+        ///// <returns></returns>
+        //protected virtual Task OnUnlock(List<string> result)
+        //{
+        //    //发消息，服务器可以是存档
+        //    SendEvent<EventLevelNodeUpdate>(result);
 
-        /// <summary>
-        /// 解锁后续处理
-        /// </summary>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        protected virtual Task OnUnlock(List<string> result)
-        {
-            //发消息，服务器可以是存档
-            SendEvent<EventLevelNodeUnlock>(result);
-            
-            return Task.CompletedTask;
-        }
+        //    return Task.CompletedTask;
+        //}
 
-        protected override void OnUpdateTData(List<LevelNodeVO> unlockableDatas)
-        {
-            Data.LevelsData = unlockableDatas;
-        }
+        //protected override void OnUpdateTData(List<LevelNodeDTO> unlockableDatas)
+        //{
+        //    Data.UnlockedLevelNodesData = unlockableDatas;
+        //}
     }
 
 }

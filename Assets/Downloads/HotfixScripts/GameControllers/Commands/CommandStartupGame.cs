@@ -39,8 +39,8 @@ namespace GameCommands
         [Inject]
         IJConfigManager jConfigManager;
 
-        [Inject]
-        TiktokNetMessageController tiktokNetMessageController;
+        //[Inject]
+        //TiktokNetMessageController tiktokNetMessageController;
 
         [Inject]
         ParallelLauncher parallelLauncher;
@@ -104,8 +104,8 @@ namespace GameCommands
             //初始化游戏对象管理器
             await gameObjectManager.Initialize();
 
-            parallelLauncher.Add(tiktokNetMessageController);
-            await parallelLauncher.Start(null);
+            //parallelLauncher.Add(tiktokNetMessageController);
+            //await parallelLauncher.Start(null);
 
             await sm.SwitchToMenu();                 
         }

@@ -5,6 +5,9 @@ using JFramework.Extern;
 using JFramework.Game;
 using JFramework.Game.View;
 using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,8 +33,11 @@ namespace Tiktok
         [Inject]
         ITransitionProvider transitionProvider;
 
+        //[Inject]
+        //IJNetwork jNetwork;
+
         [Inject]
-        IJNetwork jNetwork;
+        TiktokUnityHttpRequest httpRequest;
 
         [Inject]
         LevelsModel levelModel;
@@ -71,7 +77,7 @@ namespace Tiktok
 
             //显示menuUI
             var uiArg = new UIPanelMenuProperties();
-            uiArg.onBtnEnterclick += UiArg_onBtnEnterclick; 
+            uiArg.onBtnEnterclick += UiArg_onBtnEnterclick;
             uiManager.ShowPanel(nameof(UIPanelMenu), uiArg);
         }
 
@@ -81,24 +87,18 @@ namespace Tiktok
             var transition = await transitionProvider.InstantiateAsync(TransitionType.SMBlindsTransition.ToString());
             await transition.TransitionOut();
 
-            //链接服务器
-            await jNetwork.Connect("");
-            Debug.Log("链接成功");
-            //var c2sLogin = new LoginReq();
-            //c2sLogin.Uid = Guid.NewGuid().ToString();
-
-            var loginReq = classPool.Rent<LoginReq>();
-            loginReq.Uid = Guid.NewGuid().ToString();
-            var loginData = await jNetwork.SendMessage<LoginRes>(loginReq);
-            classPool.Return(loginReq);
+            // 发送POST请求（空body）
+            var accountDTO = await httpRequest.RequestLogin( "jcw14");
+            var gameDTO = await httpRequest.RequestEnterGame(accountDTO);
+            //var str = Encoding.UTF8.GetString(result);
 
 
             //初始化必要模型
-            levelModel.Initialize(loginData.LevelData);
+            levelModel.Initialize(gameDTO.LevelNodesDTO);
 
 
             await context.sm.SwitchToGame();
-            Debug.Log("SwitchToGame done " );
+            Debug.Log("SwitchToGame done ");
             await transition.TransitionIn();
         }
 

@@ -1,25 +1,25 @@
-﻿using Adic;
-using JFramework;
+﻿//using Adic;
+//using JFramework;
 
 
 
-namespace Tiktok
-{
-    public class FakeNotifier
-    {
-        IJNetwork network;
+//namespace Tiktok
+//{
+//    public class FakeNotifier
+//    {
+//        IJNetwork network;
 
-        [Inject]
-        public FakeNotifier(IJNetwork network)
-        {
-            this.network = network;
-        }
+//        [Inject]
+//        public FakeNotifier(IJNetwork network)
+//        {
+//            this.network = network;
+//        }
 
-        public void Notify(byte[] data)
-        {
-            var fakeSocket = this.network.Socket as FakeSocket;
-            fakeSocket.Recieve(data);
-        }
-    }
-}
+//        public void Notify(byte[] data)
+//        {
+//            var fakeSocket = this.network.Socket as FakeSocket;
+//            fakeSocket.Recieve(data);
+//        }
+//    }
+//}
 

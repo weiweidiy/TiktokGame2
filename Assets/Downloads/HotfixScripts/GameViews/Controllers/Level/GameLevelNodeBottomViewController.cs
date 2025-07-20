@@ -2,6 +2,7 @@
 using Game.Common;
 using JFramework;
 using JFramework.Game;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Tiktok
         GameLevelViewController gameLevelViewController;
 
         [Inject]
-        IJConfigManager jConfigManager;
+        TiktokConfigManager jConfigManager;
 
         [Inject]
         LevelsModel levelsMode;
@@ -33,7 +34,7 @@ namespace Tiktok
         {
             base.OnStart(extraData);
 
-            eventManager.AddListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
+            eventManager.AddListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
             eventManager.AddListener<EventEnterLevel>(OnEnterLevel);
             eventManager.AddListener<EventExitLevel>(OnExitLevel);
 
@@ -44,7 +45,7 @@ namespace Tiktok
         {
             base.OnStop();
 
-            eventManager.RemoveListener<EventLevelNodeUnlock>(OnLevelNodeUnlock);
+            eventManager.RemoveListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
             eventManager.RemoveListener<EventEnterLevel>(OnEnterLevel);
             eventManager.RemoveListener<EventExitLevel>(OnExitLevel);
         }
@@ -55,15 +56,33 @@ namespace Tiktok
             var allNodes = jConfigManager.GetAll<LevelsNodesCfgData>();
             // Debug.LogError(allNodes.Count + "  " + jConfigManager.GetHashCode());
 
-            var nodes = levelsMode.GetLevelNodes(curLevelUid);
-            for (int i = 0; i < nodes.Count; i++)
+            var nodes = levelsMode.GetUnlockedLevelNodes(curLevelUid);
+            foreach (var node in nodes)
             {
-                var node = nodes[i];
-                if (node.state == LevelState.Unlocked)
+                //Debug.Log("关卡节点解锁了 " + node.NodeId);
+                ShowNode(node.NodeId.ToString());
+            }
+        }
+
+        public bool ContainsNodeId(List<LevelNodeDTO> nodes, string nodeUid)
+        {
+            foreach (var node in nodes)
+            {
+                if (node.NodeId == nodeUid)
                 {
-                    ShowNode(node.Uid);
+                    return true;
                 }
             }
+            return false;
+        }
+
+        private void ShowNodes(List<string> nextNodesUid)
+        {
+            foreach (var uid in nextNodesUid)
+            {
+                ShowNode(uid);
+            }
+
         }
 
         private void OnExitLevel(EventExitLevel e)
@@ -93,31 +112,35 @@ namespace Tiktok
             goBottom.transform.SetParent(gameLevelViewController.GetNode(nodeIndex));
             goBottom.transform.localPosition = Vector3.zero;
             dicLevelNodesBottomView.Add(uid, goBottom);
+        }
 
-
+        public bool IsShow(string uid)
+        {
+            return dicLevelNodesBottomView.ContainsKey(uid);
         }
 
         public void HideNode(string uid)
         {
-            //var view = dicLevelNodesView[Uid];
-            //view.onClicked -= NodeView_onClicked;
-
-            //dicLevelNodesUid.Remove(view.GetHashCode());
-            //dicLevelNodesView.Remove(Uid);
-
             var go = dicLevelNodesBottomView[uid];
             dicLevelNodesBottomView.Remove(uid);
             gameObjectManager.Return(go);
         }
 
 
-        private void OnLevelNodeUnlock(EventLevelNodeUnlock e)
+        private void OnLevelNodeUpdate(EventLevelNodeUpdate e)
         {
-            var data = e.Body as List<string>;
-            foreach (var uid in data)
+            var data = e.Body as List<LevelNodeDTO>;
+            foreach (var nodeDTO in data)
             {
-                //Debug.Log("关卡解锁了 " + uid);
-                ShowNode(uid);
+                var uid = nodeDTO.NodeId;
+                if (IsShow(uid))
+                {
+                    Debug.LogError("节点已经显示了 更新星星数" + uid);
+                }
+                else
+                {
+                    ShowNode(uid);
+                }
             }
 
         }

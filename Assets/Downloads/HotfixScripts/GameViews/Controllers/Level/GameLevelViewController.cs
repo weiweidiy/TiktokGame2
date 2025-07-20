@@ -41,7 +41,7 @@ namespace Tiktok
         {
             base.OnStart(extraData);
 
-            eventManager.AddListener<EventLevelNodeUnlock>(OnNodeUnlocked);
+            eventManager.AddListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
             eventManager.AddListener<EventSwitchLevel>(OnSwitchLevel);
 
             //SetStartComplete();
@@ -53,22 +53,22 @@ namespace Tiktok
         {
             base.OnStop();
 
-            eventManager.RemoveListener<EventLevelNodeUnlock>(OnNodeUnlocked);
+            eventManager.RemoveListener<EventLevelNodeUpdate>(OnLevelNodeUpdate);
             eventManager.RemoveListener<EventSwitchLevel>(OnSwitchLevel);
         }
 
 
-        private void OnNodeUnlocked(EventLevelNodeUnlock e)
+        private void OnLevelNodeUpdate(EventLevelNodeUpdate e)
         {
-            var nodes = e.Body as List<string>;
+            var nodes = e.Body as List<LevelNodeDTO>;
 
-            foreach (var uid in nodes) {
+            //foreach (var uid in nodes) {
 
-                if(jConfigManager.IsNewLevelFirstNode(uid))
-                {
-                    //Debug.LogError("新关卡解锁了 " );
-                }
-            }
+            //    if(jConfigManager.IsNewLevelFirstNode(uid))
+            //    {
+            //        //Debug.LogError("新关卡解锁了 " );
+            //    }
+            //}
             
         }
 
