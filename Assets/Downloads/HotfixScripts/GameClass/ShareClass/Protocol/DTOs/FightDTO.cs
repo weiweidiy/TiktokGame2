@@ -2,7 +2,7 @@
 {
     public class FightDTO 
     {
-        public string LevelNodeId { get; set; }
+        public string LevelNodeUid { get; set; }
 
         public LevelNodeDTO? LevelNodeDTO { get; set; }
     }
