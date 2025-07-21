@@ -33,7 +33,7 @@ namespace Tiktok
                 {
                     var firstNode = new LevelNodeDTO
                     {
-                        NodeId = firstNodeUid,
+                        Uid = firstNodeUid,
                         Process = 0
                     };
                     Add(firstNode);
@@ -51,7 +51,7 @@ namespace Tiktok
 
             foreach (var node in targetNodes)
             {
-                var nextNodesUid = jConfigManager.GetNextLevelNode(node.NodeId.ToString());
+                var nextNodesUid = jConfigManager.GetNextLevelNode(node.Uid.ToString());
                 foreach (var nextNodeUid in nextNodesUid)
                 {
                     if (nextNodeUid == "0" || node.Process > 1)
@@ -61,7 +61,7 @@ namespace Tiktok
                     {
                         var nextNode = new LevelNodeDTO
                         {
-                            NodeId = nextNodeUid,
+                            Uid = nextNodeUid,
                             Process = 0
                         };
                         Add(nextNode);
@@ -84,7 +84,7 @@ namespace Tiktok
 
             foreach (var vo in GetAll())
             {
-                var cfgData = jConfigManager.Get<LevelsNodesCfgData>(vo.NodeId.ToString());
+                var cfgData = jConfigManager.Get<LevelsNodesCfgData>(vo.Uid.ToString());
                 if (cfgData.LevelUid == levelUid)
                 {
                     result.Add(vo);
@@ -118,7 +118,7 @@ namespace Tiktok
             needUpdateNodes.AddRange(nextNodes);
 
             foreach(var node in needUpdateNodes)
-                UnityEngine.Debug.Log(" node uid " + node.NodeId + " process " + node.Process);
+                UnityEngine.Debug.Log(" node uid " + node.Uid + " process " + node.Process);
 
             SendEvent<EventLevelNodeUpdate>(needUpdateNodes);
 

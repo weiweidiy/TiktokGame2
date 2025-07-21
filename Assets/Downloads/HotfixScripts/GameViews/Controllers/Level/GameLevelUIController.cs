@@ -94,7 +94,7 @@ namespace Tiktok
             var data = e.Body as List<LevelNodeDTO>;
             foreach (var nodeDTO in data)
             {
-                var uid = nodeDTO.NodeId.ToString();
+                var uid = nodeDTO.Uid.ToString();
                 if (configManager.IsNewLevelFirstNode(uid))
                 {
                     //Debug.Log("新关卡解锁了~");

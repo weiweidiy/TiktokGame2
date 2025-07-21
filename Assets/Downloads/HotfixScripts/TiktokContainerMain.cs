@@ -79,7 +79,7 @@ namespace Tiktok
 
 
             ////绑定模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            Func<LevelNodeDTO, string> func = (node) => node.NodeId.ToString();
+            Func<LevelNodeDTO, string> func = (node) => node.Uid.ToString();
             container.Bind<Func<LevelNodeDTO, string>>().To(func);
             ///依赖CommonEventManager
             container.Bind<LevelsModel>().ToSingleton<LevelsModel>();

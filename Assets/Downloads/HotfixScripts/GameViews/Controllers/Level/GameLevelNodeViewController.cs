@@ -92,7 +92,7 @@ namespace Tiktok
         protected override void UpdateNode(LevelNodeDTO updatedNode)
         {
             //跟新角色动画
-            //if (dicGameObject.TryGetValue(updatedNode.NodeId.ToString(), out var go))
+            //if (dicGameObject.TryGetValue(updatedNode.Uid.ToString(), out var go))
             //{
             //    var nodeView = go.GetComponent<TiktokLevelNodeView>();
             //    if (nodeView != null)
@@ -102,7 +102,7 @@ namespace Tiktok
             //}
             //else
             //{
-            //    Debug.LogError("节点 " + updatedNode.NodeId + " 不存在，无法更新");
+            //    Debug.LogError("节点 " + updatedNode.Uid + " 不存在，无法更新");
             //}
         }
     }
