@@ -26,7 +26,7 @@ namespace GameCommands
             var nodeUid = (string)parameters[0];
 
             var req = classPool.Rent<FightDTO>();
-            req.LevelNodeUid = nodeUid;
+            req.LevelNodeBusinessId = nodeUid;
             // var response = await jNetwork.SendMessage<FightRes>(req);
             var result = await jNetwork.RequestFight(req);
 

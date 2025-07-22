@@ -6,10 +6,10 @@ using JFramework;
 using System;
 using LitJson;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace JFramework.Extern
 {
-
     public class LitJsonSerializer : IDataConverter
     {
         public string Serialize(object obj)

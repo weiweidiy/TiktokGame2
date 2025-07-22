@@ -1,14 +1,29 @@
 [
   {
     "Uid":"1",
-    "Name":"织田信长"
+    "Name":"织田信长",
+    "Power":122,
+    "Def":122,
+    "Intel":122,
+    "Speed":122,
+    "SoldierUid":"1"
    },
   {
     "Uid":"2",
-    "Name":"德川家康"
+    "Name":"德川家康",
+    "Power":122,
+    "Def":122,
+    "Intel":122,
+    "Speed":122,
+    "SoldierUid":"2"
    },
   {
     "Uid":"3",
-    "Name":"伊达政宗"
+    "Name":"伊达政宗",
+    "Power":122,
+    "Def":122,
+    "Intel":122,
+    "Speed":122,
+    "SoldierUid":"3"
    }
 ]

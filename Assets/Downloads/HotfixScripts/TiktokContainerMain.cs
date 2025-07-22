@@ -46,7 +46,7 @@ namespace Tiktok
             container.Bind<ITransitionProvider>().ToSingleton<SMTransitionProvider>();
             container.Bind<IConfigLoader>().ToSingleton<YooAssetsLoader>();
             container.Bind<IDataConverter>().ToSingleton<LitJsonSerializer>();
-            container.Bind<IDeserializer>().ToSingleton<LitJsonSerializer>();
+            container.Bind<IDeserializer>().ToSingleton<JsonNetSerializer>();
             container.Bind<ISerializer>().ToSingleton<LitJsonSerializer>();
             container.Bind<TiktokUnityHttpRequest>().ToSingleton<TiktokUnityHttpRequest>();
 
@@ -79,7 +79,7 @@ namespace Tiktok
 
 
             ////绑定模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            Func<LevelNodeDTO, string> func = (node) => node.Uid.ToString();
+            Func<LevelNodeDTO, string> func = (node) => node.BusinessId.ToString();
             container.Bind<Func<LevelNodeDTO, string>>().To(func);
             ///依赖CommonEventManager
             container.Bind<LevelsModel>().ToSingleton<LevelsModel>();

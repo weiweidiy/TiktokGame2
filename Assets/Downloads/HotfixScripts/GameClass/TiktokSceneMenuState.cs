@@ -88,7 +88,7 @@ namespace Tiktok
             await transition.TransitionOut();
 
             // 发送POST请求（空body）
-            var accountDTO = await httpRequest.RequestLogin( "jcw26");
+            var accountDTO = await httpRequest.RequestLogin( "jcw31");
             var gameDTO = await httpRequest.RequestEnterGame(accountDTO);
             //var str = Encoding.UTF8.GetString(result);
 

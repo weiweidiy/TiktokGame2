@@ -28,7 +28,7 @@ namespace Tiktok
 
         protected override void UpdateNode(LevelNodeDTO updatedNode)
         {
-            var uid = updatedNode.Uid;
+            var uid = updatedNode.BusinessId;
             var go = dicGameObject[uid];
             var starsView = go.GetComponent<TiktokLevelNodeStarView>();
             starsView.UpdateStars(levelsMode.GetNodeProcess(uid));

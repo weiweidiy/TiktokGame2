@@ -1,0 +1,29 @@
+[
+  {
+    "Uid":"1",
+    "SamuraiUid":"1",
+    "SoldierUid":"1",
+    "Atk":100,
+    "Def":100,
+    "Hp":100,
+    "Speed":100
+   },
+  {
+    "Uid":"2",
+    "SamuraiUid":"2",
+    "SoldierUid":"2",
+    "Atk":150,
+    "Def":150,
+    "Hp":150,
+    "Speed":150
+   },
+  {
+    "Uid":"3",
+    "SamuraiUid":"3",
+    "SoldierUid":"3",
+    "Atk":200,
+    "Def":200,
+    "Hp":200,
+    "Speed":200
+   }
+]

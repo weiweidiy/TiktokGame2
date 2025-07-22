@@ -1,7 +1,5 @@
 ﻿
 
-
-
 namespace Tiktok
 {
     public class AccountDTO

@@ -61,7 +61,7 @@ namespace Tiktok
             foreach (var node in nodes)
             {
                 //Debug.Log("关卡节点解锁了 " + node.Uid);
-                ShowNode(node.Uid.ToString());
+                ShowNode(node.BusinessId.ToString());
             }
         }
 
@@ -69,7 +69,7 @@ namespace Tiktok
         {
             foreach (var node in nodes)
             {
-                if (node.Uid == nodeUid)
+                if (node.BusinessId == nodeUid)
                 {
                     return true;
                 }
@@ -138,7 +138,7 @@ namespace Tiktok
             var data = e.Body as List<LevelNodeDTO>;
             foreach (var nodeDTO in data)
             {
-                var uid = nodeDTO.Uid;
+                var uid = nodeDTO.BusinessId;
                 if (IsShow(uid))
                 {
                     //Debug.LogError("节点已经显示了 更新星星数" + nodeDTO.Process);

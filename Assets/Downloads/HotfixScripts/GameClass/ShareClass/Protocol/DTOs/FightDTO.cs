@@ -1,9 +1,17 @@
-﻿namespace Tiktok
+﻿using JFramework.Game;
+
+
+namespace Tiktok
 {
+
     public class FightDTO 
     {
-        public string LevelNodeUid { get; set; }
+        public string LevelNodeBusinessId { get; set; }
 
-        public LevelNodeDTO? LevelNodeDTO { get; set; }
+        public JCombatTurnBasedReportData ReportData { get; set; }
+
+        public LevelNodeDTO LevelNodeDTO { get; set; }
+
+
     }
 }
