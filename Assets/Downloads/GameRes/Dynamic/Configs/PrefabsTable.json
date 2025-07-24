@@ -26,5 +26,9 @@
   {
     "Uid":"1001",
     "PrefabName":"NodeStars"
+   },
+  {
+    "Uid":"1002",
+    "PrefabName":"Combat"
    }
 ]

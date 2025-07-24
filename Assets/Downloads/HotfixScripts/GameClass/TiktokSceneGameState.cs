@@ -46,7 +46,10 @@ namespace Tiktok
         GameLevelNodeStarViewController gameLevelNodeStarViewController;
 
         [Inject]
-        IJConfigManager jConfigManager;
+        CombatViewController combatViewController;
+
+        //[Inject]
+        //IJConfigManager jConfigManager;
 
         protected override async UniTask OnEnter()
         {
@@ -81,6 +84,7 @@ namespace Tiktok
             veiwControllers.Add(gameLevelNodeBottomViewController);
             veiwControllers.Add(gameLevelNodeViewController);
             veiwControllers.Add(gameLevelNodeStarViewController);
+            veiwControllers.Add(combatViewController);
             await veiwControllers.Start(null);
 
             gameLevelViewController.EnterLevel("1");

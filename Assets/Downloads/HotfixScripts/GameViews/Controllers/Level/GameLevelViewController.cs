@@ -78,13 +78,15 @@ namespace Tiktok
             return curBackgroundView.GetNode(index);
         }
 
+        public Transform GetRoot() => curBackgroundView.transform;
+
         /// <summary>
         /// 进入指定关卡
         /// </summary>
         /// <param name="uid"></param>
         public void EnterLevel(string uid)
         {
-            //var curLevelId = levelsMode.GetCurLevelUid();
+            //var curLevelId = levelsModel.GetCurLevelUid();
             var cfgData = jConfigManager.Get<LevelsCfgData>(uid);
             var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
             var goLevel = gameObjectManager.Rent(prefabData.PrefabName);

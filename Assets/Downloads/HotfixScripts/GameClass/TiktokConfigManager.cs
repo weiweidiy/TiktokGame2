@@ -47,9 +47,9 @@ namespace JFramework
 
 
 
-        public Task PreloadAllAsync(IProgress<LoadProgress> progress = null)
+        public Task PreloadAllAsync(string path, string extend, IProgress<LoadProgress> progress = null)
         {
-            return jConfigManager.PreloadAllAsync(progress);
+            return jConfigManager.PreloadAllAsync(path, extend, progress);
         }
 
         public void RegisterTable<TTable, TItem>(string path, IDeserializer deserializer)

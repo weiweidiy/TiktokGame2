@@ -6,4 +6,5 @@ namespace Tiktok
     public class EventEnterLevel : Event { } //string
     public class EventExitLevel : Event { }
     public class EventSwitchLevel : Event { } //string
+    public class EventStartCombat : Event { } //string
 }

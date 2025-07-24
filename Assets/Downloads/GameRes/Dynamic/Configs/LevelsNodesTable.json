@@ -11,7 +11,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"1"
+    "FormationUid":"1",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"2",
@@ -25,7 +26,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"2"
+    "FormationUid":"2",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"3",
@@ -40,7 +42,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"3"
+    "FormationUid":"3",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"4",
@@ -54,7 +57,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"1"
+    "FormationUid":"1",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"5",
@@ -68,7 +72,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"2"
+    "FormationUid":"2",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"6",
@@ -82,7 +87,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"3"
+    "FormationUid":"3",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"7",
@@ -96,7 +102,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"1"
+    "FormationUid":"1",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"8",
@@ -110,7 +117,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"2"
+    "FormationUid":"2",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"9",
@@ -124,7 +132,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"3"
+    "FormationUid":"3",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"10",
@@ -138,7 +147,8 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"2"
+    "FormationUid":"2",
+    "ScenePrefabUid":"1002"
    },
   {
     "Uid":"11",
@@ -152,6 +162,7 @@
     "PrefabUid":"100",
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
-    "FormationUid":"2"
+    "FormationUid":"2",
+    "ScenePrefabUid":"1002"
    }
 ]

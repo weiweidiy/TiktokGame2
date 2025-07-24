@@ -19,6 +19,9 @@ namespace GameCommands
         [Inject]
         LevelsModel levelsModel;
 
+        [Inject]
+        EventManager eventManager;
+
         public override async void Execute(params object[] parameters)
         {
             this.Retain();
@@ -30,7 +33,8 @@ namespace GameCommands
             // var response = await jNetwork.SendMessage<FightRes>(req);
             var result = await jNetwork.RequestFight(req);
 
-            levelsModel.UpdateNode(result.LevelNodeDTO);
+            eventManager.Raise<EventStartCombat>(result);
+            //levelsModel.UpdateNode(result.LevelNodeDTO);
 
             classPool.Return(req);
 
@@ -38,6 +42,7 @@ namespace GameCommands
 
             this.Release();
         }
+
     }
 
 

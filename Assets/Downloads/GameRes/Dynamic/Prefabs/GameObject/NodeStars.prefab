@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4361204349457481281}
   - component: {fileID: 7435078087027156046}
   - component: {fileID: 1360355661199470447}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6514481950627111513}
   - component: {fileID: 5266400744147627152}
   - component: {fileID: 7278365825176061364}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 6993368417781967052}
   - component: {fileID: 2518666870121315730}
   - component: {fileID: 1149886697176896651}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: NodeStars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2518666870121315730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1370223439859629764}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8688460221203063507}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 7511418914929039807}
   - component: {fileID: 1461065186943107435}
   - component: {fileID: 7099984431585863926}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8992965923041887245}
   - component: {fileID: 5018091758786660877}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 780599871405877697}
   - component: {fileID: 4701375162349374372}
   - component: {fileID: 4080341580998458680}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7365607928168045487}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 6253781111885590409}
   - component: {fileID: 8335890193601221773}
   - component: {fileID: 3293557807686497272}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 1073225815961340727}
   - component: {fileID: 3925830291557402131}
   - component: {fileID: 43359654303782519}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
