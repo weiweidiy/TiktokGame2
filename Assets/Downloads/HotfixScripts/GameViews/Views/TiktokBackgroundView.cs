@@ -8,6 +8,8 @@ namespace Tiktok
     {
         [SerializeField] Transform[] nodes;
 
+        [SerializeField] SpriteRenderer background;
+
         public Transform GetNode(int index)
         {
             if(index >= nodes.Length)
@@ -15,6 +17,15 @@ namespace Tiktok
             return nodes[index];
         }
 
+        public void SetBackground(Sprite sprite)
+        {
+            if (sprite == null)
+            {
+                Debug.LogError("背景图片不能为空");
+                return;
+            }
+            background.sprite = sprite;
+        }
 
     }
 }

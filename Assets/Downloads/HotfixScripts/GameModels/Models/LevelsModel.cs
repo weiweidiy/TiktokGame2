@@ -54,7 +54,7 @@ namespace Tiktok
                 var nextNodesUid = jConfigManager.GetNextLevelNode(node.BusinessId.ToString());
                 foreach (var nextNodeUid in nextNodesUid)
                 {
-                    if (nextNodeUid == "0" || node.Process > 1)
+                    if (nextNodeUid == "0" || (node.Process > 1 && Get(nextNodeUid) != null))
                         continue;
 
                     if (Get(nextNodeUid) == null)

@@ -3,27 +3,39 @@
     "Uid":"1",
     "Name":"桃园结义",
     "PrefabUid":"1",
+    "Textures":[
+            "Sprite_Level"
+         ],
     "Next":"2",
     "Pre":"0"
    },
   {
     "Uid":"2",
     "Name":"黄巾之乱",
-    "PrefabUid":"2",
+    "PrefabUid":"1",
+    "Textures":[
+            "Sprite_Level"
+         ],
     "Next":"3",
     "Pre":"1"
    },
   {
     "Uid":"3",
     "Name":"官渡之战",
-    "PrefabUid":"3",
+    "PrefabUid":"1",
+    "Textures":[
+            "Sprite_Level"
+         ],
     "Next":"4",
     "Pre":"2"
    },
   {
     "Uid":"4",
     "Name":"赤壁之战",
-    "PrefabUid":"4",
+    "PrefabUid":"1",
+    "Textures":[
+            "Sprite_Level"
+         ],
     "Next":"0",
     "Pre":"3"
    }

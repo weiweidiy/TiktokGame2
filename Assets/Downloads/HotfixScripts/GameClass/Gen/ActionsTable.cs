@@ -7,29 +7,17 @@ using JFramework.Game;
 
 namespace JFramework
 {
-    public partial class SoldiersTable : BaseConfigTable<SoldiersCfgData>
+    public partial class ActionsTable : BaseConfigTable<ActionsCfgData>
     {
     }
 
-    public class SoldiersCfgData : IUnique
+    public class ActionsCfgData : IUnique
     {
         //唯一标识
         public string Uid{ get;set;} 
 
         //名字
         public string Name;
-
-        //攻击力
-        public int Atk;
-
-        //防御力
-        public int Def;
-
-        //速度
-        public int Speed;
-
-        //技能
-        public List<string> Actions;
 
     }
 }

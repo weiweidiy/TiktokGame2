@@ -7,29 +7,20 @@ using JFramework.Game;
 
 namespace JFramework
 {
-    public partial class LevelsTable : BaseConfigTable<LevelsCfgData>
+    public partial class CombatScenesTable : BaseConfigTable<CombatScenesCfgData>
     {
     }
 
-    public class LevelsCfgData : IUnique
+    public class CombatScenesCfgData : IUnique
     {
         //唯一标识
         public string Uid{ get;set;} 
-
-        //关卡名字
-        public string Name;
 
         //预制体
         public string PrefabUid;
 
         //纹理
         public List<string> Textures;
-
-        //下一关Uid
-        public string Next;
-
-        //上一关Uid
-        public string Pre;
 
     }
 }

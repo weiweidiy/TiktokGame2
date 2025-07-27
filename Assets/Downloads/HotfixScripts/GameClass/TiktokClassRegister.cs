@@ -1,4 +1,5 @@
 ﻿using JFramework;
+using JFramework.Game;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +22,9 @@ namespace Tiktok
             result.Add(GetIndex(), typeof(EventExitLevel));
             result.Add(GetIndex(), typeof(EventSwitchLevel));
             result.Add(GetIndex(), typeof(EventStartCombat));
+
+            result.Add(GetIndex(), typeof(JCombatTurnBasedEventRunner));
+            result.Add(GetIndex(), typeof(RunableExtraData));
             return result;
         }
 

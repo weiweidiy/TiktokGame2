@@ -99,7 +99,9 @@ namespace Tiktok
 
             //消息处理
             //container.Bind<TiktokNetMessageController>().ToSingleton();
-            
+            container.Bind<IJCombatAnimationPlayer>().ToSingleton<TiktokJCombatAnimationPlayer>();
+            container.Bind<TiktokCombatPlayer>().ToSingleton();
+
             container.Bind<GameLevelViewController>().ToSingleton();
             container.Bind<GameLevelUIController>().ToSingleton();
             container.Bind<GameLevelNodeBottomViewController>().ToSingleton();
@@ -109,6 +111,8 @@ namespace Tiktok
 
             //每次都是新的实例
             container.Bind<ParallelLauncher>().ToSelf();
+
+            
 
 
             //container.Bind<SceneSM>().ToSingleton<SceneSM>();

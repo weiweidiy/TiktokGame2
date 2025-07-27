@@ -4,7 +4,7 @@ using JFramework;
 
 using System;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -31,6 +31,9 @@ namespace Tiktok
         ITransitionProvider transitionProvider;
 
         TiktokBackgroundView curBackgroundView;
+
+        [Inject]
+        IAssetsLoader assetsLoader;
 
         [Inject]
         public GameLevelViewController(EventManager eventManager) : base(eventManager)
@@ -84,15 +87,17 @@ namespace Tiktok
         /// 进入指定关卡
         /// </summary>
         /// <param name="uid"></param>
-        public void EnterLevel(string uid)
+        public async void EnterLevel(string uid)
         {
             //var curLevelId = levelsModel.GetCurLevelUid();
             var cfgData = jConfigManager.Get<LevelsCfgData>(uid);
+            var textures = cfgData.Textures;
             var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.PrefabUid);
             var goLevel = gameObjectManager.Rent(prefabData.PrefabName);
             goLevel.transform.parent = gameObjectManager.GoRoot.transform;
             curBackgroundView = goLevel.GetComponent<TiktokBackgroundView>();
-
+            var sprite = await assetsLoader.LoadAssetAsync<Sprite>(textures[0]);
+            curBackgroundView.SetBackground(sprite);
 
             eventManager.Raise<EventEnterLevel>(uid);
         }
