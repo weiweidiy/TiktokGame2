@@ -493,6 +493,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnClose: {fileID: 7482972459837677731}
+  tranSeats:
+  - {fileID: 6632943726334013972}
+  - {fileID: 2143168506740232735}
+  - {fileID: 40392974943578220}
+  - {fileID: 6925407290969991278}
+  - {fileID: 3432213364697656526}
+  - {fileID: 8185400761517619240}
+  - {fileID: 5564401701776558885}
+  - {fileID: 8339067258396665618}
+  - {fileID: 5025532835014534202}
+  - {fileID: 4053829157971202278}
+  - {fileID: 1481628958560889048}
+  - {fileID: 512083622862960122}
+  - {fileID: 8073320314664965824}
+  - {fileID: 8984090625797480674}
+  - {fileID: 4816735989705785303}
+  - {fileID: 1566610938591933733}
+  - {fileID: 4056381233621047672}
+  - {fileID: 2444556714982400833}
 --- !u!1 &3176364354122308281
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +870,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_StartCorner: 1
+  m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 1, y: 1}
   m_Spacing: {x: 1, y: 0.5}

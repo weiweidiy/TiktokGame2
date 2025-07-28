@@ -31,5 +31,11 @@ namespace JFramework
         //技能
         public List<string> Actions;
 
+        //预制体Uid
+        public string PrefabUid;
+
+        //预制体图片
+        public List<string> Textures;
+
     }
 }

@@ -43,6 +43,9 @@ namespace Tiktok
         LevelsModel levelModel;
 
         [Inject]
+        PlayerModel playerModel;
+
+        [Inject]
         IJConfigManager jConfigManager;
 
         [Inject]
@@ -90,10 +93,9 @@ namespace Tiktok
             // 发送POST请求（空body）
             var accountDTO = await httpRequest.RequestLogin( "jcw32");
             var gameDTO = await httpRequest.RequestEnterGame(accountDTO);
-            //var str = Encoding.UTF8.GetString(result);
-
 
             //初始化必要模型
+            playerModel.Initialize(gameDTO.PlayerDTO);
             levelModel.Initialize(gameDTO.LevelNodesDTO);
 
 

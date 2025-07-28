@@ -10,6 +10,8 @@ namespace Tiktok
 
         [SerializeField] AdvancedButton btnClose;
 
+        [SerializeField] Transform[] tranSeats;
+
         private void OnEnable()
         {
             btnClose.onClick.AddListener(OnCloseButtonClicked);
@@ -24,6 +26,11 @@ namespace Tiktok
         private void OnCloseButtonClicked()
         {
             onMaskClicked?.Invoke(this);
+        }
+
+        public Transform GetSeat(int index)
+        {
+            return tranSeats != null && index >= 0 && index < tranSeats.Length ? tranSeats[index] : null;
         }
     }
 }

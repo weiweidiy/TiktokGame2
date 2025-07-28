@@ -34,7 +34,6 @@ namespace GameCommands
             var result = await jNetwork.RequestFight(req);
 
             eventManager.Raise<EventStartCombat>(result);
-            //levelsModel.UpdateNode(result.LevelNodeDTO);
 
             classPool.Return(req);
 

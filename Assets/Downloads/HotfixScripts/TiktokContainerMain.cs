@@ -83,6 +83,7 @@ namespace Tiktok
             container.Bind<Func<LevelNodeDTO, string>>().To(func);
             ///依赖CommonEventManager
             container.Bind<LevelsModel>().ToSingleton<LevelsModel>();
+            container.Bind<PlayerModel>().ToSingleton<PlayerModel>();
             //container.Bind<UserModel>().ToSingleton<UserModel>();
             //container.Bind<TeamModel>().ToSingleton<TeamModel>();
             //container.Bind<PowerModel>().ToSingleton<PowerModel>();
@@ -99,14 +100,16 @@ namespace Tiktok
 
             //消息处理
             //container.Bind<TiktokNetMessageController>().ToSingleton();
-            container.Bind<IJCombatAnimationPlayer>().ToSingleton<TiktokJCombatAnimationPlayer>();
-            container.Bind<TiktokCombatPlayer>().ToSingleton();
 
             container.Bind<GameLevelViewController>().ToSingleton();
             container.Bind<GameLevelUIController>().ToSingleton();
             container.Bind<GameLevelNodeBottomViewController>().ToSingleton();
             container.Bind<GameLevelNodeViewController>().ToSingleton();
             container.Bind<GameLevelNodeStarViewController>().ToSingleton();
+
+            container.Bind<IJCombatAnimationPlayer>().To<TiktokJCombatAnimationPlayer>();
+            container.Bind<TiktokCombatPlayer>().ToSelf();
+
             container.Bind<CombatViewController>().ToSingleton();
 
             //每次都是新的实例

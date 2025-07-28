@@ -8,6 +8,10 @@
     "PrefabName":"Role_1"
    },
   {
+    "Uid":"101",
+    "PrefabName":"CombatSoldier"
+   },
+  {
     "Uid":"1000",
     "PrefabName":"NodeBottom"
    },

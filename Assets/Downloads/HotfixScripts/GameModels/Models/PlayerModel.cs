@@ -1,5 +1,6 @@
 using Adic;
 using JFramework;
+using JFramework.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +8,23 @@ using UnityEngine;
 
 namespace Tiktok
 {
-    //public struct PlayerVO
-    //{
-    //    public string name;
-    //    public string Uid;
-    //}
-
-    //public class PlayerModel : BaseModel<List<PlayerVO>>
-    //{
-    //    [Inject]
-    //    public PlayerModel(CommonEventManager eventManager) : base(eventManager) { }
 
 
-    //}
+    public class PlayerModel : BaseModel<PlayerDTO>
+    {
+        [Inject]
+        public PlayerModel(CommonEventManager eventManager) : base(eventManager) { }
+
+        public string GetPlayerUid()
+        {
+            return data.Uid;
+        }
+
+        public string GetUserName()
+        {
+            return data.Username;
+        }
+    }
 
 
 

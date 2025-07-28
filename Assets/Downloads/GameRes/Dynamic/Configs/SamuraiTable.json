@@ -2,8 +2,8 @@
   {
     "Uid":"1",
     "Name":"织田信长",
-    "Power":122,
-    "Def":122,
+    "Power":150,
+    "Def":10,
     "Intel":122,
     "Speed":122,
     "SoldierUid":"1"
@@ -11,8 +11,8 @@
   {
     "Uid":"2",
     "Name":"德川家康",
-    "Power":122,
-    "Def":122,
+    "Power":150,
+    "Def":10,
     "Intel":122,
     "Speed":122,
     "SoldierUid":"1"
@@ -20,8 +20,8 @@
   {
     "Uid":"3",
     "Name":"伊达政宗",
-    "Power":122,
-    "Def":122,
+    "Power":150,
+    "Def":10,
     "Intel":122,
     "Speed":122,
     "SoldierUid":"1"
