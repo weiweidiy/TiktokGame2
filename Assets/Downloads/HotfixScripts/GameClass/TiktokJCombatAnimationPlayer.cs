@@ -33,7 +33,7 @@ namespace Tiktok
             Debug.Log("TiktokJCombatAnimationPlayer Constructor " + GetHashCode());
         }
 
-        public async Task Initialize<T>(JCombatTurnBasedReportData<T> reportData) where T : IJCombatUnitData
+        public Task Initialize<T>(JCombatTurnBasedReportData<T> reportData) where T : IJCombatUnitData
         {
             var report = reportData as TiktokJCombatTurnBasedReportData;
             this.tcs = tcs == null ? new TaskCompletionSource<bool>() : tcs;
@@ -76,7 +76,7 @@ namespace Tiktok
                 combatUnits.Add(goUnit);
             }
 
-            await tcs.Task;
+            return Task.CompletedTask;
         }
 
         List<TiktokJCombatUnitData> GetLevelNodeFormation(Dictionary<string , List<TiktokJCombatUnitData>> data, string playerUid)
@@ -101,12 +101,13 @@ namespace Tiktok
             obj.onMaskClicked -= CombatView_onMaskClicked;
             gameObjectManager.Return(obj.gameObject);
 
-            tcs.SetResult(true);
+           
         }
 
-        public Task PlayAcion(string casterUid, string actionUid, Dictionary<string, List<ActionEffectInfo>> effect)
+        public async Task PlayAcion(string casterUid, string actionUid, Dictionary<string, List<ActionEffectInfo>> effect)
         {
-            return Task.CompletedTask;
+            Debug.Log($"PlayAcion casterUid: {casterUid}, actionUid: {actionUid}");
+            await Task.Delay(1000); // 模拟动画播放延时
         }
     }
 }

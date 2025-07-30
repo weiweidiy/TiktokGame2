@@ -27,6 +27,8 @@ namespace Tiktok
         public int Seat { get; set; }
         public string SamuraiBusinessId { get; set; }
         public string SoldierBusinessId { get; set; } // 可能需要在其他地方使用
+        public int CurHp { get; set; }
+        public int MaxHp { get; set; }
         public List<KeyValuePair<string, string>> Actions { get; set; }
     }
 }
