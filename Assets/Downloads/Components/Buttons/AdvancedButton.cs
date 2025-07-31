@@ -3,109 +3,103 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[System.Serializable]
-public class AdvancedButtonEvents
+namespace Game.Common
 {
-    public UnityEvent onClick = new UnityEvent();
-    public UnityEvent onLongPressStart = new UnityEvent();
-    public UnityEvent onLongPressEnd = new UnityEvent();
-    public UnityEvent onLongPressComplete = new UnityEvent(); // 新增：长按完成事件
-}
-
-public class AdvancedButton : Button
-{
-    [Header("Timing Settings")]
-    [Tooltip("Minimum time between clicks in seconds")]
-    public float minClickInterval = 0.5f;
-    [Tooltip("How long to hold for long press in seconds")]
-    public float longPressDuration = 1f;
-    [Tooltip("If true, will trigger long press complete event when long press duration is reached")]
-    public bool triggerLongPressComplete = true;
-
-    [Header("Events")]
-    public AdvancedButtonEvents advancedEvents;
-
-    private float _lastClickTime;
-    private bool _isPointerDown;
-    private bool _isLongPress;
-    private float _pointerDownTime;
-
-    protected override void Awake()
+    public class AdvancedButton : Button
     {
-        base.Awake();
-        // 将原有的 onClick 事件转移到我们的 advancedEvents.onClick
-        onClick.AddListener(() => advancedEvents.onClick.Invoke());
-    }
+        [Header("Timing Settings")]
+        [Tooltip("Minimum time between clicks in seconds")]
+        public float minClickInterval = 0.5f;
+        [Tooltip("How long to hold for long press in seconds")]
+        public float longPressDuration = 1f;
+        [Tooltip("If true, will trigger long press complete event when long press duration is reached")]
+        public bool triggerLongPressComplete = true;
 
-    private void Update()
-    {
-        if (!_isPointerDown || _isLongPress) return;
+        [Header("Events")]
+        public AdvancedButtonEvents advancedEvents;
 
-        if (Time.time - _pointerDownTime >= longPressDuration)
+        private float _lastClickTime;
+        private bool _isPointerDown;
+        private bool _isLongPress;
+        private float _pointerDownTime;
+
+        protected override void Awake()
         {
-            _isLongPress = true;
-            advancedEvents.onLongPressStart.Invoke();
+            base.Awake();
+            // 将原有的 onClick 事件转移到我们的 advancedEvents.onClick
+            onClick.AddListener(() => advancedEvents.onClick.Invoke());
+        }
 
-            if (triggerLongPressComplete)
+        private void Update()
+        {
+            if (!_isPointerDown || _isLongPress) return;
+
+            if (Time.time - _pointerDownTime >= longPressDuration)
             {
-                advancedEvents.onLongPressComplete.Invoke();
+                _isLongPress = true;
+                advancedEvents.onLongPressStart.Invoke();
+
+                if (triggerLongPressComplete)
+                {
+                    advancedEvents.onLongPressComplete.Invoke();
+                }
             }
         }
-    }
 
-    public override void OnPointerDown(PointerEventData eventData)
-    {
-        base.OnPointerDown(eventData);
-        _isPointerDown = true;
-        _isLongPress = false;
-        _pointerDownTime = Time.time;
-    }
-
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-        base.OnPointerUp(eventData);
-
-        if (_isLongPress)
+        public override void OnPointerDown(PointerEventData eventData)
         {
-            advancedEvents.onLongPressEnd.Invoke();
+            base.OnPointerDown(eventData);
+            _isPointerDown = true;
+            _isLongPress = false;
+            _pointerDownTime = Time.time;
         }
 
-        _isPointerDown = false;
-        _isLongPress = false;
-    }
-
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        if (_isLongPress) return;
-
-        if (Time.time - _lastClickTime >= minClickInterval)
+        public override void OnPointerUp(PointerEventData eventData)
         {
-            _lastClickTime = Time.time;
-            base.OnPointerClick(eventData); // 这会触发原始的 onClick 事件
-        }
-    }
+            base.OnPointerUp(eventData);
 
-    public override void OnPointerExit(PointerEventData eventData)
-    {
-        base.OnPointerExit(eventData);
+            if (_isLongPress)
+            {
+                advancedEvents.onLongPressEnd.Invoke();
+            }
 
-        if (_isPointerDown && _isLongPress)
-        {
-            advancedEvents.onLongPressEnd.Invoke();
-        }
-
-        _isPointerDown = false;
-        _isLongPress = false;
-    }
-
-    // 禁用/启用按钮的便捷方法
-    public void SetInteractable(bool interactable)
-    {
-        this.interactable = interactable;
-        if (!interactable)
-        {
             _isPointerDown = false;
             _isLongPress = false;
+        }
+
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            if (_isLongPress) return;
+
+            if (Time.time - _lastClickTime >= minClickInterval)
+            {
+                _lastClickTime = Time.time;
+                base.OnPointerClick(eventData); // 这会触发原始的 onClick 事件
+            }
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+
+            if (_isPointerDown && _isLongPress)
+            {
+                advancedEvents.onLongPressEnd.Invoke();
+            }
+
+            _isPointerDown = false;
+            _isLongPress = false;
+        }
+
+        // 禁用/启用按钮的便捷方法
+        public void SetInteractable(bool interactable)
+        {
+            this.interactable = interactable;
+            if (!interactable)
+            {
+                _isPointerDown = false;
+                _isLongPress = false;
+            }
         }
     }
 }
