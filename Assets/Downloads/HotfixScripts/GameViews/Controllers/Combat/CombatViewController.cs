@@ -2,6 +2,7 @@
 using Adic.Container;
 using Game.Common;
 using JFramework;
+using JFramework.Game;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace Tiktok
 
         FightDTO fightDTO = null;
 
-
+        TiktokCombatPlayer combatPlayer;
 
 
         [Inject]
@@ -51,28 +52,23 @@ namespace Tiktok
         {
             fightDTO = e.Body as FightDTO;
 
-            var combatPlayer = container.Resolve<TiktokCombatPlayer>();
+            combatPlayer = container.Resolve<TiktokCombatPlayer>();
 
             combatPlayer.LoadReportData(fightDTO.ReportData);
-            //var cfgData = jConfigManager.Get<LevelsNodesCfgData>(fightDTO.LevelNodeBusinessId);
-            //var prefabData = jConfigManager.Get<PrefabsCfgData>(cfgData.ScenePrefabUid);
-            //var goCombat = gameObjectManager.Rent(prefabData.PrefabName);
-            //goCombat.transform.SetParent(gameLevelViewController.GetRoot());
-            //goCombat.transform.localPosition = Vector3.zero;
-            //var combatView = goCombat.GetComponent<TiktokCombatView>();
-            //combatView.onMaskClicked += CombatView_onMaskClicked;
-
             await combatPlayer.Play();
 
+            Debug.LogError("播放完成了");
             levelsModel.UpdateNode(fightDTO.LevelNodeDTO);
         }
 
-        private void CombatView_onMaskClicked(TiktokCombatView obj)
-        {
-            obj.onMaskClicked -= CombatView_onMaskClicked;
-            gameObjectManager.Return(obj.gameObject);
+        //private void CombatView_onMaskClicked(TiktokCombatView obj)
+        //{
+        //    combatPlayer.Stop();
 
-            levelsModel.UpdateNode(fightDTO.LevelNodeDTO);
-        }
+        //    obj.onMaskClicked -= CombatView_onMaskClicked;
+        //    gameObjectManager.Return(obj.gameObject);
+
+        //    levelsModel.UpdateNode(fightDTO.LevelNodeDTO);
+        //}
     }
 }

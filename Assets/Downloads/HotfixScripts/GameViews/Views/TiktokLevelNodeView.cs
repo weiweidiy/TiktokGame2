@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JFramework.Game;
+using System;
 using UnityEngine;
 
 namespace Tiktok
@@ -6,12 +7,18 @@ namespace Tiktok
     public class TiktokLevelNodeView : MonoBehaviour
     {
         public event Action<TiktokLevelNodeView> onClicked;
+        IAnimationPlayer animPlayer;
 
-        [SerializeField] AnimatorPlayer animPlayer;
         [SerializeField] ClickDetector clickDetector;
+
+        private void Awake()
+        {
+            animPlayer = GetComponent<IAnimationPlayer>();
+        }
 
         void OnEnable()
         {
+
             clickDetector.onClicked += ClickDetector_onClicked;
         }
 

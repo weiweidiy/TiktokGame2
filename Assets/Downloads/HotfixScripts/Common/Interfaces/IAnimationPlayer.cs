@@ -5,5 +5,7 @@
         void Play(string animName, bool loop = true);
 
         void Stop();
+
+        void FlipX();
     }
 }

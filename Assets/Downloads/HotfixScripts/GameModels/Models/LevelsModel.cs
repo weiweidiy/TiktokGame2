@@ -57,7 +57,7 @@ namespace Tiktok
                     if (nextNodeUid == "0" || (node.Process > 1 && Get(nextNodeUid) != null))
                         continue;
 
-                    if (Get(nextNodeUid) == null)
+                    if (Get(nextNodeUid) == null && node.Process > 0)
                     {
                         var nextNode = new LevelNodeDTO
                         {
