@@ -34,7 +34,7 @@ namespace JFramework
         //预制体Uid
         public string PrefabUid;
 
-        //预制体图片
+        //预制体spine
         public List<string> Textures;
 
     }

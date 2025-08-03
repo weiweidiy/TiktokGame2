@@ -18,6 +18,11 @@ namespace Tiktok
             animator.Play(animName);
         }
 
+        public void SetAnimation(string path, bool flipX = false)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Stop()
         {
             

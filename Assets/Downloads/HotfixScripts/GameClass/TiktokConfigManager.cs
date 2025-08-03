@@ -45,6 +45,11 @@ namespace JFramework
             return levelCfg.Pre;
         }
 
+        public string[] GetSoldierAnimation(string uid)
+        {
+            var soldierCfg = jConfigManager.Get<SoldiersCfgData>(uid);
+            return soldierCfg.Textures.ToArray();
+        }
 
 
         public Task PreloadAllAsync(string path, string extend, IProgress<LoadProgress> progress = null)
@@ -73,6 +78,7 @@ namespace JFramework
         {
             return jConfigManager.GetAll<TItem>();
         }
+
     }
 
 }

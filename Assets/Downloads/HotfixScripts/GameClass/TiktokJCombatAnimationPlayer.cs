@@ -57,17 +57,17 @@ namespace Tiktok
             InitFormationUnits(playerFormation, combatView);
 
             var levelNodeFormation = GetLevelNodeFormation(report.FormationData, playerUid);
-            InitFormationUnits(levelNodeFormation, combatView,true);
+            InitFormationUnits(levelNodeFormation, combatView, true);
 
-            return Task.CompletedTask;
+            return Task.Delay(1000);
         }
 
-        List<TiktokJCombatUnitData> GetLevelNodeFormation(Dictionary<string , List<TiktokJCombatUnitData>> data, string playerUid)
+        List<TiktokJCombatUnitData> GetLevelNodeFormation(Dictionary<string, List<TiktokJCombatUnitData>> data, string playerUid)
         {
             var keys = data.Keys;
             foreach (var key in keys)
             {
-                if(key != playerUid)
+                if (key != playerUid)
                     return data[key];
             }
             return null;
@@ -88,9 +88,14 @@ namespace Tiktok
                 goUnit.transform.SetParent(combatView.GetSeat(seat + offset));
                 goUnit.transform.localPosition = Vector3.zero;
                 var animationPlayer = goUnit.GetComponent<IAnimationPlayer>();
-                if (flipX == true) animationPlayer.FlipX();
+                animationPlayer.SetAnimation(GetAnimation(soldierBusinessId), flipX);
                 combatUnits.Add(uid, animationPlayer);
             }
+        }
+
+        private string GetAnimation(string soldierBusinessId)
+        {
+            return jConfigManager.GetSoldierAnimation(soldierBusinessId)[0];
         }
 
         private void CombatView_onMaskClicked(TiktokCombatView obj)
@@ -103,16 +108,40 @@ namespace Tiktok
             }
 
             obj.onMaskClicked -= CombatView_onMaskClicked;
-            gameObjectManager.Return(obj.gameObject);          
+            gameObjectManager.Return(obj.gameObject);
         }
 
         public async Task PlayAcion(string casterUid, string actionUid, Dictionary<string, List<ActionEffectInfo>> effect)
         {
-            if(effect.ContainsKey(CombatEventType.Damage.ToString()))
-                combatUnits[casterUid].Play("PVP_Atk",false);
+            if (effect.ContainsKey(CombatEventType.Damage.ToString()))
+            {
+                combatUnits[casterUid].Play("PVP_Atk", false);
+                foreach (var info in effect[CombatEventType.Damage.ToString()])
+                {
+                    var targetUid = info.TargetUid;
+                    var damage = info.Value;
+                    //combatUnits[targetUid].Play("PVP_Damage", false);
+                    PlayDamage(targetUid, damage);
+                    Debug.Log($"PlayAcion casterUid: {casterUid}, actionUid: {actionUid} , targetUid: {targetUid}, damage :{damage}");
+                }
 
-            Debug.Log($"PlayAcion casterUid: {casterUid}, actionUid: {actionUid}");
+            }
+
+
+
             await Task.Delay(1000); // 模拟动画播放延时
+        }
+
+        void PlayDamage(string targetUid, int damage)
+        {
+            if (combatUnits.ContainsKey(targetUid))
+            {
+
+            }
+            else
+            {
+                Debug.LogWarning($"Target {targetUid} not found in combat units.");
+            }
         }
 
 

@@ -7,5 +7,7 @@
         void Stop();
 
         void FlipX();
+
+        void SetAnimation(string path, bool flipX = false);
     }
 }
