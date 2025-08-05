@@ -1,4 +1,5 @@
 ﻿using Adic;
+using Game.Common;
 using JFramework;
 using JFramework.Game;
 using System;
@@ -116,6 +117,7 @@ namespace Tiktok
             if (effect.ContainsKey(CombatEventType.Damage.ToString()))
             {
                 combatUnits[casterUid].Play("PVP_Atk", false);
+
                 foreach (var info in effect[CombatEventType.Damage.ToString()])
                 {
                     var targetUid = info.TargetUid;
@@ -132,11 +134,17 @@ namespace Tiktok
             await Task.Delay(1000); // 模拟动画播放延时
         }
 
-        void PlayDamage(string targetUid, int damage)
+        async Task PlayDamage(string targetUid, int damage)
         {
             if (combatUnits.ContainsKey(targetUid))
             {
-
+                var txtDamage = gameObjectManager.Rent(jConfigManager.GetCombatDamageTextPrefab());
+                txtDamage.transform.SetParent((combatUnits[targetUid] as MonoBehaviour).transform);
+                txtDamage.transform.localPosition = Vector3.zero;
+                txtDamage.GetComponent<TextView>().SetText(damage.ToString());
+                var animationPlayer = txtDamage.GetComponent<IAnimationPlayer>();
+                await animationPlayer.Play("", false);
+                gameObjectManager.Return(txtDamage);
             }
             else
             {

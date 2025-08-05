@@ -51,6 +51,11 @@ namespace JFramework
             return soldierCfg.Textures.ToArray();
         }
 
+        public string GetCombatDamageTextPrefab()
+        {
+            return jConfigManager.Get<PrefabsCfgData>("1003").PrefabName;
+        }
+
 
         public Task PreloadAllAsync(string path, string extend, IProgress<LoadProgress> progress = null)
         {

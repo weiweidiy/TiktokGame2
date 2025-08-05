@@ -2,7 +2,7 @@
 using JFramework;
 using JFramework.Game;
 using Spine.Unity;
-using UnityEditor.VersionControl;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Tiktok
@@ -25,9 +25,10 @@ namespace Tiktok
             spine.skeleton.FlipX = !spine.skeleton.FlipX;
         }
 
-        public void Play(string animName, bool loop = true)
+        public Task Play(string animName, bool loop = true)
         {
             spine.AnimationState.SetAnimation(0, animName, loop);
+            return Task.CompletedTask;
         }
 
         public async void SetAnimation(string path, bool flipX = false)

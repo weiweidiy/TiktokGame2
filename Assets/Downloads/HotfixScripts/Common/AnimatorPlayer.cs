@@ -1,5 +1,7 @@
 ﻿using JFramework.Game;
 using Spine.Unity;
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Tiktok
@@ -13,9 +15,10 @@ namespace Tiktok
             throw new System.NotImplementedException();
         }
 
-        public void Play(string animName, bool loop = true)
+        public Task Play(string animName, bool loop = true)
         {
             animator.Play(animName);
+            return Task.CompletedTask;
         }
 
         public void SetAnimation(string path, bool flipX = false)

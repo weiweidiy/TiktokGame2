@@ -1,8 +1,13 @@
-﻿namespace JFramework.Game
+﻿using System;
+using System.Threading.Tasks;
+
+namespace JFramework.Game
 {
     public interface IAnimationPlayer
     {
-        void Play(string animName, bool loop = true);
+        //event Action<string> onPlayCompleted;
+
+        Task Play(string animName, bool loop = true);
 
         void Stop();
 

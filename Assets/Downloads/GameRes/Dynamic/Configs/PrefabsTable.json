@@ -22,5 +22,9 @@
   {
     "Uid":"1002",
     "PrefabName":"Combat"
+   },
+  {
+    "Uid":"1003",
+    "PrefabName":"TextDamage"
    }
 ]
