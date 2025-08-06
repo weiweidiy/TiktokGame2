@@ -116,22 +116,21 @@ namespace Tiktok
         {
             if (effect.ContainsKey(CombatEventType.Damage.ToString()))
             {
-                combatUnits[casterUid].Play("PVP_Atk", false);
 
                 foreach (var info in effect[CombatEventType.Damage.ToString()])
                 {
                     var targetUid = info.TargetUid;
                     var damage = info.Value;
-                    //combatUnits[targetUid].Play("PVP_Damage", false);
+                    var targetCurHp = info.TargetHp;
+                    var targetMaxHp = info.TargetMaxHp;
+
                     PlayDamage(targetUid, damage);
-                    Debug.Log($"PlayAcion casterUid: {casterUid}, actionUid: {actionUid} , targetUid: {targetUid}, damage :{damage}");
+                    Debug.Log($"PlayAcion casterUid: {casterUid}, actionUid: {actionUid} , targetUid: {targetUid}, damage :{damage} ," +
+                        $"targetHP:{targetCurHp}");
                 }
 
+                await combatUnits[casterUid].Play("PVP_Atk", false);
             }
-
-
-
-            await Task.Delay(1000); // 模拟动画播放延时
         }
 
         async Task PlayDamage(string targetUid, int damage)
