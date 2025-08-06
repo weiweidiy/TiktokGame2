@@ -12,7 +12,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"1",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"2",
@@ -27,7 +32,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"2",
-    "CombatSceneUid":"2"
+    "CombatSceneUid":"2",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"3",
@@ -43,7 +53,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"3",
-    "CombatSceneUid":"3"
+    "CombatSceneUid":"3",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"4",
@@ -58,7 +73,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"1",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"5",
@@ -73,7 +93,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"2",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"6",
@@ -88,7 +113,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"3",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"7",
@@ -103,7 +133,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"1",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"8",
@@ -118,7 +153,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"2",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"9",
@@ -133,7 +173,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"3",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"10",
@@ -148,7 +193,12 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"2",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    },
   {
     "Uid":"11",
@@ -163,6 +213,11 @@
     "BottomPrefabUid":"1000",
     "StarPrefabUid":"1001",
     "FormationUid":"2",
-    "CombatSceneUid":"1"
+    "CombatSceneUid":"1",
+    "AchievementUid":[
+            "1",
+            "2",
+            "1"
+         ]
    }
 ]

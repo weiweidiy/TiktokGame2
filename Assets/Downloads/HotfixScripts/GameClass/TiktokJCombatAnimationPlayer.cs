@@ -140,8 +140,8 @@ namespace Tiktok
             {
                 var txtDamage = gameObjectManager.Rent(jConfigManager.GetCombatDamageTextPrefab());
                 txtDamage.transform.SetParent((combatUnits[targetUid] as MonoBehaviour).transform);
-                txtDamage.transform.localPosition = Vector3.zero;
-                txtDamage.GetComponent<TextView>().SetText(damage.ToString());
+                txtDamage.transform.localPosition = Vector3.zero + new Vector3(0,2.5f,0);
+                txtDamage.GetComponent<TextView>().SetText("-"+damage.ToString());
                 var animationPlayer = txtDamage.GetComponent<IAnimationPlayer>();
                 await animationPlayer.Play("", false);
                 gameObjectManager.Return(txtDamage);

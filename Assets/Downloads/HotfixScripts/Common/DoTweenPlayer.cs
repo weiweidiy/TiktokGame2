@@ -23,7 +23,7 @@ namespace Tiktok
         public async Task Play(string animName, bool loop = true)
         {
             var tcs = new TaskCompletionSource<bool>();
-            var tweener = transform.DOLocalMoveY(1f, 0.5f).SetLoops(loop ? -1 : 1,LoopType.Restart)
+            var tweener = transform.DOBlendableLocalMoveBy(new Vector3(0,0.5f,0), 0.5f).SetLoops(loop ? -1 : 1,LoopType.Restart)
                 .SetEase(Ease.InOutSine);
 
             tweener.OnComplete(() =>

@@ -1,130 +1,162 @@
 [
   {
     "Uid":"1",
-    "Name":"1"
+    "Name":"100",
+    "AnimationName":"PVP_Atk"
    },
   {
     "Uid":"2",
-    "Name":"2"
+    "Name":"100",
+    "AnimationName":""
    },
   {
     "Uid":"3",
-    "Name":"3"
+    "Name":"101",
+    "AnimationName":""
    },
   {
     "Uid":"4",
-    "Name":"4"
+    "Name":"102",
+    "AnimationName":""
    },
   {
     "Uid":"5",
-    "Name":"5"
+    "Name":"103",
+    "AnimationName":""
    },
   {
     "Uid":"6",
-    "Name":"6"
+    "Name":"104",
+    "AnimationName":""
    },
   {
     "Uid":"7",
-    "Name":"7"
+    "Name":"105",
+    "AnimationName":""
    },
   {
     "Uid":"8",
-    "Name":"8"
+    "Name":"106",
+    "AnimationName":""
    },
   {
     "Uid":"9",
-    "Name":"9"
+    "Name":"107",
+    "AnimationName":""
    },
   {
     "Uid":"10",
-    "Name":"10"
+    "Name":"108",
+    "AnimationName":""
    },
   {
     "Uid":"11",
-    "Name":"11"
+    "Name":"109",
+    "AnimationName":""
    },
   {
     "Uid":"12",
-    "Name":"12"
+    "Name":"110",
+    "AnimationName":""
    },
   {
     "Uid":"13",
-    "Name":"13"
+    "Name":"111",
+    "AnimationName":""
    },
   {
     "Uid":"14",
-    "Name":"14"
+    "Name":"112",
+    "AnimationName":""
    },
   {
     "Uid":"15",
-    "Name":"15"
+    "Name":"113",
+    "AnimationName":""
    },
   {
     "Uid":"16",
-    "Name":"16"
+    "Name":"114",
+    "AnimationName":""
    },
   {
     "Uid":"17",
-    "Name":"17"
+    "Name":"115",
+    "AnimationName":""
    },
   {
     "Uid":"18",
-    "Name":"18"
+    "Name":"116",
+    "AnimationName":""
    },
   {
     "Uid":"19",
-    "Name":"19"
+    "Name":"117",
+    "AnimationName":""
    },
   {
     "Uid":"20",
-    "Name":"20"
+    "Name":"118",
+    "AnimationName":""
    },
   {
     "Uid":"21",
-    "Name":"21"
+    "Name":"119",
+    "AnimationName":""
    },
   {
     "Uid":"22",
-    "Name":"22"
+    "Name":"120",
+    "AnimationName":""
    },
   {
     "Uid":"23",
-    "Name":"23"
+    "Name":"121",
+    "AnimationName":""
    },
   {
     "Uid":"24",
-    "Name":"24"
+    "Name":"122",
+    "AnimationName":""
    },
   {
     "Uid":"25",
-    "Name":"25"
+    "Name":"123",
+    "AnimationName":""
    },
   {
     "Uid":"26",
-    "Name":"26"
+    "Name":"124",
+    "AnimationName":""
    },
   {
     "Uid":"27",
-    "Name":"27"
+    "Name":"125",
+    "AnimationName":""
    },
   {
     "Uid":"28",
-    "Name":"28"
+    "Name":"126",
+    "AnimationName":""
    },
   {
     "Uid":"29",
-    "Name":"29"
+    "Name":"127",
+    "AnimationName":""
    },
   {
     "Uid":"30",
-    "Name":"30"
+    "Name":"128",
+    "AnimationName":""
    },
   {
     "Uid":"31",
-    "Name":"31"
+    "Name":"129",
+    "AnimationName":""
    },
   {
     "Uid":"32",
-    "Name":"32"
+    "Name":"130",
+    "AnimationName":""
    }
 ]

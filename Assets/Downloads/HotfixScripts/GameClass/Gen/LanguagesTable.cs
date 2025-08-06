@@ -7,20 +7,17 @@ using JFramework.Game;
 
 namespace JFramework
 {
-    public partial class ActionsTable : BaseConfigTable<ActionsCfgData>
+    public partial class LanguagesTable : BaseConfigTable<LanguagesCfgData>
     {
     }
 
-    public class ActionsCfgData : IUnique
+    public class LanguagesCfgData : IUnique
     {
         //唯一标识
         public string Uid{ get;set;} 
 
-        //名字
+        //道具名字
         public string Name;
-
-        //角色动画名字
-        public string AnimationName;
 
     }
 }

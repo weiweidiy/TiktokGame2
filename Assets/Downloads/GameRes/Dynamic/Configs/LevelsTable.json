@@ -1,7 +1,7 @@
 [
   {
     "Uid":"1",
-    "Name":"桃园结义",
+    "Name":"1",
     "PrefabUid":"1",
     "Textures":[
             "Sprite_Level"
@@ -11,7 +11,7 @@
    },
   {
     "Uid":"2",
-    "Name":"黄巾之乱",
+    "Name":"2",
     "PrefabUid":"1",
     "Textures":[
             "Sprite_Level"
@@ -21,7 +21,7 @@
    },
   {
     "Uid":"3",
-    "Name":"官渡之战",
+    "Name":"3",
     "PrefabUid":"1",
     "Textures":[
             "Sprite_Level"
@@ -31,7 +31,7 @@
    },
   {
     "Uid":"4",
-    "Name":"赤壁之战",
+    "Name":"4",
     "PrefabUid":"1",
     "Textures":[
             "Sprite_Level"
