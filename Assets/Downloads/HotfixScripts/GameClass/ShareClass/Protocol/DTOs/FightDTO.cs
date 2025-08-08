@@ -1,5 +1,7 @@
 ﻿using JFramework.Game;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using TiktokGame2Server.Others;
 
 
 namespace Tiktok
@@ -11,24 +13,17 @@ namespace Tiktok
 
         public TiktokJCombatTurnBasedReportData ReportData { get; set; }
 
-        public LevelNodeDTO LevelNodeDTO { get; set; }
+        public  LevelNodeDTO? LevelNodeDTO { get; set; }
 
+        /// <summary>
+        /// 战斗后更新的武士信息列表
+        /// </summary>
+        public List<SamuraiDTO>? SamuraiDTOs { get; set; } 
 
-    }
+        public HpPoolDTO? HpPoolDTO { get; set; }
 
-    public class TiktokJCombatTurnBasedReportData : JCombatTurnBasedReportData<TiktokJCombatUnitData>
-    {
-        public string CombatSceneBusinessId { get; set; } // 可能需要在其他地方使用
-    }
+        public RewardDTO? WinRewardDTO { get; set; }
 
-    public class TiktokJCombatUnitData : IJCombatUnitData
-    {
-        public string Uid { get; set; }
-        public int Seat { get; set; }
-        public string SamuraiBusinessId { get; set; }
-        public string SoldierBusinessId { get; set; } // 可能需要在其他地方使用
-        public int CurHp { get; set; }
-        public int MaxHp { get; set; }
-        public List<KeyValuePair<string, string>> Actions { get; set; }
+        public RewardDTO? AchievementRewardDTO { get; set; }
     }
 }

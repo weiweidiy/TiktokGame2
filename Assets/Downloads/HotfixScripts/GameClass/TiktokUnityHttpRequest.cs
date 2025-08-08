@@ -28,7 +28,7 @@ namespace Tiktok
             }
         }
 
-        public async Task<T> PostBodyAsync<T>(string url, T body, Encoding encoding = null)
+        public async Task<TResp> PostBodyAsync<TReq,TResp>(string url, TReq body, Encoding encoding = null)
         {
             if (encoding == null)
             {
@@ -41,7 +41,7 @@ namespace Tiktok
             }
             var result = await PostAsync(url, json, encoding);
             var response = encoding.GetString(result);
-            T responseObject = deserializer.ToObject<T>(response);
+            TResp responseObject = deserializer.ToObject<TResp>(response);
             return responseObject;
         }
 
@@ -53,7 +53,7 @@ namespace Tiktok
             {
                 Uid = deviceUid
             };
-            var response = await PostBodyAsync(url, body);
+            var response = await PostBodyAsync<AccountDTO, AccountDTO>(url, body);
             if (response == null)
             {
                 throw new System.Exception("Login failed, response is null");
@@ -72,11 +72,11 @@ namespace Tiktok
 
         }
 
-        public async Task<FightDTO> RequestFight(FightDTO fightDTO)
+        public async Task<FightDTO> RequestFight(RequestFight fightDTO)
         {
             var url = $"https://localhost:7289/api/Fight/Fight";
          
-            var response = await PostBodyAsync(url, fightDTO);
+            var response = await PostBodyAsync<RequestFight,FightDTO>(url, fightDTO);
             if (response == null)
             {
                 throw new System.Exception("Login failed, response is null");

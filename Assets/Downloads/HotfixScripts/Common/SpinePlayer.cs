@@ -23,6 +23,13 @@ namespace Tiktok
 
         }
 
+        private void OnEnable()
+        {
+            // 清除所有动画和状态，重置骨骼
+            spine.ClearState();
+            //spine.Initialize(true);
+        }
+
 
         private void OnDisable()
         {
@@ -31,13 +38,25 @@ namespace Tiktok
             {
                 spine.AnimationState.Complete -= OnSpineAnimationComplete;
             }
+
+            if (tcs != null && !tcs.Task.IsCompleted)
+            {
+                tcs.SetCanceled();
+                tcs = null; // 清理 TaskCompletionSource
+            }
+
+            if (tcs != null)
+                tcs = null;
+
+            // 清除 Spine 动画状态
+            spine.AnimationState.ClearTracks();
         }
 
         private void OnSpineAnimationComplete(TrackEntry trackEntry)
         {
             // trackEntry.Animation.Name 是动画名
-            Debug.Log($"Spine动画完成: {trackEntry.Animation.Name}");
-            if(tcs != null && !tcs.Task.IsCompleted)
+            //Debug.Log($"Spine动画完成: {trackEntry.Animation.Name}");
+            if(tcs != null && !tcs.Task.IsCompleted && trackEntry.Animation.Name == "PVP_Atk")
             {
                 tcs.SetResult(true);
             }
@@ -55,14 +74,19 @@ namespace Tiktok
                 Debug.LogError("SpineAnimation or AnimationState is not initialized.");
                 return Task.CompletedTask;
             }
-            if (tcs != null && !tcs.Task.IsCompleted)
+            //if (tcs != null && !tcs.Task.IsCompleted)
+            //{
+            //    tcs.SetCanceled(); // 如果之前的任务未完成，取消它
+            //}
+            if(animName == "PVP_Atk")
             {
-                tcs.SetCanceled(); // 如果之前的任务未完成，取消它
+                tcs = new TaskCompletionSource<bool>();
+                spine.AnimationState.SetAnimation(0, animName, loop);
+                return tcs.Task;
             }
 
-            tcs = new TaskCompletionSource<bool>();
             spine.AnimationState.SetAnimation(0, animName, loop);
-            return tcs.Task;
+            return Task.CompletedTask;
         }
 
         public async void SetAnimation(string path, bool flipX = false)

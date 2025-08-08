@@ -4,6 +4,7 @@ using JFramework.Game;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TiktokGame2Server.Others;
 using UnityEngine;
 
 namespace Tiktok

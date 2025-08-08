@@ -14,6 +14,9 @@ namespace Tiktok
 
             result.Add(GetIndex(), typeof(LevelNodeDTO));
             result.Add(GetIndex(), typeof(FightDTO));
+            result.Add(GetIndex(), typeof(RequestFight));
+            result.Add(GetIndex(), typeof(RequestDrawSamurai));
+            result.Add(GetIndex(), typeof(RequestAddSamuraiExp));
 
 
             result.Add(GetIndex(), typeof(EventFight));

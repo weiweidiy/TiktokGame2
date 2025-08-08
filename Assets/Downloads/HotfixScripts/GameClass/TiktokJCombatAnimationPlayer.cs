@@ -4,9 +4,12 @@ using JFramework;
 using JFramework.Game;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using TiktokGame2Server.Others;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Tiktok
 {
@@ -129,7 +132,10 @@ namespace Tiktok
                         $"targetHP:{targetCurHp}");
                 }
 
+                var sw = Stopwatch.StartNew();
                 await combatUnits[casterUid].Play("PVP_Atk", false);
+                sw.Stop();
+                UnityEngine.Debug.Log($"PlayAcion Play Animation Time: {sw.ElapsedMilliseconds} ms");
             }
         }
 
